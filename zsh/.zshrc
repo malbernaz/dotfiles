@@ -1,0 +1,29 @@
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="lambda"
+
+plugins=(git vi-mode yarn nvm thefuck pyenv)
+
+source $ZSH/oh-my-zsh.sh
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
+
+# aliases
+
+alias c=wl-copy
+alias p=wl-paste
+alias vi=nvim
+alias vim=nvim
+alias lite=lite-xl
+
+# tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte.sh
+fi
+
+export _JAVA_OPTIONS='-Djdk.gtk.version=2'
