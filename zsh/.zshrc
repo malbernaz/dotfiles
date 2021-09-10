@@ -20,6 +20,7 @@ alias p=wl-paste
 alias vi=nvim
 alias vim=nvim
 alias lite=lite-xl
+alias df="cd $HOME/.dotfiles"
 
 # tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
