@@ -28,3 +28,6 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 export _JAVA_OPTIONS='-Djdk.gtk.version=2'
+
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+
