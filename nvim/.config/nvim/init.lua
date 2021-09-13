@@ -3,7 +3,8 @@ require("plugins")
 local opt = vim.opt
 
 -- color scheme
-vim.cmd([[ colorscheme codedark ]])
+vim.g.vscode_style = "dark"
+vim.cmd([[ colorscheme vscode ]])
 
 -- options
 opt.termguicolors = true

@@ -8,7 +8,7 @@ vim.cmd([[
 
 return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use("tomasiser/vim-code-dark")
+  use("Mofiqul/vscode.nvim")
   use("nvim-lua/lsp-status.nvim")
   use({
     "glepnir/galaxyline.nvim",
@@ -64,6 +64,6 @@ return require("packer").startup(function(use)
   })
   use({
     "akinsho/toggleterm.nvim",
-    config = require("settings.toggleterm")
+    config = require("settings.toggleterm"),
   })
 end)
