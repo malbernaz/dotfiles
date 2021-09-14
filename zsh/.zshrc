@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="lambda"
 
-plugins=(git vi-mode yarn nvm thefuck pyenv)
+plugins=(git vi-mode yarn nvm thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -14,7 +14,6 @@ else
 fi
 
 # aliases
-
 alias c=wl-copy
 alias p=wl-paste
 alias vi=nvim

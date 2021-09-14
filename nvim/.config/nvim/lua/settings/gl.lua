@@ -2,6 +2,10 @@ local gl = require("galaxyline")
 local utils = require("utils")
 local condition = require("galaxyline.condition")
 local diagnostic = require("galaxyline.provider_diagnostic")
+local icons = require("galaxyline.provider_fileinfo")
+
+icons.define_file_icon()
+icons["fugitive"] = { "#FFFFFF", "" }
 
 local gls = gl.section
 gl.short_line_list = { "packer", "NvimTree", "Outline", "LspTrouble" }

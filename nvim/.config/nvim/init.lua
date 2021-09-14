@@ -1,10 +1,12 @@
 require("plugins")
 
 local opt = vim.opt
+local g = vim.g
+local cmd = vim.cmd
 
 -- color scheme
-vim.g.vscode_style = "dark"
-vim.cmd([[ colorscheme vscode ]])
+g.vscode_style = "dark"
+cmd([[ colorscheme vscode ]])
 
 -- options
 opt.termguicolors = true
@@ -25,6 +27,8 @@ opt.signcolumn = "yes:1"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
+opt.guifont = "Fira Code:h14:sb"
+g.neovide_cursor_animation_length = 0
 
 -- mappings
 require("mappings")
