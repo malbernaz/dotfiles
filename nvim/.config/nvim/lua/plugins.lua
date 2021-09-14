@@ -30,10 +30,16 @@ return require("packer").startup(function(use)
     config = require("settings.treesitter"),
   })
   use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+    },
+  })
+  use({
     "neovim/nvim-lspconfig",
     config = require("settings.lsp"),
   })
-  use("nvim-lua/completion-nvim")
   use({
     "JoosepAlviste/nvim-ts-context-commentstring",
     after = { "nvim-treesitter" },

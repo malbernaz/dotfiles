@@ -1,16 +1,31 @@
 return function()
   local lsp = require("lspconfig")
-  local cmp = require("completion")
+  local cmp = require("cmp")
 
   vim.api.nvim_set_option("completeopt", "menuone,noinsert,noselect")
   vim.o.shortmess = vim.o.shortmess .. "c"
   vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
   vim.g.completion_trigger_keyword_length = 3
 
+  -- customize lsp signs
+  local signs = { Error = "", Warning = "", Hint = "", Information = "" }
+
+  for type, icon in pairs(signs) do
+    local hl = "LspDiagnosticsSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  end
+
   -- tsserver
   lsp.tsserver.setup({
     cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
     init_options = {
       hostInfo = "neovim",
     },
@@ -143,12 +158,4 @@ return function()
     root_dir = lsp.util.root_pattern("package.json", "vue.config.js"),
     on_attach = cmp.on_attach,
   })
-
-  -- customize lsp signs
-  local signs = { Error = "", Warning = "", Hint = "", Information = "" }
-
-  for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
 end
