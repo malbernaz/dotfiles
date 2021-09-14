@@ -35,7 +35,9 @@ return require("packer").startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
     },
+    config = require("settings/cmp"),
   })
+  use("kabouzeid/nvim-lspinstall")
   use({
     "neovim/nvim-lspconfig",
     config = require("settings.lsp"),
@@ -71,5 +73,9 @@ return require("packer").startup(function(use)
   use({
     "akinsho/toggleterm.nvim",
     config = require("settings.toggleterm"),
+  })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = require("settings/blankline")
   })
 end)
