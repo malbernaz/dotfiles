@@ -15,6 +15,8 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.smartindent = true
+opt.ignorecase = true
+opt.smartcase = true
 opt.number = true
 opt.relativenumber = true
 opt.hidden = true
@@ -28,7 +30,6 @@ opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code:h14:sb"
-g.neovide_cursor_animation_length = 0
 
 -- mappings
 require("mappings")

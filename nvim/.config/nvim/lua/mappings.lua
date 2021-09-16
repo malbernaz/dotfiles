@@ -2,6 +2,13 @@ local utils = require("utils")
 
 vim.g.mapleader = " "
 
+-- for convenience
+utils.map("n", ";", ":")
+
+-- paste last yanked, not deleted
+utils.map("n", "`p", '"0p')
+utils.map("n", "`P", '"0P')
+
 -- telescope
 utils.map("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<cr>")
 utils.map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<cr>")

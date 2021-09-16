@@ -74,8 +74,4 @@ return require("packer").startup(function(use)
     "akinsho/toggleterm.nvim",
     config = require("settings.toggleterm"),
   })
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = require("settings/blankline")
-  })
 end)
