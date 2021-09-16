@@ -4,10 +4,6 @@ local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
 
--- color scheme
-g.vscode_style = "dark"
-cmd([[ colorscheme vscode ]])
-
 -- options
 opt.termguicolors = true
 opt.tabstop = 2
@@ -23,13 +19,19 @@ opt.hidden = true
 opt.wrap = false
 opt.swapfile = false
 opt.incsearch = true
+opt.hlsearch = false
 opt.scrolloff = 8
 opt.colorcolumn = "100"
-opt.signcolumn = "yes:1"
+opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code:h14:sb"
+g.netrw_banner = 0
+
+-- color scheme
+g.vscode_style = "dark"
+cmd([[ colorscheme vscode ]])
 
 -- mappings
 require("mappings")

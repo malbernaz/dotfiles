@@ -2,9 +2,6 @@ local utils = require("utils")
 
 vim.g.mapleader = " "
 
--- for convenience
-utils.map("n", ";", ":")
-
 -- paste last yanked, not deleted
 utils.map("n", "`p", '"0p')
 utils.map("n", "`P", '"0P')
@@ -20,3 +17,7 @@ utils.map("n", "<C-h>", "<C-w>h")
 utils.map("n", "<C-j>", "<C-w>j")
 utils.map("n", "<C-k>", "<C-w>k")
 utils.map("n", "<C-l>", "<C-w>l")
+
+-- move lines
+utils.map("v", "K", ":m '<-2<CR>gv=gv")
+utils.map("v", "J", ":m '>+1<CR>gv=gv")
