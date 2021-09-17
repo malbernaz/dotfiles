@@ -27,7 +27,6 @@ opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code:h14:sb"
-g.netrw_banner = 0
 
 -- color scheme
 g.vscode_style = "dark"

@@ -3,3 +3,5 @@
 	name = Miguel Albernaz
 [init]
 	defaultBranch = main
+[pull]
+	ff = only

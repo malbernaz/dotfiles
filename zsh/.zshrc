@@ -13,6 +13,11 @@ else
   export EDITOR='nvim'
 fi
 
+# add hidden files to autocomplete
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
 # aliases
 alias c=wl-copy
 alias p=wl-paste
