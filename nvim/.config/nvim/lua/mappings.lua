@@ -7,10 +7,19 @@ utils.map("n", "`p", '"0p')
 utils.map("n", "`P", '"0P')
 
 -- telescope
-utils.map("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<cr>")
-utils.map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-utils.map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-utils.map("n", "<leader>gg", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+utils.map("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files({ hidden = true })<cr>")
+utils.map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
+utils.map(
+  "n",
+  "<leader>ff",
+  "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>"
+)
+utils.map("n", "<leader>bf", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+utils.map(
+  "n",
+  "<leader>fb",
+  "<cmd>lua require('telescope.builtin').file_browser({ hidden = true })<cr>"
+)
 
 -- splits
 utils.map("n", "<C-h>", "<C-w>h")
