@@ -12,6 +12,8 @@ return function()
     filetype = {
       javascript = { prettier },
       typescript = { prettier },
+      typescriptreact = { prettier },
+      javascriptreact = { prettier },
       html = { prettier },
       css = { prettier },
       scss = { prettier },

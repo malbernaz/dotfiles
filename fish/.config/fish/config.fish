@@ -4,4 +4,3 @@ end
 
 thefuck --alias | source
 
-load_nvm
