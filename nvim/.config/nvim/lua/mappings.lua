@@ -30,3 +30,6 @@ utils.map("n", "<C-l>", "<C-w>l")
 -- move lines
 utils.map("v", "K", ":m '<-2<CR>gv=gv")
 utils.map("v", "J", ":m '>+1<CR>gv=gv")
+
+-- netrw
+utils.map("n", "<C-r>", "<Plug>NetrwRefresh", { silent = false, noremap = false, unique = true })

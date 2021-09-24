@@ -6,6 +6,7 @@ thefuck --alias | source
 
 # Editor
 set EDITOR 'nvim'
+set GIT_EDITOR 'nvim'
 
 # Aliases
 set -l git_branch (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')

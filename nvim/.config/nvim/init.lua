@@ -28,6 +28,12 @@ opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code:h14:sb"
 
+-- netrw
+g.netrw_winsize = 20
+g.netrw_banner = 0
+g.netrw_liststyle = 3
+g.netrw_browse_split = 4
+
 -- color scheme
 g.vscode_style = "dark"
 cmd([[ colorscheme vscode ]])

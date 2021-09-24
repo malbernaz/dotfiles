@@ -113,9 +113,9 @@ _G.packer_plugins = {
     path = "/home/malbernaz/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    config = { "\27LJ\1\2C\0\1\3\0\4\0\a4\1\0\0%\2\1\0>\1\2\0027\1\2\0017\2\3\0>\1\2\1G\0\1\0\tbody\15lsp_expand\fluasnip\frequire¡\2\0\1\a\1\v\1*4\1\0\0007\1\1\0017\1\2\1>\1\1\2\t\1\0\0T\1\14€4\1\0\0007\1\1\0017\1\3\0014\2\0\0007\2\4\0027\2\5\2%\3\6\0)\4\2\0)\5\2\0)\6\2\0>\2\5\2%\3\a\0>\1\3\1T\1\21€+\1\0\0007\1\b\1>\1\1\2\15\0\1\0T\2\14€4\1\0\0007\1\1\0017\1\3\0014\2\0\0007\2\4\0027\2\5\2%\3\t\0)\4\2\0)\5\2\0)\6\2\0>\2\5\2%\3\n\0>\1\3\1T\1\2€\16\1\0\0>\1\1\1G\0\1\0\1À\5!<Plug>luasnip-expand-or-jump\23expand_or_jumpable\6n\n<C-n>\27nvim_replace_termcodes\bapi\rfeedkeys\15pumvisible\afn\bvim\2–\2\0\1\a\1\v\1+4\1\0\0007\1\1\0017\1\2\1>\1\1\2\t\1\0\0T\1\14€4\1\0\0007\1\1\0017\1\3\0014\2\0\0007\2\4\0027\2\5\2%\3\6\0)\4\2\0)\5\2\0)\6\2\0>\2\5\2%\3\a\0>\1\3\1T\1\22€+\1\0\0007\1\b\1'\2ÿÿ>\1\2\2\15\0\1\0T\2\14€4\1\0\0007\1\1\0017\1\3\0014\2\0\0007\2\4\0027\2\5\2%\3\t\0)\4\2\0)\5\2\0)\6\2\0>\2\5\2%\3\n\0>\1\3\1T\1\2€\16\1\0\0>\1\1\1G\0\1\0\1À\5\28<Plug>luasnip-jump-prev\rjumpable\6n\n<C-p>\27nvim_replace_termcodes\bapi\rfeedkeys\15pumvisible\afn\bvim\2Ü\2\1\0\b\0\26\0'4\0\0\0%\1\1\0>\0\2\0024\1\0\0%\2\2\0>\1\2\0027\2\3\0003\3\a\0003\4\5\0001\5\4\0:\5\6\4:\4\b\0032\4\3\0003\5\t\0;\5\1\0043\5\n\0;\5\2\4:\4\v\0033\4\14\0007\5\f\0007\5\r\5>\5\1\2:\5\15\0047\5\f\0007\5\16\0053\6\19\0007\a\17\0007\a\18\a:\a\20\6>\5\2\2:\5\21\0041\5\22\0:\5\23\0041\5\24\0:\5\25\4:\4\f\3>\2\2\0010\0\0€G\0\1\0\f<S-Tab>\0\n<Tab>\0\t<CR>\rbehavior\1\0\1\vselect\2\fReplace\20ConfirmBehavior\fconfirm\n<C-e>\1\0\0\nclose\fmapping\fsources\1\0\1\tname\fluasnip\1\0\1\tname\rnvim_lsp\fsnippet\1\0\0\vexpand\1\0\0\0\nsetup\fluasnip\bcmp\frequire\0" },
+    after = { "tabout.nvim" },
     loaded = true,
-    path = "/home/malbernaz/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+    only_config = true
   },
   ["nvim-lspconfig"] = {
     after = { "nvim-autopairs" },
@@ -153,6 +153,14 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/malbernaz/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["tabout.nvim"] = {
+    config = { "\27LJ\1\2ë\2\0\0\4\0\f\0\0234\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\a\0003\3\4\0;\3\1\0023\3\5\0;\3\2\0023\3\6\0;\3\3\0023\3\a\0;\3\4\0023\3\b\0;\3\5\0023\3\t\0;\3\6\2:\2\n\0012\2\0\0:\2\v\1>\0\2\1G\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\a\21ignore_beginning\2\15act_as_tab\2\21act_as_shift_tab\1\15completion\2\21enable_backwards\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\nsetup\vtabout\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/malbernaz/.local/share/nvim/site/pack/packer/opt/tabout.nvim",
+    wants = { "nvim-treesitter" }
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
@@ -203,14 +211,14 @@ time([[Config for toggleterm.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\1\2½\4\0\0\4\0\18\0\0214\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\14\0003\2\4\0003\3\3\0:\3\5\0023\3\6\0:\3\a\0023\3\b\0:\3\t\0023\3\n\0:\3\v\0023\3\f\0:\3\r\2:\2\15\0013\2\16\0:\2\17\1>\0\2\1G\0\1\0\19preview_config\1\0\1\vborder\tnone\nsigns\1\0\0\17changedelete\1\0\4\ttext\bâ–Ž\nnumhl\21GitSignsChangeNr\vlinehl\21GitSignsChangeLn\ahl\19GitSignsChange\14topdelete\1\0\4\ttext\bâ–¶\nnumhl\21GitSignsDeleteNr\vlinehl\21GitSignsDeleteLn\ahl\19GitSignsDelete\vdelete\1\0\4\ttext\bâ–¶\nnumhl\21GitSignsDeleteNr\vlinehl\21GitSignsDeleteLn\ahl\19GitSignsDelete\vchange\1\0\4\ttext\bâ–Ž\nnumhl\21GitSignsChangeNr\vlinehl\21GitSignsChangeLn\ahl\19GitSignsChange\badd\1\0\0\1\0\4\ttext\bâ–Ž\nnumhl\18GitSignsAddNr\vlinehl\18GitSignsAddLn\ahl\16GitSignsAdd\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16settings/gl\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
 -- Config for: kommentary
 time([[Config for kommentary]], true)
 try_loadstring("\27LJ\1\2^\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire‹\2\1\0\5\0\n\0\0164\0\0\0%\1\1\0>\0\2\0027\1\2\0>\1\1\0017\1\3\0%\2\4\0003\3\5\0>\1\3\0017\1\3\0%\2\6\0003\3\a\0001\4\b\0:\4\t\3>\1\3\1G\0\1\0\21pre_comment_hook\0\1\0\2\31multi_line_comment_strings\tauto\31single_line_comment_string\tauto\bvue\1\0\1 prefer_single_line_comments\2\fdefault\23configure_language\26use_extended_mappings\22kommentary.config\frequire\0", "config", "kommentary")
 time([[Config for kommentary]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16settings/gl\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\2ž\3\0\0\5\0\20\0$4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\r\0003\2\5\0004\3\0\0%\4\3\0>\3\2\0027\3\4\3:\3\6\0024\3\0\0%\4\a\0>\3\2\0027\3\b\0037\3\t\3:\3\n\0024\3\0\0%\4\a\0>\3\2\0027\3\v\0037\3\t\3:\3\f\2:\2\14\0013\2\16\0003\3\15\0:\3\17\2:\2\18\1>\0\2\0014\0\0\0%\1\1\0>\0\2\0027\0\19\0%\1\17\0>\0\2\1G\0\1\0\19load_extension\15extensions\15fzy_native\1\0\0\1\0\2\28override_generic_sorter\1\25override_file_sorter\2\rdefaults\1\0\0\19grep_previewer\23vim_buffer_vimgrep\19file_previewer\bnew\19vim_buffer_cat\25telescope.previewers\16file_sorter\1\0\0\19get_fzy_sorter\22telescope.sorters\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
@@ -225,12 +233,17 @@ try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G
 time([[Config for nvim-ts-autotag]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-ts-context-commentstring ]]
+vim.cmd [[ packadd tabout.nvim ]]
+
+-- Config for: tabout.nvim
+try_loadstring("\27LJ\1\2ë\2\0\0\4\0\f\0\0234\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0002\2\a\0003\3\4\0;\3\1\0023\3\5\0;\3\2\0023\3\6\0;\3\3\0023\3\a\0;\3\4\0023\3\b\0;\3\5\0023\3\t\0;\3\6\2:\2\n\0012\2\0\0:\2\v\1>\0\2\1G\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\a\21ignore_beginning\2\15act_as_tab\2\21act_as_shift_tab\1\15completion\2\21enable_backwards\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\nsetup\vtabout\frequire\0", "config", "tabout.nvim")
+
 vim.cmd [[ packadd nvim-autopairs ]]
 
 -- Config for: nvim-autopairs
 try_loadstring("\27LJ\1\2Ò\2\0\0\5\1\14\2-4\0\0\0007\0\1\0007\0\2\0>\0\1\2\b\0\0\0T\0#€4\0\0\0007\0\1\0007\0\3\0>\0\1\0027\0\4\0\b\0\1\0T\0\n€4\0\5\0%\1\6\0>\0\2\0027\0\a\0>\0\1\1+\0\0\0007\0\b\0%\1\t\0@\0\2\0T\0\21€4\0\0\0007\0\n\0007\0\v\0'\1\0\0)\2\1\0)\3\1\0002\4\0\0>\0\5\0014\0\5\0%\1\6\0>\0\2\0027\0\a\0>\0\1\1+\0\0\0007\0\b\0%\1\f\0@\0\2\0T\0\3€+\0\0\0007\0\r\0@\0\1\0G\0\1\0\0À\17autopairs_cr\15<c-n><c-y>\31nvim_select_popupmenu_item\bapi\n<c-y>\besc\22confirmCompletion\15completion\frequire\rselected\18complete_info\15pumvisible\afn\bvim\0þÿÿÿ\31ˆ\2\1\0\a\0\17\0\0274\0\0\0%\1\1\0>\0\2\0024\1\0\0%\2\2\0>\1\2\0027\2\3\0002\3\0\0>\2\2\0014\2\4\0002\3\0\0:\3\5\0024\2\6\0007\2\a\2%\3\t\0:\3\b\0024\2\5\0001\3\v\0:\3\n\0027\2\f\1%\3\r\0%\4\14\0%\5\15\0003\6\16\0>\2\5\0010\0\0€G\0\1\0\1\0\1\texpr\2&v:lua.MUtils.completion_confirm()\t<CR>\6i\bmap\0\23completion_confirm\5\27completion_confirm_key\6g\bvim\vMUtils\a_G\nsetup\nutils\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 
-vim.cmd [[ packadd nvim-ts-context-commentstring ]]
 time([[Sequenced loading]], false)
 if should_profile then save_profiles() end
 

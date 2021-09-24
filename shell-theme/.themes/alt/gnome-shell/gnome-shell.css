@@ -1,3 +1,29 @@
 #panel {
-  background-color: #282828;
+  background-color: #111;
 }
+
+#panel:overview {
+  background: transparent;
+}
+
+#overviewGroup {
+  background-color: #111;
+}
+
+.app-well-app.app-folder {
+  background-color: #1e1e1e;
+}
+
+.app-folder-dialog {
+  background-color: #1e1e1e;
+}
+
+.dash-background {
+  background-color: transparent;
+}
+
+.dash-separator {
+  width: 0;
+  margin: 0;
+}
+
