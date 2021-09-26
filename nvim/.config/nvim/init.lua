@@ -26,7 +26,7 @@ opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
-opt.guifont = "Fira Code:h14:sb"
+opt.guifont = "Fira Code:h11"
 
 -- netrw
 g.netrw_winsize = 20
