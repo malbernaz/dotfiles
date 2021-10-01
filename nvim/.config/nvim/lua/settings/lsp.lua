@@ -82,8 +82,7 @@ return function()
           },
         }
         config.filetypes = { "lua" }
-      end
-      if server == "graphql" then
+      elseif server == "graphql" then
         config.filetypes = {
           "graphql",
           "javascript",
