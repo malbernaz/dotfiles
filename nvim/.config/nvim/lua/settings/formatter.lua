@@ -1,7 +1,7 @@
 return function()
   local prettier = function()
     return {
-      exe = "./node_modules/.bin/prettier",
+      exe = "prettier",
       args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--double-quote" },
       stdin = true,
     }
@@ -17,13 +17,14 @@ return function()
       html = { prettier },
       css = { prettier },
       scss = { prettier },
+      graphql = { prettier },
       markdown = { prettier },
       vue = { prettier },
       lua = {
         -- Stylua
         function()
           return {
-            exe = "~/.cargo/bin/stylua",
+            exe = "stylua",
             stdin = false,
           }
         end,
@@ -35,7 +36,7 @@ return function()
     [[
       augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.vue,*.html,*.css,*.scss,*.rs,*.lua FormatWrite
+        autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.vue,*.html,*.css,*.scss,*.md,*.graphql,*.gql,*.lua FormatWrite
       augroup END
     ]],
     true

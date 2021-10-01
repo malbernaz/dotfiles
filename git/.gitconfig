@@ -7,3 +7,4 @@
 	ff = only
 [core]
 	edit = nvim
+	editor = nvim

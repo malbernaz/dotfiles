@@ -26,13 +26,18 @@ opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
-opt.guifont = "Fira Code:h11"
+opt.guifont = "Fira Code Medium:h11"
+
+cmd([[
+  autocmd TermOpen * setlocal nonumber norelativenumber
+]])
 
 -- netrw
-g.netrw_winsize = 20
-g.netrw_banner = 0
-g.netrw_liststyle = 3
-g.netrw_browse_split = 4
+g.loaded_netrw = 0
+-- g.netrw_winsize = 20
+-- g.netrw_banner = 0
+-- g.netrw_liststyle = 3
+-- g.netrw_browse_split = 4
 
 -- color scheme
 g.vscode_style = "dark"

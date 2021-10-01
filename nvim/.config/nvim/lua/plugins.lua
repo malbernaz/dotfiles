@@ -80,5 +80,6 @@ return require("packer").startup(function(use)
     wants = { "nvim-treesitter" }, -- or require if not used so far
     after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
   })
+  use("justinmk/vim-dirvish")
 end)
 
