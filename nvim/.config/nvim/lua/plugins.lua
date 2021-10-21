@@ -66,4 +66,10 @@ return require("packer").startup(function(use)
     "akinsho/toggleterm.nvim",
     config = require("settings.toggleterm"),
   })
+  use({
+    "abecodes/tabout.nvim",
+    config = require("settings.tabout"),
+    wants = { "nvim-treesitter" },
+    after = { "nvim-cmp" },
+  })
 end)

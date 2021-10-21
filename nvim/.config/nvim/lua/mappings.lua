@@ -33,3 +33,7 @@ utils.map("v", "J", ":m '>+1<CR>gv=gv")
 
 -- modify redo
 utils.map("n", "U", "<C-r>")
+
+-- buffers
+utils.map("n", "]b", ":bnext<cr>", { silent = true })
+utils.map("n", "[b", ":bprev<cr>", { silent = true })
