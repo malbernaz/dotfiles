@@ -1,8 +1,6 @@
 return function()
   local lsp = require("lspconfig")
-  local lsputil = require("lspconfig/util")
   local cmp = require("cmp_nvim_lsp")
-  local lspinstall = require("lspinstall")
   local utils = require("utils")
 
   -- general settings
@@ -53,57 +51,57 @@ return function()
     utils.map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
   end
 
-  local function setup_servers()
-    lspinstall.setup()
+  local function configure_lua()
+    USER = vim.fn.expand("$USER")
 
-    local config = {
+    local sumneko_root_path = ""
+    local sumneko_binary = ""
+
+    if vim.fn.has("mac") == 1 then
+      sumneko_root_path = "/Users/" .. USER .. "/.config/nvim/lua-language-server"
+      sumneko_binary = "/Users/"
+        .. USER
+        .. "/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
+    elseif vim.fn.has("unix") == 1 then
+      sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua-language-server"
+      sumneko_binary = "/home/"
+        .. USER
+        .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
+    else
+      print("Unsupported system for sumneko")
+    end
+
+    lsp.sumneko_lua.setup({
+      cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
       capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
       on_attach = on_attach,
-    }
-
-    local servers = lspinstall.installed_servers()
-    for _, server in pairs(servers) do
-      if server == "lua" then
-        config.settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            runtime = {
-              version = "LuaJIT",
-              path = vim.split(package.path, ";"),
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-              },
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          runtime = {
+            version = "LuaJIT",
+            path = vim.split(package.path, ";"),
+          },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
             },
           },
-        }
-        config.filetypes = { "lua" }
-      elseif server == "graphql" then
-        config.filetypes = {
-          "graphql",
-          "javascript",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx",
-        }
-        config.root_dir = lsputil.root_pattern(".git", ".graphqlrc*", ".graphql.config.*")
-      end
-
-      lsp[server].setup(config)
-    end
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    })
   end
 
-  setup_servers()
+  configure_lua()
 
-  -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-  lspinstall.post_install_hook = function()
-    setup_servers()
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-  end
+  lsp.tsserver.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+  })
 end

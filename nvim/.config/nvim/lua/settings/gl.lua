@@ -5,7 +5,6 @@ local diagnostic = require("galaxyline.provider_diagnostic")
 local icons = require("galaxyline.provider_fileinfo")
 
 icons.define_file_icon()
-icons["fugitive"] = { "#FFFFFF", "" }
 
 local gls = gl.section
 gl.short_line_list = { "packer", "NvimTree", "Outline", "LspTrouble" }
@@ -66,23 +65,10 @@ local mode_color = function()
   end
 end
 
-local function file_readonly()
-  if vim.bo.filetype == "help" then
-    return ""
-  end
-  if vim.bo.readonly == true then
-    return "  "
-  end
-  return ""
-end
-
 local function get_current_file_name()
   local file = vim.fn.expand("%:t")
   if vim.fn.empty(file) == 1 then
     return ""
-  end
-  if string.len(file_readonly()) ~= 0 then
-    return file .. file_readonly()
   end
   if vim.bo.modifiable then
     if vim.bo.modified then
@@ -162,16 +148,14 @@ gls.left[1] = {
       return "  " .. mode .. " "
     end,
     highlight = { colors.white, colors.white },
+    separator = " ",
+    separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.left[2] = {
   FileIcon = {
-    provider = {
-      function()
-        return "  "
-      end,
-      "FileIcon",
-    },
+    provider = { "FileIcon" },
     condition = buffer_not_empty,
     highlight = {
       require("galaxyline.provider_fileinfo").get_file_icon,
@@ -179,6 +163,7 @@ gls.left[2] = {
     },
   },
 }
+
 gls.left[3] = {
   FilePath = {
     provider = function()
@@ -198,6 +183,7 @@ gls.left[3] = {
     highlight = { colors.fg, colors.bg },
   },
 }
+
 gls.left[4] = {
   FileName = {
     provider = get_current_file_name,
@@ -207,12 +193,14 @@ gls.left[4] = {
     separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.left[5] = {
   DiagnosticsCheck = {
     provider = { LspCheckDiagnostics },
     highlight = { colors.fg, colors.bg },
   },
 }
+
 gls.left[6] = {
   DiagnosticError = {
     provider = { "DiagnosticError" },
@@ -220,6 +208,7 @@ gls.left[6] = {
     highlight = { colors.red, colors.bg },
   },
 }
+
 gls.left[7] = {
   DiagnosticWarn = {
     provider = { "DiagnosticWarn" },
@@ -227,6 +216,7 @@ gls.left[7] = {
     highlight = { colors.yellow, colors.bg },
   },
 }
+
 gls.left[8] = {
   DiagnosticInfo = {
     provider = { "DiagnosticInfo" },
@@ -234,6 +224,7 @@ gls.left[8] = {
     highlight = { colors.blue, colors.bg },
   },
 }
+
 gls.right[1] = {
   DiffAdd = {
     provider = "DiffAdd",
@@ -244,6 +235,7 @@ gls.right[1] = {
     separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.right[2] = {
   DiffModified = {
     provider = "DiffModified",
@@ -252,6 +244,7 @@ gls.right[2] = {
     highlight = { colors.yellow, colors.bg },
   },
 }
+
 gls.right[3] = {
   DiffRemove = {
     provider = "DiffRemove",
@@ -260,18 +253,22 @@ gls.right[3] = {
     highlight = { colors.red, colors.bg },
   },
 }
+
 gls.right[5] = {
   GitBranch = {
     provider = {
       function()
-        return "  "
+        return " "
       end,
       "GitBranch",
     },
     condition = condition.check_git_workspace,
     highlight = { colors.orange, colors.bg },
+    separator = " ",
+    separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.right[6] = {
   GitRoot = {
     provider = { GetGitRoot },
@@ -283,14 +280,16 @@ gls.right[6] = {
     separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.right[7] = {
   PerCent = {
     provider = "LinePercent",
-    separator = " ",
+    separator = "  ",
     separator_highlight = { colors.blue, colors.bg },
     highlight = { colors.white, colors.blue },
   },
 }
+
 gls.short_line_left[1] = {
   FileIcon = {
     provider = {
@@ -308,6 +307,7 @@ gls.short_line_left[1] = {
     },
   },
 }
+
 gls.short_line_left[2] = {
   FileName = {
     provider = get_current_file_name,
@@ -317,6 +317,7 @@ gls.short_line_left[2] = {
     separator_highlight = { colors.bg, colors.bg },
   },
 }
+
 gls.short_line_right[1] = {
   BufferIcon = {
     provider = "BufferIcon",

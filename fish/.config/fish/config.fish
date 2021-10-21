@@ -2,9 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# Sources
-thefuck --alias | source
-
 # Path
 fish_add_path ~/.yarn/bin
 fish_add_path ~/.cargo/bin
@@ -25,4 +22,6 @@ function gpo
   git push -u origin (git_branch) 
 end
 
-set NEOVIDE_MULTIGRID true
+if [ -f /opt/homebrew/bin/brew ]
+  eval (/opt/homebrew/bin/brew shellenv)
+end

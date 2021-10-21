@@ -31,9 +31,5 @@ utils.map("n", "<C-l>", "<C-w>l")
 utils.map("v", "K", ":m '<-2<CR>gv=gv")
 utils.map("v", "J", ":m '>+1<CR>gv=gv")
 
--- netrw
--- netrw refresh is originally bound to <C-l> which breaks navigation
--- utils.map("n", "<C-1>", "<Plug>NetrwRefresh", { silent = false, noremap = false, unique = true })
-
 -- modify redo
 utils.map("n", "U", "<C-r>")

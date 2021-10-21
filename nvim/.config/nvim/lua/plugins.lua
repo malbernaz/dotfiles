@@ -31,24 +31,17 @@ return require("packer").startup(function(use)
   })
   use({
     "hrsh7th/nvim-cmp",
-    requires = {
-      "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
-    },
+    requires = { "hrsh7th/cmp-nvim-lsp" },
     config = require("settings/cmp"),
   })
-  use("kabouzeid/nvim-lspinstall")
   use({
     "neovim/nvim-lspconfig",
     config = require("settings.lsp"),
   })
+  use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    after = { "nvim-treesitter" },
-  })
-  use({
-    "b3nj5m1n/kommentary",
-    config = require("settings.kommentary"),
+    "numToStr/Comment.nvim",
+    config = require("settings.comment"),
   })
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
@@ -60,7 +53,6 @@ return require("packer").startup(function(use)
     "mhartington/formatter.nvim",
     config = require("settings.formatter"),
   })
-  use("chrisbra/Colorizer")
   use({
     "windwp/nvim-autopairs",
     config = require("settings.autopairs"),
@@ -74,12 +66,4 @@ return require("packer").startup(function(use)
     "akinsho/toggleterm.nvim",
     config = require("settings.toggleterm"),
   })
-  use({
-    "abecodes/tabout.nvim",
-    config = require("settings/tabout"),
-    wants = { "nvim-treesitter" }, -- or require if not used so far
-    after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
-  })
-  use("justinmk/vim-dirvish")
 end)
-
