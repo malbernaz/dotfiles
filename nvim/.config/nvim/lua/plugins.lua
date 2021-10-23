@@ -25,6 +25,10 @@ return require("packer").startup(function(use)
   })
   use("nvim-telescope/telescope-fzy-native.nvim")
   use({
+    "kyazdani42/nvim-tree.lua",
+    config = require("settings.tree"),
+  })
+  use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = require("settings.treesitter"),
@@ -32,9 +36,12 @@ return require("packer").startup(function(use)
   use({
     "hrsh7th/nvim-cmp",
     requires = {
+      "onsails/lspkind-nvim",
       "hrsh7th/vim-vsnip",
       "hrsh7th/cmp-vsnip",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
     },
     config = require("settings/cmp"),

@@ -43,3 +43,8 @@ utils.map("i", "<C-h>", "<Left>")
 utils.map("i", "<C-j>", "<Down>")
 utils.map("i", "<C-k>", "<Up>")
 utils.map("i", "<C-l>", "<Right>")
+
+-- nvimtree
+utils.map("n", "<c-n>", ":NvimTreeToggle<cr>")
+utils.map("n", "<leader>r", ":NvimTreeRefresh<cr>")
+utils.map("n", "<leader>f", ":NvimTreeFindFile<cr>")

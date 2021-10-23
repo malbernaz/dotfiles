@@ -32,16 +32,34 @@ cmd([[
   autocmd TermOpen * setlocal nonumber norelativenumber
 ]])
 
--- netrw
-g.loaded_netrw = 0
--- g.netrw_winsize = 20
--- g.netrw_banner = 0
--- g.netrw_liststyle = 3
--- g.netrw_browse_split = 4
-
 -- color scheme
 g.vscode_style = "dark"
 cmd([[ colorscheme vscode ]])
 
 -- mappings
 require("mappings")
+
+-- nvim tree
+g.nvim_tree_icons = {
+  default = "",
+  symlink = "",
+  git = {
+    unstaged = "",
+    staged = "",
+    unmerged = "",
+    renamed = "",
+    untracked = "",
+    deleted = "",
+    ignored = "",
+  },
+  folder = {
+    arrow_open = "",
+    arrow_closed = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = "",
+  },
+}

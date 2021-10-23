@@ -1,4 +1,8 @@
 return function()
+  local lspkind = require("lspkind")
+
+  lspkind.init()
+
   local cmp = require("cmp")
 
   -- general settings
@@ -19,24 +23,19 @@ return function()
   end
 
   cmp.setup({
-    sources = {
-      { name = "nvim_lsp" },
-      { name = "vsnip" },
-      { name = "buffer" },
-    },
     snippet = {
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
       end,
     },
     mapping = {
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm({
+      ["<c-space>"] = cmp.mapping.complete(),
+      ["<c-e>"] = cmp.mapping.close(),
+      ["<cr>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }),
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ["<tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item({ preselect = true })
         elseif vim.fn["vsnip#available"]() == 1 then
@@ -44,13 +43,13 @@ return function()
         elseif has_words_before() then
           cmp.complete()
         else
-          fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+          fallback()
         end
       end, {
         "i",
         "s",
       }),
-      ["<S-Tab>"] = cmp.mapping(function()
+      ["<s-tab>"] = cmp.mapping(function()
         if cmp.visible() then
           cmp.select_prev_item()
         elseif vim.fn["vsnip#jumpable"](-1) == 1 then
@@ -60,6 +59,29 @@ return function()
         "i",
         "s",
       }),
+    },
+    sources = {
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "vsnip" },
+      { name = "buffer" },
+      { name = "path" },
+    },
+    formatting = {
+      format = lspkind.cmp_format({
+        with_text = true,
+        menu = {
+          buffer = "[buf]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[api]",
+          path = "[path]",
+          vsnip = "[snip]",
+        },
+      }),
+    },
+    experimental = {
+      native_menu = false,
+      ghost_text = true,
     },
   })
 end
