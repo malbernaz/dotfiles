@@ -37,3 +37,9 @@ utils.map("n", "U", "<C-r>")
 -- buffers
 utils.map("n", "]b", ":bnext<cr>", { silent = true })
 utils.map("n", "[b", ":bprev<cr>", { silent = true })
+
+-- universal hjkl
+utils.map("i", "<C-h>", "<Left>")
+utils.map("i", "<C-j>", "<Down>")
+utils.map("i", "<C-k>", "<Up>")
+utils.map("i", "<C-l>", "<Right>")

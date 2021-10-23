@@ -31,7 +31,12 @@ return require("packer").startup(function(use)
   })
   use({
     "hrsh7th/nvim-cmp",
-    requires = { "hrsh7th/cmp-nvim-lsp" },
+    requires = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+    },
     config = require("settings/cmp"),
   })
   use({
@@ -65,11 +70,5 @@ return require("packer").startup(function(use)
   use({
     "akinsho/toggleterm.nvim",
     config = require("settings.toggleterm"),
-  })
-  use({
-    "abecodes/tabout.nvim",
-    config = require("settings.tabout"),
-    wants = { "nvim-treesitter" },
-    after = { "nvim-cmp" },
   })
 end)

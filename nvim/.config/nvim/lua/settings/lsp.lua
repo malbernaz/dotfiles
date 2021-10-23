@@ -3,12 +3,6 @@ return function()
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
 
-  -- general settings
-  vim.api.nvim_set_option("completeopt", "menuone,noinsert,noselect")
-  vim.o.shortmess = vim.o.shortmess .. "c"
-  vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
-  vim.g.completion_trigger_keyword_length = 3
-
   -- customize lsp signs
   local signs = { Error = "", Warning = "", Hint = "", Information = "" }
   for type, icon in pairs(signs) do
@@ -101,6 +95,38 @@ return function()
   configure_lua()
 
   lsp.tsserver.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+  })
+
+  lsp.jsonls.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+    commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+        end,
+      },
+    },
+  })
+
+  lsp.eslint.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+  })
+
+  lsp.cssls.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+  })
+
+  lsp.html.setup({
+    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = on_attach,
+  })
+
+  lsp.graphql.setup({
     capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     on_attach = on_attach,
   })
