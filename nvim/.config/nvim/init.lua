@@ -28,6 +28,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code Medium:h11"
 
+-- hide numbers on terminal buffers
 cmd([[
   autocmd TermOpen * setlocal nonumber norelativenumber
 ]])
@@ -38,28 +39,3 @@ cmd([[ colorscheme vscode ]])
 
 -- mappings
 require("mappings")
-
--- nvim tree
-g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "",
-    unmerged = "",
-    renamed = "",
-    untracked = "",
-    deleted = "",
-    ignored = "",
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
-  },
-}

@@ -7,19 +7,11 @@ utils.map("n", "`p", '"0p')
 utils.map("n", "`P", '"0P')
 
 -- telescope
-utils.map("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files({ hidden = true })<cr>")
-utils.map("n", "<C-f>", "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
-utils.map(
-  "n",
-  "<leader>ff",
-  "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>"
-)
-utils.map("n", "<leader>bf", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-utils.map(
-  "n",
-  "<leader>fb",
-  "<cmd>lua require('telescope.builtin').file_browser({ hidden = true })<cr>"
-)
+utils.map("n", "<c-p>", "<cmd>lua require('telescope.builtin').git_files({ hidden = true })<cr>")
+utils.map("n", "<c-g>", "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
+utils.map("n", "<c-b>", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+utils.map("n", "<c-n>", ":lua require('malbernaz.telescope').file_browser()<cr>")
+utils.map("n", "-", ":lua require('malbernaz.telescope').file_browser({ cwd = '%:p:h' })<cr>")
 
 -- splits
 utils.map("n", "<C-h>", "<C-w>h")
@@ -43,8 +35,3 @@ utils.map("i", "<C-h>", "<Left>")
 utils.map("i", "<C-j>", "<Down>")
 utils.map("i", "<C-k>", "<Up>")
 utils.map("i", "<C-l>", "<Right>")
-
--- nvimtree
-utils.map("n", "<c-n>", ":NvimTreeToggle<cr>")
-utils.map("n", "<leader>r", ":NvimTreeRefresh<cr>")
-utils.map("n", "<leader>f", ":NvimTreeFindFile<cr>")
