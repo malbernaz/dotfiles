@@ -10,28 +10,35 @@ utils.map("n", "`P", '"0P')
 utils.map("n", "<c-p>", "<cmd>lua require('telescope.builtin').git_files({ hidden = true })<cr>")
 utils.map("n", "<c-g>", "<cmd>lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
 utils.map("n", "<c-b>", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-utils.map("n", "<c-n>", ":lua require('malbernaz.telescope').file_browser()<cr>")
-utils.map("n", "-", ":lua require('malbernaz.telescope').file_browser({ cwd = '%:p:h' })<cr>")
 
 -- splits
-utils.map("n", "<C-h>", "<C-w>h")
-utils.map("n", "<C-j>", "<C-w>j")
-utils.map("n", "<C-k>", "<C-w>k")
-utils.map("n", "<C-l>", "<C-w>l")
+utils.map("n", "<c-h>", "<c-w>h")
+utils.map("n", "<c-j>", "<c-w>j")
+utils.map("n", "<c-k>", "<c-w>k")
+utils.map("n", "<c-l>", "<c-w>l")
 
 -- move lines
-utils.map("v", "K", ":m '<-2<CR>gv=gv")
-utils.map("v", "J", ":m '>+1<CR>gv=gv")
+utils.map("v", "K", ":m '<-2<cR>gv=gv")
+utils.map("v", "J", ":m '>+1<cR>gv=gv")
 
 -- modify redo
-utils.map("n", "U", "<C-r>")
+utils.map("n", "U", "<c-r>")
 
 -- buffers
 utils.map("n", "]b", ":bnext<cr>", { silent = true })
 utils.map("n", "[b", ":bprev<cr>", { silent = true })
 
 -- universal hjkl
-utils.map("i", "<C-h>", "<Left>")
-utils.map("i", "<C-j>", "<Down>")
-utils.map("i", "<C-k>", "<Up>")
-utils.map("i", "<C-l>", "<Right>")
+utils.map("i", "<c-h>", "<Left>")
+utils.map("i", "<c-j>", "<Down>")
+utils.map("i", "<c-k>", "<Up>")
+utils.map("i", "<c-l>", "<Right>")
+
+-- netrw
+utils.map("n", "-", ":e %:p:h<cr>")
+
+-- nvimtree
+utils.map("n", "<c-n>", ":NvimTreeToggle<cr>")
+
+-- format
+utils.map("n", "<leader>f", ":Format<cr>")

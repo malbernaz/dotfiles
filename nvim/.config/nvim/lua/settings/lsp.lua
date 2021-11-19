@@ -2,6 +2,7 @@ return function()
   local lsp = require("lspconfig")
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
+  local configs = require("lspconfig/configs")
 
   -- customize lsp signs
   local signs = { Error = "", Warning = "", Hint = "", Information = "" }
@@ -12,38 +13,74 @@ return function()
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      virtual_text = false,
-      signs = true,
-      underline = true,
-      update_in_insert = false,
-    }
+    { virtual_text = false, signs = true, underline = true, update_in_insert = false }
   )
 
   local function on_attach()
     utils.set("omnifunc", "v:lua:vim.lsp.omnifunc")
-    utils.map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-    utils.map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-    utils.map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-    utils.map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-    utils.map("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-    utils.map("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-    utils.map("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+    utils.map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
+    utils.map("n", "gd", ":lua vim.lsp.buf.definition()<cr>")
+    utils.map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
+    utils.map("n", "gi", ":lua vim.lsp.buf.implementation()<cr>")
+    utils.map("n", "<C-s>", ":lua vim.lsp.buf.signature_help()<cr>")
+    utils.map("n", "<leader>wa", ":lua vim.lsp.buf.add_workspace_folder()<cr>")
+    utils.map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>")
     utils.map(
       "n",
       "<leader>wl",
-      "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"
+      ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>"
     )
-    utils.map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-    utils.map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-    utils.map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-    utils.map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-    utils.map("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-    utils.map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-    utils.map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-    utils.map("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
-    utils.map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+    utils.map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<cr>")
+    utils.map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
+    utils.map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
+    utils.map("n", "gr", ":lua vim.lsp.buf.references()<cr>")
+    utils.map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
+    utils.map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>")
+    utils.map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>")
+    utils.map("n", "<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<cr>")
   end
+
+  local function makeConfig(config)
+    return vim.tbl_deep_extend("force", {
+      capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      on_attach = on_attach,
+    }, config or {})
+  end
+
+  lsp.tsserver.setup(makeConfig())
+  lsp.eslint.setup(makeConfig())
+  lsp.cssls.setup(makeConfig())
+  lsp.html.setup(makeConfig())
+  lsp.graphql.setup(makeConfig())
+
+  configs.ls_emmet = {
+    default_config = {
+      cmd = { "ls_emmet", "--stdio" },
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "haml",
+        "xml",
+        "xsl",
+        "pug",
+        "slim",
+        "sass",
+        "stylus",
+        "less",
+        "sss",
+      },
+      root_dir = function()
+        return vim.loop.cwd()
+      end,
+      settings = {},
+    },
+  }
+  lsp.ls_emmet.setup(makeConfig())
 
   local function configure_lua()
     USER = vim.fn.expand("$USER")
@@ -65,10 +102,8 @@ return function()
       print("Unsupported system for sumneko")
     end
 
-    lsp.sumneko_lua.setup({
+    lsp.sumneko_lua.setup(makeConfig({
       cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-      capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-      on_attach = on_attach,
       settings = {
         Lua = {
           diagnostics = {
@@ -89,19 +124,12 @@ return function()
           enable = false,
         },
       },
-    })
+    }))
   end
 
   configure_lua()
 
-  lsp.tsserver.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
-
-  lsp.jsonls.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
+  lsp.jsonls.setup(makeConfig({
     commands = {
       Format = {
         function()
@@ -109,25 +137,52 @@ return function()
         end,
       },
     },
-  })
-
-  lsp.eslint.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
-
-  lsp.cssls.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
-
-  lsp.html.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
-
-  lsp.graphql.setup({
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-  })
+    settings = {
+      json = {
+        -- Schemas https://www.schemastore.org
+        schemas = {
+          {
+            fileMatch = { "package.json" },
+            url = "https://json.schemastore.org/package.json",
+          },
+          {
+            fileMatch = { "tsconfig*.json" },
+            url = "https://json.schemastore.org/tsconfig.json",
+          },
+          {
+            fileMatch = {
+              ".prettierrc",
+              ".prettierrc.json",
+              "prettier.config.json",
+            },
+            url = "https://json.schemastore.org/prettierrc.json",
+          },
+          {
+            fileMatch = { ".eslintrc", ".eslintrc.json" },
+            url = "https://json.schemastore.org/eslintrc.json",
+          },
+          {
+            fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
+            url = "https://json.schemastore.org/babelrc.json",
+          },
+          {
+            fileMatch = { "lerna.json" },
+            url = "https://json.schemastore.org/lerna.json",
+          },
+          {
+            fileMatch = { "now.json", "vercel.json" },
+            url = "https://json.schemastore.org/now.json",
+          },
+          {
+            fileMatch = {
+              ".stylelintrc",
+              ".stylelintrc.json",
+              "stylelint.config.json",
+            },
+            url = "http://json.schemastore.org/stylelintrc.json",
+          },
+        },
+      },
+    },
+  }))
 end

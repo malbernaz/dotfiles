@@ -7,7 +7,7 @@ local icons = require("galaxyline.provider_fileinfo")
 icons.define_file_icon()
 
 local gls = gl.section
-gl.short_line_list = { "packer", "NvimTree", "Outline", "LspTrouble" }
+gl.short_line_list = { "packer", "NvimTree", "LspTrouble" }
 
 local colors = {
   bg = "#252526",
@@ -318,13 +318,13 @@ gls.short_line_left[2] = {
   },
 }
 
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider = "BufferIcon",
-    highlight = { colors.yellow, colors.bg },
-    separator = "",
-    separator_highlight = { colors.bg, colors.bg },
-  },
-}
-
+-- gls.short_line_right[1] = {
+--   BufferIcon = {
+--     provider = "BufferIcon",
+--     highlight = { colors.fg, colors.bg },
+--     separator = "",
+--     separator_highlight = { colors.bg, colors.bg },
+--   },
+-- }
+--
 gl.load_galaxyline()
