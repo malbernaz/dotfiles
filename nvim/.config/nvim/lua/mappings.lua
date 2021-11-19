@@ -42,3 +42,6 @@ utils.map("n", "<c-n>", ":NvimTreeToggle<cr>")
 
 -- format
 utils.map("n", "<leader>f", ":Format<cr>")
+
+-- terminal
+utils.map("t", "<c-[>", [[<C-\><C-n>]])
