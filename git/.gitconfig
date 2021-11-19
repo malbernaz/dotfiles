@@ -8,3 +8,4 @@
 [core]
 	edit = nvim
 	editor = nvim
+  ignorecase = false
