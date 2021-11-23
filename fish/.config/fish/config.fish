@@ -6,6 +6,8 @@ fish_add_path ~/.cargo/bin
 set EDITOR 'nvim'
 set GIT_EDITOR 'nvim'
 
+set NVIMRC $HOME/.dotfiles/nvim/.config/nvim/init.lua 
+
 # Aliases
 alias v=nvim
 alias gs="git status"

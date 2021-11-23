@@ -27,6 +27,7 @@ return function()
       scss = { prettier },
       graphql = { prettier },
       markdown = { prettier },
+      ["markdown.mdx"] = { prettier },
       vue = { prettier },
       lua = { stylua },
     },
@@ -36,7 +37,7 @@ return function()
     [[
       augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.json,*.vue,*.html,*.css,*.scss,*.md,*.graphql,*.gql,*.lua FormatWrite
+        autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.json,*.vue,*.html,*.css,*.scss,*.md,*.mdx,*.graphql,*.gql,*.lua FormatWrite
       augroup END
     ]],
     true

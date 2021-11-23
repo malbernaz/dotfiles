@@ -1,3 +1,4 @@
+-- plugins
 require("plugins")
 
 local opt = vim.opt
@@ -18,6 +19,9 @@ opt.relativenumber = true
 opt.hidden = true
 opt.wrap = false
 opt.swapfile = false
+opt.backup = false
+opt.undodir = "~/.config/nvim/undodir"
+opt.undofile = true
 opt.incsearch = true
 opt.hlsearch = false
 opt.scrolloff = 8
@@ -29,9 +33,7 @@ opt.splitright = true
 opt.guifont = "Fira Code Medium:h11"
 
 -- hide numbers on terminal buffers
-cmd([[
-  autocmd TermOpen * setlocal nonumber norelativenumber
-]])
+cmd([[ autocmd TermOpen * setlocal nonumber norelativenumber ]])
 
 -- color scheme
 g.vscode_style = "dark"
@@ -42,27 +44,27 @@ require("mappings")
 
 --nvim tree
 g.nvim_tree_icons = {
-	default = "",
-	symlink = "",
-	git = {
-		unstaged = "",
-		staged = "",
-		unmerged = "",
-		renamed = "",
-		untracked = "",
-		deleted = "",
-		ignored = "",
-	},
-	folder = {
-		arrow_open = "",
-		arrow_closed = "",
-		default = "",
-		open = "",
-		empty = "",
-		empty_open = "",
-		symlink = "",
-		symlink_open = "",
-	},
+  default = "",
+  symlink = "",
+  git = {
+    unstaged = "",
+    staged = "",
+    unmerged = "",
+    renamed = "",
+    untracked = "",
+    deleted = "",
+    ignored = "",
+  },
+  folder = {
+    arrow_open = "",
+    arrow_closed = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = "",
+  },
 }
 
 g.nvim_tree_special_files = {}

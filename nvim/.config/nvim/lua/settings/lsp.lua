@@ -2,7 +2,7 @@ return function()
   local lsp = require("lspconfig")
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
-  local configs = require("lspconfig/configs")
+  -- local configs = require("lspconfig/configs")
 
   -- customize lsp signs
   local signs = { Error = "", Warning = "", Hint = "", Information = "" }
@@ -53,34 +53,17 @@ return function()
   lsp.html.setup(makeConfig())
   lsp.graphql.setup(makeConfig())
 
-  configs.ls_emmet = {
-    default_config = {
-      cmd = { "ls_emmet", "--stdio" },
-      filetypes = {
-        "html",
-        "css",
-        "scss",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "haml",
-        "xml",
-        "xsl",
-        "pug",
-        "slim",
-        "sass",
-        "stylus",
-        "less",
-        "sss",
-      },
-      root_dir = function()
-        return vim.loop.cwd()
-      end,
-      settings = {},
-    },
-  }
-  lsp.ls_emmet.setup(makeConfig())
+  -- configs.ls_emmet = {
+  --   default_config = {
+  --     cmd = { "ls_emmet", "--stdio" },
+  --     filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "xml" },
+  --     root_dir = function()
+  --       return vim.loop.cwd()
+  --     end,
+  --     settings = {},
+  --   },
+  -- }
+  -- lsp.ls_emmet.setup(makeConfig())
 
   local function configure_lua()
     USER = vim.fn.expand("$USER")

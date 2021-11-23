@@ -24,10 +24,6 @@ utils.map("v", "J", ":m '>+1<cR>gv=gv")
 -- modify redo
 utils.map("n", "U", "<c-r>")
 
--- buffers
-utils.map("n", "]b", ":bnext<cr>", { silent = true })
-utils.map("n", "[b", ":bprev<cr>", { silent = true })
-
 -- universal hjkl
 utils.map("i", "<c-h>", "<Left>")
 utils.map("i", "<c-j>", "<Down>")
@@ -37,11 +33,8 @@ utils.map("i", "<c-l>", "<Right>")
 -- netrw
 utils.map("n", "-", ":e %:p:h<cr>")
 
--- nvimtree
-utils.map("n", "<c-n>", ":NvimTreeToggle<cr>")
-
 -- format
 utils.map("n", "<leader>f", ":Format<cr>")
 
 -- terminal
-utils.map("t", "<c-[>", [[<C-\><C-n>]])
+utils.map("t", "<c-p>", "<C-\\><C-n>")
