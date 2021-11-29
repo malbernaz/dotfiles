@@ -78,10 +78,6 @@ return require("packer").startup(function(use)
     config = require("settings.toggleterm"),
   })
   use({
-    "kyazdani42/nvim-tree.lua",
-    config = require("settings.tree"),
-  })
-  use({
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({ "*" })

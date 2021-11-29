@@ -7,6 +7,7 @@ set EDITOR 'nvim'
 set GIT_EDITOR 'nvim'
 
 set NVIMRC $HOME/.dotfiles/nvim/.config/nvim/init.lua 
+set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/kitty/.config/kitty
 
 # Aliases
 alias v=nvim

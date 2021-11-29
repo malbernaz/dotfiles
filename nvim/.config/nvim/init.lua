@@ -19,8 +19,8 @@ opt.relativenumber = true
 opt.hidden = true
 opt.wrap = false
 opt.swapfile = false
+opt.undodir = vim.fn.expand("$HOME") .. "/.config/nvim"
 opt.backup = false
-opt.undodir = "~/.config/nvim/undodir"
 opt.undofile = true
 opt.incsearch = true
 opt.hlsearch = false
@@ -41,30 +41,3 @@ cmd([[ colorscheme vscode ]])
 
 -- mappings
 require("mappings")
-
---nvim tree
-g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "",
-    unmerged = "",
-    renamed = "",
-    untracked = "",
-    deleted = "",
-    ignored = "",
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
-  },
-}
-
-g.nvim_tree_special_files = {}
