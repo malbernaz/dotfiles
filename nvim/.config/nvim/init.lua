@@ -3,7 +3,6 @@ require("plugins")
 
 local opt = vim.opt
 local g = vim.g
-local cmd = vim.cmd
 
 -- options
 opt.termguicolors = true
@@ -16,13 +15,13 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.number = true
 opt.relativenumber = true
-opt.hidden = true
+opt.cursorline = true
+opt.cursorlineopt = "number"
 opt.wrap = false
 opt.swapfile = false
 opt.undodir = vim.fn.expand("$HOME") .. "/.vim/undodir"
-opt.backup = false
+opt.undolevels = 100
 opt.undofile = true
-opt.incsearch = true
 opt.hlsearch = false
 opt.scrolloff = 8
 opt.colorcolumn = "100"
@@ -31,13 +30,10 @@ opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
 opt.guifont = "Fira Code Medium:h11"
+opt.mouse = "a"
 
--- hide numbers on terminal buffers
-cmd([[ autocmd TermOpen * setlocal nonumber norelativenumber ]])
-
--- color scheme
-g.vscode_style = "dark"
-cmd([[ colorscheme vscode ]])
+-- netrw
+g.netrw_banner = 0
 
 -- mappings
 require("mappings")

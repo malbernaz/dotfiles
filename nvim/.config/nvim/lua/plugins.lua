@@ -8,32 +8,34 @@ vim.cmd([[
 
 return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use("Mofiqul/vscode.nvim")
-  use("navarasu/onedark.nvim")
-  use("nvim-lua/lsp-status.nvim")
-  use({
-    "glepnir/galaxyline.nvim",
-    branch = "main",
-    config = function()
-      require("settings/gl")
-    end,
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  })
+  use("kyazdani42/nvim-web-devicons")
   use("nvim-lua/plenary.nvim")
+  use({
+    "tanvirtin/monokai.nvim",
+    config = require("settings.monokai"),
+  })
+  use({
+    "nvim-lualine/lualine.nvim",
+    config = require("settings.lualine"),
+  })
   use({
     "nvim-telescope/telescope.nvim",
     config = require("settings.telescope"),
+    requires = {
+      "nvim-telescope/telescope-fzy-native.nvim",
+      "AckslD/nvim-neoclip.lua",
+    },
   })
-  use("nvim-telescope/telescope-fzy-native.nvim")
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = require("settings.treesitter"),
+    requires = { "nvim-treesitter/playground" },
   })
-  use("nvim-treesitter/playground")
   use({
     "hrsh7th/nvim-cmp",
     requires = {
+      "f3fora/cmp-spell",
       "onsails/lspkind-nvim",
       "hrsh7th/vim-vsnip",
       "hrsh7th/cmp-vsnip",
@@ -47,10 +49,10 @@ return require("packer").startup(function(use)
     "neovim/nvim-lspconfig",
     config = require("settings.lsp"),
   })
-  use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
     "numToStr/Comment.nvim",
     config = require("settings.comment"),
+    requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
   })
   use("tpope/vim-surround")
   use("tpope/vim-unimpaired")

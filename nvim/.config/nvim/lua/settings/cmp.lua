@@ -66,6 +66,7 @@ return function()
       { name = "vsnip" },
       { name = "buffer" },
       { name = "path" },
+      { name = "spell" },
     },
     formatting = {
       format = lspkind.cmp_format({
@@ -76,6 +77,7 @@ return function()
           nvim_lua = "[api]",
           path = "[path]",
           vsnip = "[snip]",
+          spell = "[spell]",
         },
       }),
     },

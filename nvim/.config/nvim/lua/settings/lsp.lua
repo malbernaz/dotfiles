@@ -2,13 +2,12 @@ return function()
   local lsp = require("lspconfig")
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
-  -- local configs = require("lspconfig/configs")
 
   -- customize lsp signs
-  local signs = { Error = "", Warning = "", Hint = "", Information = "" }
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -52,18 +51,6 @@ return function()
   lsp.cssls.setup(makeConfig())
   lsp.html.setup(makeConfig())
   lsp.graphql.setup(makeConfig())
-
-  -- configs.ls_emmet = {
-  --   default_config = {
-  --     cmd = { "ls_emmet", "--stdio" },
-  --     filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "xml" },
-  --     root_dir = function()
-  --       return vim.loop.cwd()
-  --     end,
-  --     settings = {},
-  --   },
-  -- }
-  -- lsp.ls_emmet.setup(makeConfig())
 
   local function configure_lua()
     USER = vim.fn.expand("$USER")

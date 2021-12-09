@@ -6,11 +6,6 @@ vim.g.mapleader = " "
 utils.map("n", "`p", '"0p')
 utils.map("n", "`P", '"0P')
 
--- telescope
-utils.map("n", "<c-p>", ":lua require('telescope.builtin').git_files({ hidden = true })<cr>")
-utils.map("n", "<c-g>", ":lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
-utils.map("n", "<c-b>", ":lua require('telescope.builtin').buffers()<cr>")
-
 -- splits
 utils.map("n", "<c-h>", "<c-w>h")
 utils.map("n", "<c-j>", "<c-w>j")
@@ -41,3 +36,6 @@ utils.map("n", "<leader>f", ":Format<cr>")
 
 -- terminal
 utils.map("t", "<c-p>", "<C-\\><C-n>")
+
+-- spell
+utils.map("n", "<leader>sp", ":setlocal spell!<cr>")
