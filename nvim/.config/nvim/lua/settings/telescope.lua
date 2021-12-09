@@ -24,5 +24,6 @@ return function()
   map("n", "<c-p>", ":lua require('telescope.builtin').git_files({ hidden = true })<cr>")
   map("n", "<c-g>", ":lua require('telescope.builtin').live_grep({ hidden = true })<cr>")
   map("n", "<c-b>", ":Telescope buffers<cr>")
-  map("n", "<c-c>", ":Telescope neoclip<cr>")
+  map("n", "<leader>fb", ":Telescope file_browser<cr>")
+  map("n", "<leader>cb", ":Telescope neoclip<cr>")
 end

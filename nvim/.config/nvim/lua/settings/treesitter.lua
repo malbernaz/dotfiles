@@ -1,8 +1,9 @@
 return function()
-  require("nvim-treesitter.configs").setup({
-    highlight = {
-      enable = true,
-    },
+  local utils = require("utils")
+  local ts = require("nvim-treesitter.configs")
+
+  ts.setup({
+    highlight = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -12,22 +13,11 @@ return function()
         node_decremental = "grm",
       },
     },
-    indent = {
-      enable = true,
-    },
-    matchup = {
-      enable = true,
-    },
-    autopairs = {
-      enable = true,
-    },
-    autotag = {
-      enable = true,
-    },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+    indent = { enable = true },
+    matchup = { enable = true },
+    autopairs = { enable = true },
+    autotag = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
     playground = {
       enable = true,
       updatetime = 25,
@@ -46,4 +36,7 @@ return function()
       },
     },
   })
+
+  utils.map("n", "<leader>o", ":TSH<cr>")
+  utils.map("n", "<leader>p", ":TSP<cr>")
 end
