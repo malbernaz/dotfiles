@@ -1,4 +1,6 @@
 return function()
+  local utils = require("utils")
+
   local prettier = function()
     return {
       exe = "prettier",
@@ -33,13 +35,13 @@ return function()
     },
   })
 
-  vim.api.nvim_exec(
-    [[
-      augroup FormatAutogroup
-        autocmd!
-        autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.json,*.vue,*.html,*.css,*.scss,*.md,*.mdx,*.graphql,*.gql,*.lua FormatWrite
-      augroup END
-    ]],
-    true
-  )
+  -- mappings
+  utils.map("n", "<leader>f", ":FormatWrite<cr>")
+
+  vim.cmd([[
+    augroup FormatAutogroup
+      autocmd!
+      autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.json,*.vue,*.html,*.css,*.scss,*.md,*.mdx,*.graphql,*.gql,*.lua FormatWrite
+    augroup END
+  ]])
 end

@@ -91,4 +91,9 @@ return require("packer").startup(function(use)
   })
   use("jxnblk/vim-mdx-js")
   use("mbbill/undotree")
+  use({
+    "folke/zen-mode.nvim",
+    config = require("settings.zen-mode"),
+    requires = { "folke/twilight.nvim" },
+  })
 end)

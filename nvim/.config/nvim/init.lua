@@ -34,6 +34,8 @@ opt.mouse = "a"
 
 -- netrw
 g.netrw_banner = 0
+g.netrw_localcopycmd = "cp -R"
+g.netrw_localmkdir = "mkdir -p"
 
 -- mappings
 require("mappings")
