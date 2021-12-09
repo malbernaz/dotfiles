@@ -5,6 +5,7 @@ return function()
 
   zen.setup({
     window = {
+      backdrop = 1,
       width = 104,
       options = {
         number = false,
@@ -15,6 +16,7 @@ return function()
     },
     plugins = {
       gitsigns = { enabled = true },
+      tmux = { enabled = true },
     },
   })
 
