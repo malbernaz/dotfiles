@@ -3,7 +3,7 @@ return function()
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
 
-  -- customize lsp signs
+  -- customize diagnostics signs
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
@@ -12,7 +12,7 @@ return function()
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = false, signs = true, underline = true, update_in_insert = false }
+    { signs = true, virtual_text = false, underline = false, update_in_insert = false }
   )
 
   local function on_attach()
