@@ -21,7 +21,7 @@ return function()
 
   local diagnostics = {
     "diagnostics",
-    sources = { "nvim_lsp" },
+    sources = { "nvim_diagnostic" },
     diagnostics_color = {
       error = { fg = palette.red },
       warn = { fg = palette.orange },

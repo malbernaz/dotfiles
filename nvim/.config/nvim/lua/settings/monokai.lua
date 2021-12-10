@@ -39,6 +39,8 @@ return function()
       TelescopeMatching = { fg = palette.red },
       netrwDir = { fg = palette.orange },
       netrwClassify = { fg = palette.white },
+      IndentBlanklineChar = { fg = palette.base4 },
+      IndentBlanklineContextChar = { fg = palette.base4 },
     },
   }
 
