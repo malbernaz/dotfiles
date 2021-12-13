@@ -1,109 +1,71 @@
 return function()
-  local lsp = require("lspconfig")
+  local lspconfig = require("lspconfig")
   local cmp = require("cmp_nvim_lsp")
   local utils = require("utils")
+
+  local lsp = vim.lsp
+  local fn = vim.fn
+  local map = utils.map
+  local set = utils.set
 
   -- customize diagnostics signs
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
+  lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
+    lsp.diagnostic.on_publish_diagnostics,
     { signs = true, virtual_text = false, underline = false, update_in_insert = false }
   )
 
   local function on_attach()
-    utils.set("omnifunc", "v:lua:vim.lsp.omnifunc")
-    utils.map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
-    utils.map("n", "gd", ":lua vim.lsp.buf.definition()<cr>")
-    utils.map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
-    utils.map("n", "gi", ":lua vim.lsp.buf.implementation()<cr>")
-    utils.map("n", "<C-s>", ":lua vim.lsp.buf.signature_help()<cr>")
-    utils.map("n", "<leader>wa", ":lua vim.lsp.buf.add_workspace_folder()<cr>")
-    utils.map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>")
-    utils.map(
-      "n",
-      "<leader>wl",
-      ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>"
-    )
-    utils.map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<cr>")
-    utils.map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
-    utils.map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
-    utils.map("n", "gr", ":lua vim.lsp.buf.references()<cr>")
-    utils.map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
-    utils.map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>")
-    utils.map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>")
-    utils.map("n", "<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<cr>")
+    set("omnifunc", "v:lua:vim.lsp.omnifunc")
+    map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
+    map("n", "gd", ":lua vim.lsp.buf.definition()<cr>")
+    map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
+    map("n", "gi", ":lua vim.lsp.buf.implementation()<cr>")
+    map("n", "<C-s>", ":lua vim.lsp.buf.signature_help()<cr>")
+    map("n", "<leader>wa", ":lua vim.lsp.buf.add_workspace_folder()<cr>")
+    map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>")
+    map("n", "<leader>wl", ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
+    map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<cr>")
+    map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
+    map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
+    map("n", "gr", ":lua vim.lsp.buf.references()<cr>")
+    map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
+    map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>")
+    map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>")
+    map("n", "<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<cr>")
   end
 
   local function makeConfig(config)
     return vim.tbl_deep_extend("force", {
-      capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities()),
       on_attach = on_attach,
     }, config or {})
   end
 
-  lsp.tsserver.setup(makeConfig())
-  lsp.eslint.setup(makeConfig())
-  lsp.cssls.setup(makeConfig())
-  lsp.html.setup(makeConfig())
-  lsp.graphql.setup(makeConfig())
+  lspconfig.tsserver.setup(makeConfig())
+  lspconfig.eslint.setup(makeConfig())
+  lspconfig.cssls.setup(makeConfig())
+  lspconfig.html.setup(makeConfig())
+  lspconfig.graphql.setup(makeConfig())
 
-  local function configure_lua()
-    USER = vim.fn.expand("$USER")
+  local root = fn.stdpath("config") .. "/lua-language-server"
+  local os = fn.has("mac") and "/bin/macOS" or "/bin/Linux"
+  local bin = root .. os .. "/lua-language-server"
+  require("nlua.lsp.nvim").setup(
+    lspconfig,
+    makeConfig({ cmd = { bin, "-E", root .. "/main.lua" } })
+  )
 
-    local sumneko_root_path = ""
-    local sumneko_binary = ""
-
-    if vim.fn.has("mac") == 1 then
-      sumneko_root_path = "/Users/" .. USER .. "/.config/nvim/lua-language-server"
-      sumneko_binary = "/Users/"
-        .. USER
-        .. "/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
-    elseif vim.fn.has("unix") == 1 then
-      sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua-language-server"
-      sumneko_binary = "/home/"
-        .. USER
-        .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
-    else
-      print("Unsupported system for sumneko")
-    end
-
-    lsp.sumneko_lua.setup(makeConfig({
-      cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-          runtime = {
-            version = "LuaJIT",
-            path = vim.split(package.path, ";"),
-          },
-          workspace = {
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-            },
-          },
-        },
-        telemetry = {
-          enable = false,
-        },
-      },
-    }))
-  end
-
-  configure_lua()
-
-  lsp.jsonls.setup(makeConfig({
+  lspconfig.jsonls.setup(makeConfig({
     commands = {
       Format = {
         function()
-          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+          lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
         end,
       },
     },

@@ -72,12 +72,12 @@ return function()
       format = lspkind.cmp_format({
         with_text = true,
         menu = {
-          buffer = "[buf]",
+          buffer = "[BUFF]",
           nvim_lsp = "[LSP]",
-          nvim_lua = "[api]",
-          path = "[path]",
-          vsnip = "[snip]",
-          spell = "[spell]",
+          nvim_lua = "[API]",
+          path = "[PATH]",
+          vsnip = "[SNIP]",
+          spell = "[SPELL]",
         },
       }),
     },
