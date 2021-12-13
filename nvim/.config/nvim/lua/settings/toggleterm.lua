@@ -15,7 +15,7 @@ return function()
     float_opts = {
       border = "curved",
       highlights = {
-        border = "TelescopeBorder",
+        border = "NormalFloat",
       },
     },
   })

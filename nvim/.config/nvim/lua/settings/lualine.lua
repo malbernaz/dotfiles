@@ -35,6 +35,7 @@ return function()
       theme = monokai_theme,
       component_separators = { left = "│", right = "│" },
       section_separators = { left = " ", right = " " },
+      disabled_filetypes = { "Yanil" },
     },
     sections = {
       lualine_b = { "branch", "diff", diagnostics },

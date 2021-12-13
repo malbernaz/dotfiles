@@ -6,6 +6,8 @@ return function()
     palette = palette,
     custom_hlgroups = {
       -- vim
+      NormalFloat = { fg = palette.base7, bg = palette.base2 },
+      Special = { fg = palette.yellow },
       CursorLineNR = { fg = palette.white },
       Pmenu = { fg = palette.white, bg = palette.base3 },
       PmenuSel = { fg = palette.white, bg = palette.base5 },

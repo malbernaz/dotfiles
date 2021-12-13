@@ -1,5 +1,5 @@
 return function()
-	vim.cmd([[
+  vim.cmd([[
     augroup disable_stuff
       autocmd!
       autocmd FileType fugitive call DisableStuff() 
@@ -7,7 +7,7 @@ return function()
 
     function! DisableStuff()
       setlocal nonumber norelativenumber
-      setlocal cc=
+      setlocal colorcolumn=
       setlocal signcolumn=
     endfunction
   ]])

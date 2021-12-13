@@ -2,6 +2,16 @@ return function()
   local utils = require("utils")
   local ts = require("nvim-treesitter.configs")
 
+  local list = require("nvim-treesitter.parsers").get_parser_configs()
+
+  list.sql = {
+    install_info = {
+      url = "https://github.com/DerekStride/tree-sitter-sql",
+      files = { "src/parser.c" },
+      branch = "main",
+    },
+  }
+
   ts.setup({
     highlight = { enable = true },
     incremental_selection = {
@@ -22,18 +32,6 @@ return function()
       enable = true,
       updatetime = 25,
       persist_queries = false,
-      keybindings = {
-        toggle_query_editor = "o",
-        toggle_hl_groups = "i",
-        toggle_injected_languages = "t",
-        toggle_anonymous_nodes = "a",
-        toggle_language_display = "I",
-        focus_language = "f",
-        unfocus_language = "F",
-        update = "R",
-        goto_node = "<cr>",
-        show_help = "?",
-      },
     },
   })
 

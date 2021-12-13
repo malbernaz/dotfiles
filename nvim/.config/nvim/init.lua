@@ -13,6 +13,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
+opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
@@ -22,14 +23,12 @@ opt.swapfile = false
 opt.undodir = vim.fn.expand("$HOME") .. "/.vim/undodir"
 opt.undolevels = 100
 opt.undofile = true
-opt.hlsearch = false
 opt.scrolloff = 8
 opt.colorcolumn = "100"
-opt.signcolumn = "yes"
+opt.signcolumn = "yes:1"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
 opt.splitright = true
-opt.guifont = "Fira Code Medium:h11"
 opt.mouse = "a"
 
 -- netrw

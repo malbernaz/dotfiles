@@ -99,4 +99,12 @@ return require("packer").startup(function(use)
     config = require("settings.zen-mode"),
     requires = { "folke/twilight.nvim" },
   })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = require("settings.blankline"),
+  })
+  use({
+    "Xuyuanp/yanil",
+    config = require("settings.filetree"),
+  })
 end)
