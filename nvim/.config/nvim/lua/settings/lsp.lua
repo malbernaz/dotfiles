@@ -56,7 +56,7 @@ return function()
   lspconfig.graphql.setup(makeConfig())
 
   local root = fn.stdpath("config") .. "/lua-language-server"
-  local os = fn.has("mac") and "/bin/macOS" or "/bin/Linux"
+  local os = vim.fn.has("mac") == 1 and "/bin/macOS" or "/bin/Linux"
   local bin = root .. os .. "/lua-language-server"
   require("nlua.lsp.nvim").setup(
     lspconfig,
