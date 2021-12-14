@@ -9,6 +9,7 @@ return function()
       c = { fg = palette.orange, bg = palette.base3 },
     },
     insert = { a = { fg = palette.base1, bg = palette.aqua, gui = "bold" } },
+    terminal = { a = { fg = palette.base1, bg = palette.aqua, gui = "bold" } },
     visual = { a = { fg = palette.base1, bg = palette.purple, gui = "bold" } },
     replace = { a = { fg = palette.base1, bg = palette.red, gui = "bold" } },
     command = { a = { fg = palette.base1, bg = palette.white, gui = "bold" } },

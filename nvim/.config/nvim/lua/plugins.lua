@@ -21,10 +21,7 @@ return require("packer").startup(function(use)
   use({
     "nvim-telescope/telescope.nvim",
     config = require("settings.telescope"),
-    requires = {
-      "nvim-telescope/telescope-fzy-native.nvim",
-      "AckslD/nvim-neoclip.lua",
-    },
+    requires = { "nvim-telescope/telescope-fzy-native.nvim" },
   })
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -85,9 +82,7 @@ return require("packer").startup(function(use)
   })
   use({
     "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" })
-    end,
+    config = require("settings.colorizer"),
   })
   use({
     "goolord/alpha-nvim",

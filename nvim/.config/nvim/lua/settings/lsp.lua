@@ -41,8 +41,10 @@ return function()
   end
 
   local function makeConfig(config)
+    local capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities())
+
     return vim.tbl_deep_extend("force", {
-      capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities()),
+      capabilities = capabilities,
       on_attach = on_attach,
     }, config or {})
   end

@@ -36,5 +36,19 @@ g.netrw_banner = 0
 g.netrw_localcopycmd = "cp -R"
 g.netrw_localmkdir = "mkdir -p"
 
+-- disable options in terminal
+vim.cmd([[
+  augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * call ResetTerminal()
+  augroup END
+
+  function! ResetTerminal()
+    setlocal nonumber norelativenumber
+    setlocal signcolumn="no"
+    startinsert
+  endfunction
+]])
+
 -- mappings
 require("mappings")
