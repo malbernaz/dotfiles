@@ -20,6 +20,11 @@ return function()
     { signs = true, virtual_text = false, underline = false, update_in_insert = false }
   )
 
+  local function on_init(client)
+    client.config.flags = client.config.flags or {}
+    client.config.flags.allow_incremental_sync = true
+  end
+
   local function on_attach()
     set("omnifunc", "v:lua:vim.lsp.omnifunc")
     map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
@@ -45,6 +50,7 @@ return function()
 
     return vim.tbl_deep_extend("force", {
       capabilities = capabilities,
+      on_init = on_init,
       on_attach = on_attach,
     }, config or {})
   end
@@ -54,6 +60,7 @@ return function()
   lspconfig.cssls.setup(makeConfig())
   lspconfig.html.setup(makeConfig())
   lspconfig.graphql.setup(makeConfig())
+  lspconfig.rust_analyzer.setup(makeConfig())
 
   local root = fn.stdpath("config") .. "/lua-language-server"
   local os = vim.fn.has("mac") == 1 and "/bin/macOS" or "/bin/Linux"

@@ -1,6 +1,7 @@
 # Path
 fish_add_path ~/.yarn/bin
 fish_add_path ~/.cargo/bin
+fish_add_path ~/.local/bin
 
 # Editor
 set EDITOR 'nvim'
@@ -8,6 +9,8 @@ set GIT_EDITOR 'nvim'
 
 set NVIMRC $HOME/.dotfiles/nvim/.config/nvim/init.lua 
 set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/kitty/.config/kitty
+
+bass $HOME/.cargo/env
 
 # Aliases
 alias v=nvim
