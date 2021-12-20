@@ -1,5 +1,5 @@
 return function()
-  local utils = require("utils")
+  local utils = require("malbernaz.utils")
 
   local prettier = function()
     return {

@@ -5,9 +5,9 @@ return function()
   local devicons = require("yanil/devicons")
   local canvas = require("yanil/canvas")
   local tree = require("yanil/sections/tree"):new()
-  local utils = require("utils")
-  local fns = require("settings.filetree.fns")
-  local git_decorator = require("settings.filetree.decorators")
+  local utils = require("malbernaz.utils")
+  local fns = require("malbernaz.filetree.fns")
+  local git_decorator = require("malbernaz.filetree.decorators")
 
   yanil.setup({
     git = {

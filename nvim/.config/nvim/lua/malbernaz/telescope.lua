@@ -1,5 +1,5 @@
 return function()
-  local map = require("utils").map
+  local map = require("malbernaz.utils").map
   local telescope = require("telescope")
 
   telescope.setup({

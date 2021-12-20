@@ -1,7 +1,7 @@
 return function()
   local lspconfig = require("lspconfig")
   local cmp = require("cmp_nvim_lsp")
-  local utils = require("utils")
+  local utils = require("malbernaz.utils")
 
   local lsp = vim.lsp
   local fn = vim.fn

@@ -1,6 +1,6 @@
 return function()
   local npairs = require("nvim-autopairs")
-  local utils = require("utils")
+  local utils = require("malbernaz.utils")
 
   npairs.setup({})
 

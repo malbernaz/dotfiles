@@ -1,5 +1,5 @@
 -- plugins
-require("plugins")
+require("malbernaz.plugins")
 
 local opt = vim.opt
 local g = vim.g
@@ -51,4 +51,4 @@ vim.cmd([[
 ]])
 
 -- mappings
-require("mappings")
+require("malbernaz.mappings")

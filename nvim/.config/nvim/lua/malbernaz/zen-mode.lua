@@ -1,7 +1,7 @@
 return function()
   local zen = require("zen-mode")
   local twilight = require("twilight")
-  local utils = require("utils")
+  local utils = require("malbernaz.utils")
 
   zen.setup({
     window = {

@@ -1,5 +1,5 @@
 return function()
-  local utils = require("utils")
+  local utils = require("malbernaz.utils")
   local ts = require("nvim-treesitter.configs")
 
   local list = require("nvim-treesitter.parsers").get_parser_configs()

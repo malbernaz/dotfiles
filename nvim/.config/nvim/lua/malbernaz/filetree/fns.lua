@@ -1,7 +1,7 @@
 local loop = vim.loop
 local api = vim.api
 local git = require("yanil/git")
-local utils = require("utils")
+local utils = require("malbernaz.utils")
 
 local open_mode = loop.constants.O_CREAT + loop.constants.O_WRONLY + loop.constants.O_TRUNC
 
