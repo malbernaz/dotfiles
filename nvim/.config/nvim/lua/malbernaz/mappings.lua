@@ -50,17 +50,3 @@ map("v", ">", ">gv")
 
 -- terminal escape
 map("t", "<c-p>", "<C-\\><C-n>")
-
--- netrw
-map("n", "-", ":e %:p:h<cr>")
-vim.cmd([[
-augroup netrw_mapping
-  autocmd!
-  autocmd filetype netrw call NetrwMapping()
-augroup END
-
-function! NetrwMapping()
-  noremap <buffer> <c-r> <c-l>
-  noremap <buffer> <c-l> <c-w>l
-endfunction
-]])
