@@ -1,12 +1,9 @@
 return function()
   local lspconfig = require("lspconfig")
-  local cmp = require("cmp_nvim_lsp")
-  local utils = require("malbernaz.utils")
+  local makeConfig = require("malbernaz.lsp.utils").makeConfig
 
   local lsp = vim.lsp
   local fn = vim.fn
-  local map = utils.map
-  local set = utils.set
 
   -- customize diagnostics signs
   local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -19,41 +16,6 @@ return function()
     lsp.diagnostic.on_publish_diagnostics,
     { signs = true, virtual_text = false, underline = false, update_in_insert = false }
   )
-
-  local function on_init(client)
-    client.config.flags = client.config.flags or {}
-    client.config.flags.allow_incremental_sync = true
-  end
-
-  local function on_attach()
-    set("omnifunc", "v:lua:vim.lsp.omnifunc")
-    map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
-    map("n", "gd", ":lua vim.lsp.buf.definition()<cr>")
-    map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
-    map("n", "gi", ":lua vim.lsp.buf.implementation()<cr>")
-    map("n", "<C-s>", ":lua vim.lsp.buf.signature_help()<cr>")
-    map("n", "<leader>wa", ":lua vim.lsp.buf.add_workspace_folder()<cr>")
-    map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>")
-    map("n", "<leader>wl", ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
-    map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<cr>")
-    map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
-    map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
-    map("n", "gr", ":lua vim.lsp.buf.references()<cr>")
-    map("n", "<leader>e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
-    map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>")
-    map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>")
-    map("n", "<leader>q", ":lua vim.lsp.diagnostic.set_loclist()<cr>")
-  end
-
-  local function makeConfig(config)
-    local capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities())
-
-    return vim.tbl_deep_extend("force", {
-      capabilities = capabilities,
-      on_init = on_init,
-      on_attach = on_attach,
-    }, config or {})
-  end
 
   lspconfig.tsserver.setup(makeConfig())
   lspconfig.eslint.setup(makeConfig())
