@@ -17,12 +17,18 @@ return function()
     { signs = true, virtual_text = false, underline = false, update_in_insert = false }
   )
 
-  lspconfig.tsserver.setup(makeConfig())
-  lspconfig.eslint.setup(makeConfig())
-  lspconfig.cssls.setup(makeConfig())
-  lspconfig.html.setup(makeConfig())
-  lspconfig.graphql.setup(makeConfig())
-  lspconfig.rust_analyzer.setup(makeConfig())
+  local servers = {
+    "tsserver",
+    "eslint",
+    "cssls",
+    "html",
+    "graphql",
+    "rust_analyzer",
+  }
+
+  for _, server in ipairs(servers) do
+    lspconfig[server].setup(makeConfig())
+  end
 
   local root = fn.stdpath("config") .. "/lua-language-server"
   local os = vim.fn.has("mac") == 1 and "/bin/macOS" or "/bin/Linux"
