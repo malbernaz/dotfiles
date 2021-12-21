@@ -1,5 +1,5 @@
-require("malbernaz.plugins")
+require("malbernaz.autocmd")
 require("malbernaz.options")
 require("malbernaz.mappings")
+require("malbernaz.plugins")
 require("malbernaz.netrw")
-require("malbernaz.autocmd")

@@ -25,6 +25,9 @@ map("n", "<leader>=", "<c-w>=")
 -- spell
 map("n", "<leader>sp", ":set spell!<cr>")
 
+-- go to nvim/config
+map("n", "<leader>c", ":cd" .. vim.fn.stdpath("config") .. "<cr>")
+
 -- Insert mode
 
 -- universal hjkl

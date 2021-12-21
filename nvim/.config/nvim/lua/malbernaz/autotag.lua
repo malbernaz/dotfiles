@@ -1,3 +1,3 @@
-return function ()
-  require('nvim-ts-autotag').setup()
+return function()
+  require("nvim-ts-autotag").setup()
 end

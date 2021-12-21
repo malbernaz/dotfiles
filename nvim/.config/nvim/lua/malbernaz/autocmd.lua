@@ -9,4 +9,9 @@ vim.cmd([[
     setlocal signcolumn="no"
     startinsert
   endfunction
+
+  augroup text_buffers
+    autocmd!
+    autocmd FileType gitcommit,markdown,markdown.mdx setlocal wrap spell
+  augroup end
 ]])

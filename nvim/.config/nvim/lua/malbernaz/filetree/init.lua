@@ -75,6 +75,8 @@ return function()
     },
   })
 
+  local loaded = false
+
   canvas.register_hooks({
     on_leave = function()
       vim.wo.cursorlineopt = "number"
@@ -84,14 +86,16 @@ return function()
       vim.wo.cursorlineopt = "line"
       vim.cmd([[ silent vertical resize 45 ]])
       vim.cmd([[ silent set signcolumn= ]])
-      git.update(tree.cwd)
+
+      if not loaded then
+        git.update(tree.cwd)
+        loaded = true
+      end
     end,
   })
 
   canvas.setup({
-    sections = {
-      tree,
-    },
+    sections = { tree },
     autocmds = {
       {
         event = "User",
