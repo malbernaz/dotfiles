@@ -7,8 +7,8 @@ return function()
 
     function! DisableStuff()
       setlocal nonumber norelativenumber
-      setlocal colorcolumn=
-      setlocal signcolumn=
+      setlocal colorcolumn=""
+      setlocal signcolumn=no
     endfunction
   ]])
 end

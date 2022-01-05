@@ -1,6 +1,6 @@
 local fn = vim.fn
 
--- Automatically install packer
+-- automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({
@@ -41,7 +41,7 @@ return packer.startup({
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
     use({
-      "tanvirtin/monokai.nvim",
+      "malbernaz/monokai.nvim",
       config = require("malbernaz.monokai"),
     })
     use({
@@ -84,13 +84,11 @@ return packer.startup({
       config = require("malbernaz.comment"),
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
-    use("tpope/vim-surround")
-    use("tpope/vim-unimpaired")
-    use("tpope/vim-repeat")
     use({
       "tpope/vim-fugitive",
       config = require("malbernaz.fugitive"),
     })
+    use("tpope/vim-surround")
     use({
       "lewis6991/gitsigns.nvim",
       config = require("malbernaz.gitsigns"),

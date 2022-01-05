@@ -85,7 +85,7 @@ return function()
       vim.api.nvim_command([[ doautocmd User YanilTreeEnter ]])
       vim.wo.cursorlineopt = "line"
       vim.cmd([[ silent vertical resize 45 ]])
-      vim.cmd([[ silent set signcolumn= ]])
+      vim.cmd([[ silent set signcolumn=no ]])
 
       if not loaded then
         git.update(tree.cwd)

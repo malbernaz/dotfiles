@@ -14,7 +14,7 @@ return function()
 
   lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
     lsp.diagnostic.on_publish_diagnostics,
-    { signs = true, virtual_text = false, underline = false, update_in_insert = false }
+    { signs = true, underline = true, virtual_text = false, update_in_insert = false }
   )
 
   local servers = {
@@ -35,7 +35,12 @@ return function()
   local bin = root .. os .. "/lua-language-server"
   require("nlua.lsp.nvim").setup(
     lspconfig,
-    makeConfig({ cmd = { bin, "-E", root .. "/main.lua" } })
+    makeConfig({
+      cmd = { bin, "-E", root .. "/main.lua" },
+      library = {
+        [vim.fn.stdpath("config") .. "/lua"] = true,
+      },
+    })
   )
 
   lspconfig.jsonls.setup(makeConfig({
