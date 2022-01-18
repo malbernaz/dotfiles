@@ -76,16 +76,15 @@ return function()
   })
 
   local loaded = false
-
   canvas.register_hooks({
-    on_leave = function()
+    on_exit = function()
       vim.wo.cursorlineopt = "number"
+      vim.wo.signcolumn = "yes"
     end,
     on_enter = function()
-      vim.api.nvim_command([[ doautocmd User YanilTreeEnter ]])
       vim.wo.cursorlineopt = "line"
+      vim.wo.signcolumn = "no"
       vim.cmd([[ silent vertical resize 45 ]])
-      vim.cmd([[ silent set signcolumn=no ]])
 
       if not loaded then
         git.update(tree.cwd)
