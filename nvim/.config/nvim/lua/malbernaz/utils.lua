@@ -2,9 +2,9 @@ local api = vim.api
 
 local M = {}
 
-function M.map(mode, lhs, rhs, opts)
+function M.map(mode, l, r, opts)
   local options = vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
-  api.nvim_set_keymap(mode, lhs, rhs, options)
+  api.nvim_set_keymap(mode, l, r, options)
 end
 
 function M.map_buf(buf, mode, lhs, rhs, opts)

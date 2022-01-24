@@ -40,14 +40,8 @@ return packer.startup({
     use("wbthomason/packer.nvim")
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
-    use({
-      "malbernaz/monokai.nvim",
-      config = require("malbernaz.monokai"),
-    })
-    use({
-      "nvim-lualine/lualine.nvim",
-      config = require("malbernaz.lualine"),
-    })
+    use({ "malbernaz/monokai.nvim", config = require("malbernaz.monokai") })
+    use({ "nvim-lualine/lualine.nvim", config = require("malbernaz.lualine") })
     use({
       "nvim-telescope/telescope.nvim",
       config = require("malbernaz.telescope"),
@@ -84,53 +78,23 @@ return packer.startup({
       config = require("malbernaz.comment"),
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
-    use({
-      "tpope/vim-fugitive",
-      config = require("malbernaz.fugitive"),
-    })
+    use({ "tpope/vim-fugitive", config = require("malbernaz.fugitive") })
     use("tpope/vim-surround")
-    use({
-      "lewis6991/gitsigns.nvim",
-      config = require("malbernaz.gitsigns"),
-    })
-    use({
-      "mhartington/formatter.nvim",
-      config = require("malbernaz.formatter"),
-    })
-    use({
-      "windwp/nvim-autopairs",
-      config = require("malbernaz.autopairs"),
-    })
-    use({
-      "windwp/nvim-ts-autotag",
-      config = require("malbernaz.autotag"),
-    })
-    use({
-      "akinsho/toggleterm.nvim",
-      config = require("malbernaz.toggleterm"),
-    })
-    use({
-      "norcalli/nvim-colorizer.lua",
-      config = require("malbernaz.colorizer"),
-    })
-    use({
-      "goolord/alpha-nvim",
-      config = require("malbernaz.startscreen"),
-    })
+    use({ "lewis6991/gitsigns.nvim", config = require("malbernaz.gitsigns") })
+    use({ "mhartington/formatter.nvim", config = require("malbernaz.formatter") })
+    use({ "windwp/nvim-autopairs", config = require("malbernaz.autopairs") })
+    use({ "windwp/nvim-ts-autotag", config = require("malbernaz.autotag") })
+    use({ "akinsho/toggleterm.nvim", config = require("malbernaz.toggleterm") })
+    use({ "norcalli/nvim-colorizer.lua", config = require("malbernaz.colorizer") })
+    use({ "goolord/alpha-nvim", config = require("malbernaz.startscreen") })
     use("jxnblk/vim-mdx-js")
     use({
       "folke/zen-mode.nvim",
       config = require("malbernaz.zen-mode"),
       requires = { "folke/twilight.nvim" },
     })
-    use({
-      "lukas-reineke/indent-blankline.nvim",
-      config = require("malbernaz.blankline"),
-    })
-    use({
-      "Xuyuanp/yanil",
-      config = require("malbernaz.filetree"),
-    })
+    use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
+    use({ "Xuyuanp/yanil", config = require("malbernaz.filetree") })
 
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
