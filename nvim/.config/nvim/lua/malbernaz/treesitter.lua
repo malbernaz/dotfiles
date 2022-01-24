@@ -18,9 +18,8 @@ return function()
       enable = true,
       keymaps = {
         init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
+        node_incremental = "gnn",
+        node_decremental = "gmm",
       },
     },
     indent = { enable = true },
