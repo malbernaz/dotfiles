@@ -1,11 +1,11 @@
 return function()
   vim.cmd([[
-    augroup disable_stuff
+    augroup set_fugitive_opts
       autocmd!
-      autocmd FileType fugitive call DisableStuff() 
+      autocmd FileType fugitive call SetFugitiveOpts() 
     augroup END
 
-    function! DisableStuff()
+    function! SetFugitiveOpts()
       setlocal nonumber norelativenumber
       setlocal colorcolumn=""
       setlocal signcolumn=no

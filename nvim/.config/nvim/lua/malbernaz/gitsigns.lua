@@ -33,7 +33,7 @@ return function()
       },
     },
     preview_config = {
-      border = "none",
+      border = "rounded",
     },
   })
 end
