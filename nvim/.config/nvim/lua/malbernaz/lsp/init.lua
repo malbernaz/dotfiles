@@ -1,5 +1,6 @@
 return function()
   local lspconfig = require("lspconfig")
+  local configs = require("lspconfig.configs")
   local makeConfig = require("malbernaz.lsp.utils").makeConfig
 
   local lsp = vim.lsp
@@ -17,6 +18,38 @@ return function()
     { signs = true, underline = true, virtual_text = false, update_in_insert = false }
   )
 
+  if not configs.ls_emmet then
+    configs.ls_emmet = {
+      default_config = {
+        cmd = { "ls_emmet", "--stdio" },
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "haml",
+          "xml",
+          "xsl",
+          "pug",
+          "slim",
+          "sass",
+          "stylus",
+          "less",
+          "sss",
+          "hbs",
+          "handlebars",
+        },
+        root_dir = function()
+          return vim.loop.cwd()
+        end,
+        settings = {},
+      },
+    }
+  end
+
   local servers = {
     "tsserver",
     "eslint",
@@ -24,6 +57,7 @@ return function()
     "html",
     "graphql",
     "rust_analyzer",
+    "ls_emmet",
   }
 
   for _, server in ipairs(servers) do
