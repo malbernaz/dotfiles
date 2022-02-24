@@ -23,6 +23,7 @@ alias gp="git push"
 function gpo
   git push -u origin (git_branch) 
 end
+alias rnw="tmux rename-window"
 
 if [ -f /opt/homebrew/bin/brew ]
   eval (/opt/homebrew/bin/brew shellenv)

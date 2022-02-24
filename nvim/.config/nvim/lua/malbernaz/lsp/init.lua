@@ -58,6 +58,7 @@ return function()
     "graphql",
     "rust_analyzer",
     "ls_emmet",
+    "prismals",
   }
 
   for _, server in ipairs(servers) do
