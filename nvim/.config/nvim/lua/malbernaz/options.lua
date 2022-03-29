@@ -27,6 +27,7 @@ local options = {
   sidescrolloff = 8,
   colorcolumn = "101",
   signcolumn = "yes",
+  laststatus = 3,
   clipboard = "unnamedplus",
   splitbelow = true,
   splitright = true,

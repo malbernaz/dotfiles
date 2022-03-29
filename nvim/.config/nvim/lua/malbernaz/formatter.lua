@@ -38,10 +38,25 @@ return function()
   -- mappings
   utils.map("n", "<leader>f", ":FormatWrite<cr>")
 
-  vim.cmd([[
-    augroup FormatAutogroup
-      autocmd!
-      autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.json,*.vue,*.html,*.css,*.scss,*.md,*.mdx,*.graphql,*.gql,*.lua FormatWrite
-    augroup END
-  ]])
+  local format_group = vim.api.nvim_create_augroup("FormatGroup", { clear = true })
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    group = format_group,
+    pattern = {
+      "*.js",
+      "*.jsx",
+      "*.ts",
+      "*.tsx",
+      "*.json",
+      "*.vue",
+      "*.html",
+      "*.css",
+      "*.scss",
+      "*.md",
+      "*.mdx",
+      "*.graphql",
+      "*.gql",
+      "*.lua",
+    },
+    command = "FormatWrite",
+  })
 end

@@ -15,6 +15,4 @@ return function()
   db.section.footer.opts.hl = "Type"
 
   alpha.setup(db.opts)
-
-  vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
 end

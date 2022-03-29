@@ -1,5 +1,6 @@
+require("impatient")
 require("malbernaz.options")
 require("malbernaz.autocmd")
 require("malbernaz.mappings")
-require("malbernaz.plugins")
 require("malbernaz.netrw")
+require("malbernaz.plugins")

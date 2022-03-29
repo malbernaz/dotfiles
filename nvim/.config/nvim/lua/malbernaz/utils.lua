@@ -108,7 +108,7 @@ function M.floating_window_big(bufnr)
   )
   api.nvim_command(
     string.format(
-      [[autocmd WinClosed  <buffer> execute "%dwincmd w" | execute "%dwincmd w"]],
+      [[autocmd WinClosed <buffer> execute "%dwincmd w" | execute "%dwincmd w"]],
       altwinnr_bak,
       winnr_bak
     )

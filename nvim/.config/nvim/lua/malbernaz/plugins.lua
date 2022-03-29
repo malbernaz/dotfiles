@@ -15,14 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd([[packadd packer.nvim]])
 end
 
--- compile plugins whenever they are changed
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
 local packer = require("packer")
 
 -- have packer use a popup window
@@ -35,9 +27,10 @@ packer.init({
   },
 })
 
-return packer.startup({
+packer.startup({
   function(use)
     use("wbthomason/packer.nvim")
+    use("lewis6991/impatient.nvim")
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
     use({ "malbernaz/monokai.nvim", config = require("malbernaz.monokai") })
@@ -78,7 +71,7 @@ return packer.startup({
       config = require("malbernaz.comment"),
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
-    use({ "tpope/vim-fugitive", config = require("malbernaz.fugitive") })
+    use("tpope/vim-fugitive")
     use("tpope/vim-surround")
     use({ "lewis6991/gitsigns.nvim", config = require("malbernaz.gitsigns") })
     use({ "mhartington/formatter.nvim", config = require("malbernaz.formatter") })
@@ -96,7 +89,6 @@ return packer.startup({
     use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
     use({ "Xuyuanp/yanil", config = require("malbernaz.filetree") })
 
-    -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
       require("packer").sync()
     end
