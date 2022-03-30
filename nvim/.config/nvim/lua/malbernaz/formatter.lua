@@ -38,9 +38,9 @@ return function()
   -- mappings
   utils.map("n", "<leader>f", ":FormatWrite<cr>")
 
-  local format_group = vim.api.nvim_create_augroup("FormatGroup", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    group = format_group,
+  utils.create_cmdgroup({
+    name = "FormatGroup",
+    event = "BufWritePost",
     pattern = {
       "*.js",
       "*.jsx",

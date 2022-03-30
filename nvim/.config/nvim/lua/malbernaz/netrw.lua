@@ -7,9 +7,9 @@ vim.g.netrw_localmkdir = "mkdir -p"
 utils.map("n", "-", ":e %:p:h<cr>")
 
 -- remap c-r in netrw
-local netrw_group = vim.api.nvim_create_augroup("NetrwGroup", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  group = netrw_group,
+utils.create_cmdgroup({
+  name = "NetrwGroup",
+  event = "FileType",
   pattern = "netrw",
   callback = function()
     local buf = vim.fn.expand("<abuf>")

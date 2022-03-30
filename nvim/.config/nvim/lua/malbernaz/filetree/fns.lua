@@ -256,26 +256,4 @@ function M.go_to_parent_node(tree, node)
   tree:go_to_node(node.parent)
 end
 
-function M.git_diff(_, node)
-  local diff = git.diff(node)
-  if not diff then
-    return
-  end
-
-  -- content
-  local bufnr = api.nvim_create_buf(false, true)
-  local winnr = utils.floating_window_big(bufnr)
-
-  utils.set_buf(bufnr, "filetype", "diff")
-  utils.set_buf(bufnr, "bufhidden", "wipe")
-  api.nvim_win_set_option(winnr, "cursorline", true)
-  api.nvim_win_set_option(winnr, "cursorlineopt", "number")
-  api.nvim_win_set_option(winnr, "number", true)
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, diff)
-
-  api.nvim_command(
-    string.format([[command! -buffer Apply lua require("yanil/git").apply_buf(%d)]], bufnr)
-  )
-end
-
 return M

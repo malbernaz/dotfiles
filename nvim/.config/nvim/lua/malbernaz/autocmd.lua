@@ -1,13 +1,15 @@
-local packer_group = vim.api.nvim_create_augroup("PackerGroup", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  group = packer_group,
+local create_cmdgroup = require("malbernaz.utils").create_cmdgroup
+
+create_cmdgroup({
+  name = "PackerGroup",
+  event = "BufWritePost",
   pattern = "plugins.lua",
   command = "source <afile> | PackerCompile",
 })
 
-local terminal_group = vim.api.nvim_create_augroup("TerminalGroup", { clear = true })
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = terminal_group,
+create_cmdgroup({
+  name = "TerminalGroup",
+  event = "TermOpen",
   callback = function()
     vim.wo.number = false
     vim.wo.relativenumber = false
@@ -16,9 +18,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-local txt_group = vim.api.nvim_create_augroup("TxtGroup", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  group = txt_group,
+create_cmdgroup({
+  name = "TextGroup",
+  event = "FileType",
   pattern = { "gitcommit", "markdown", "markdown.mdx" },
   callback = function()
     vim.wo.wrap = true
@@ -26,17 +28,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-local yank_group = vim.api.nvim_create_augroup("YankGroup", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = yank_group,
+create_cmdgroup({
+  name = "YankGroup",
+  event = "TextYankPost",
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
-local clear_styles_group = vim.api.nvim_create_augroup("ClearStylesGroup", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  group = clear_styles_group,
+create_cmdgroup({
+  name = "ClearStylesGroup",
+  event = "FileType",
   pattern = { "help", "fugitive", "netrw" },
   callback = function()
     vim.wo.number = false

@@ -70,7 +70,6 @@ return function()
       ["C"] = fns.copy_node,
       ["R"] = fns.refresh_and_focus,
       ["P"] = fns.go_to_parent_node,
-      ["gd"] = fns.git_diff,
       ["U"] = utils.noop,
     },
   })
