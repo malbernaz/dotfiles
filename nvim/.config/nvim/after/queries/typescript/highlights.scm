@@ -13,3 +13,9 @@
     (array_pattern
       (assignment_pattern
         left: (identifier) @parameter))))
+
+[
+  "{|"
+  "|}"
+] @punctuation.bracket
+

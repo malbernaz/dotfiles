@@ -2,15 +2,10 @@ return function()
   local utils = require("malbernaz.utils")
   local ts = require("nvim-treesitter.configs")
 
-  local list = require("nvim-treesitter.parsers").get_parser_configs()
+  local ftp = require("nvim-treesitter.parsers").filetype_to_parsername
 
-  list.sql = {
-    install_info = {
-      url = "https://github.com/DerekStride/tree-sitter-sql",
-      files = { "src/parser.c" },
-      branch = "main",
-    },
-  }
+  ftp.javascript = "typescript"
+  ftp.javascriptreact = "tsx"
 
   ts.setup({
     highlight = { enable = true },

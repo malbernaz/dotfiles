@@ -51,7 +51,6 @@ return function()
   end
 
   local servers = {
-    "tsserver",
     "eslint",
     "cssls",
     "html",
@@ -64,6 +63,10 @@ return function()
   for _, server in ipairs(servers) do
     lspconfig[server].setup(makeConfig())
   end
+
+  lspconfig.tsserver.setup(makeConfig({
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  }))
 
   local root = fn.stdpath("config") .. "/lua-language-server"
   local os = vim.fn.has("mac") == 1 and "/bin/macOS" or "/bin/Linux"
