@@ -51,6 +51,7 @@ return function()
   end
 
   local servers = {
+    "flow",
     "eslint",
     "cssls",
     "html",

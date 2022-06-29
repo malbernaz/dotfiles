@@ -31,6 +31,7 @@ return function()
           },
         },
       },
+      lualine_c = { "%f %m" },
       lualine_x = { "filetype" },
     },
   })

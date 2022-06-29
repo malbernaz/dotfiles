@@ -1,6 +1,6 @@
-require("impatient")
-require("malbernaz.options")
+pcall(require, "impatient")
+
 require("malbernaz.autocmd")
 require("malbernaz.mappings")
-require("malbernaz.netrw")
 require("malbernaz.plugins")
+require("malbernaz.options")

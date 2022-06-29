@@ -4,7 +4,7 @@ return function()
 
   local ftp = require("nvim-treesitter.parsers").filetype_to_parsername
 
-  ftp.javascript = "typescript"
+  ftp.javascript = "tsx"
   ftp.javascriptreact = "tsx"
 
   ts.setup({

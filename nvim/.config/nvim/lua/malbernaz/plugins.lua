@@ -38,7 +38,6 @@ packer.startup({
     use({
       "nvim-telescope/telescope.nvim",
       config = require("malbernaz.telescope"),
-      requires = { "nvim-telescope/telescope-fzy-native.nvim" },
     })
     use({
       "nvim-treesitter/nvim-treesitter",
@@ -87,7 +86,10 @@ packer.startup({
       requires = { "folke/twilight.nvim" },
     })
     use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
-    use({ "Xuyuanp/yanil", config = require("malbernaz.filetree") })
+    use({
+      "kyazdani42/nvim-tree.lua",
+      config = require("malbernaz.nvimtree"),
+    })
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

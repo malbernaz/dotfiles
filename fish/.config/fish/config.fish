@@ -10,10 +10,9 @@ set GIT_EDITOR 'nvim'
 set NVIMRC $HOME/.dotfiles/nvim/.config/nvim/init.lua 
 set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/kitty/.config/kitty
 
-bass $HOME/.cargo/env
-
 # Aliases
 alias v=nvim
+alias rnw="tmux rename-window"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
@@ -23,7 +22,6 @@ alias gp="git push"
 function gpo
   git push -u origin (git_branch) 
 end
-alias rnw="tmux rename-window"
 
 if [ -f /opt/homebrew/bin/brew ]
   eval (/opt/homebrew/bin/brew shellenv)
