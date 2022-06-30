@@ -8,38 +8,41 @@ local set = utils.set
 local M = {}
 
 function M.on_init(client)
-  client.config.flags = client.config.flags or {}
-  client.config.flags.allow_incremental_sync = true
+	client.config.flags = client.config.flags or {}
+	client.config.flags.allow_incremental_sync = true
 end
 
 function M.on_attach()
-  set("omnifunc", "v:lua:vim.lsp.omnifunc")
-  map("n", "gD", ":lua vim.lsp.buf.declaration()<cr>")
-  map("n", "gd", ":lua vim.lsp.buf.definition()<cr>")
-  map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
-  map("n", "gi", ":lua vim.lsp.buf.implementation()<cr>")
-  map("n", "<C-s>", ":lua vim.lsp.buf.signature_help()<cr>")
-  map("n", "<leader>wa", ":lua vim.lsp.buf.add_workspace_folder()<cr>")
-  map("n", "<leader>wr", ":lua vim.lsp.buf.remove_workspace_folder()<cr>")
-  map("n", "<leader>wl", ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
-  map("n", "<leader>D", ":lua vim.lsp.buf.type_definition()<cr>")
-  map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
-  map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
-  map("n", "gr", ":lua vim.lsp.buf.references()<cr>")
-  map("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>")
-  map("n", "[d", ":lua vim.diagnostic.goto_prev()<cr>")
-  map("n", "]d", ":lua vim.diagnostic.goto_next()<cr>")
-  map("n", "<leader>q", ":lua vim.diagnostic.set_loclist()<cr>")
+	set("omnifunc", "v:lua:vim.lsp.omnifunc")
+
+	map("n", "K", vim.lsp.buf.hover)
+	map("n", "gD", vim.lsp.buf.declaration)
+	map("n", "gd", vim.lsp.buf.definition)
+	map("n", "gi", vim.lsp.buf.implementation)
+	map("n", "gr", vim.lsp.buf.references)
+	map("n", "<C-s>", vim.lsp.buf.signature_help)
+	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
+	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+	map("n", "<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end)
+	map("n", "<leader>D", vim.lsp.buf.type_definition)
+	map("n", "<leader>rn", vim.lsp.buf.rename)
+	map("n", "<leader>ca", vim.lsp.buf.code_action)
+	map("n", "<leader>e", vim.diagnostic.open_float)
+	map("n", "[d", vim.diagnostic.goto_prev)
+	map("n", "]d", vim.diagnostic.goto_next)
+	map("n", "<leader>q", vim.diagnostic.setloclist)
 end
 
 M.capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities())
 
 function M.makeConfig(config)
-  return vim.tbl_deep_extend("force", {
-    capabilities = M.capabilities,
-    on_init = M.on_init,
-    on_attach = M.on_attach,
-  }, config or {})
+	return vim.tbl_deep_extend("force", {
+		capabilities = M.capabilities,
+		on_init = M.on_init,
+		on_attach = M.on_attach,
+	}, config or {})
 end
 
 return M
