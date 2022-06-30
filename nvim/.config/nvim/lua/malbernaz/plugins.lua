@@ -35,10 +35,7 @@ packer.startup({
     use("nvim-lua/plenary.nvim")
     use({ "malbernaz/monokai.nvim", config = require("malbernaz.monokai") })
     use({ "nvim-lualine/lualine.nvim", config = require("malbernaz.lualine") })
-    use({
-      "nvim-telescope/telescope.nvim",
-      config = require("malbernaz.telescope"),
-    })
+    use({ "nvim-telescope/telescope.nvim", config = require("malbernaz.telescope") })
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
@@ -71,7 +68,7 @@ packer.startup({
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
     use("tpope/vim-fugitive")
-    use("tpope/vim-surround")
+    use({ "ur4ltz/surround.nvim", config = require("malbernaz.surround") })
     use({ "lewis6991/gitsigns.nvim", config = require("malbernaz.gitsigns") })
     use({ "mhartington/formatter.nvim", config = require("malbernaz.formatter") })
     use({ "windwp/nvim-autopairs", config = require("malbernaz.autopairs") })
@@ -86,10 +83,7 @@ packer.startup({
       requires = { "folke/twilight.nvim" },
     })
     use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
-    use({
-      "kyazdani42/nvim-tree.lua",
-      config = require("malbernaz.nvimtree"),
-    })
+    use({ "kyazdani42/nvim-tree.lua", config = require("malbernaz.nvimtree") })
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()
