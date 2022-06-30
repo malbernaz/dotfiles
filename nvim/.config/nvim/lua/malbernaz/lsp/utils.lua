@@ -5,6 +5,11 @@ local map = utils.map
 local buf = vim.lsp.buf
 local dgnt = vim.diagnostic
 
+map("n", "<leader>e", dgnt.open_float)
+map("n", "[d", dgnt.goto_prev)
+map("n", "]d", dgnt.goto_next)
+map("n", "<leader>q", dgnt.setloclist)
+
 local M = {}
 
 function M.on_init(client)
@@ -31,10 +36,6 @@ function M.on_attach(_, buffn)
 	map("n", "<leader>D", buf.type_definition, bufopts)
 	map("n", "<leader>rn", buf.rename, bufopts)
 	map("n", "<leader>ca", buf.code_action, bufopts)
-	map("n", "<leader>e", dgnt.open_float)
-	map("n", "[d", dgnt.goto_prev)
-	map("n", "]d", dgnt.goto_next)
-	map("n", "<leader>q", dgnt.setloclist)
 end
 
 M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
