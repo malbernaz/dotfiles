@@ -60,7 +60,6 @@ packer.startup({
     use({
       "neovim/nvim-lspconfig",
       config = require("malbernaz.lsp"),
-      requires = { "tjdevries/nlua.nvim" },
     })
     use({
       "numToStr/Comment.nvim",

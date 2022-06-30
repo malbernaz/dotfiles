@@ -1,7 +1,7 @@
 return function()
   local lspconfig = require("lspconfig")
   local configs = require("lspconfig.configs")
-  local makeConfig = require("malbernaz.lsp.utils").makeConfig
+  local make_config = require("malbernaz.lsp.utils").make_config
 
   local lsp = vim.lsp
   local fn = vim.fn
@@ -30,17 +30,6 @@ return function()
           "javascriptreact",
           "typescript",
           "typescriptreact",
-          "haml",
-          "xml",
-          "xsl",
-          "pug",
-          "slim",
-          "sass",
-          "stylus",
-          "less",
-          "sss",
-          "hbs",
-          "handlebars",
         },
         root_dir = function()
           return vim.loop.cwd()
@@ -62,24 +51,25 @@ return function()
   }
 
   for _, server in ipairs(servers) do
-    lspconfig[server].setup(makeConfig())
+    lspconfig[server].setup(make_config())
   end
 
-  lspconfig.tsserver.setup(makeConfig({
+  lspconfig.tsserver.setup(make_config({
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }))
 
-  require("nlua.lsp.nvim").setup(
-    lspconfig,
-    makeConfig({
-      cmd = { "lua-language-server" },
-      library = {
-        [vim.fn.stdpath("config") .. "/lua"] = true,
+  lspconfig.sumneko_lua.setup(make_config({
+    settings = {
+      Lua = {
+        runtime = { version = "LuaJIT" },
+        diagnostics = { globals = { "vim" } },
+        workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+        telemetry = { enable = false },
       },
-    })
-  )
+    },
+  }))
 
-  lspconfig.jsonls.setup(makeConfig({
+  lspconfig.jsonls.setup(make_config({
     commands = {
       Format = {
         function()
@@ -89,7 +79,6 @@ return function()
     },
     settings = {
       json = {
-        -- Schemas https://www.schemastore.org
         schemas = {
           {
             fileMatch = { "package.json" },

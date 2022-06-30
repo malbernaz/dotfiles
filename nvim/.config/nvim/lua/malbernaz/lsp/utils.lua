@@ -17,29 +17,30 @@ function M.on_init(client)
 end
 
 function M.on_attach(_, buffn)
-  vim.o.omnifunc = "v:lua:vim.lsp.omnifunc"
+  vim.bo[buffn].omnifunc = "v:lua:vim.lsp.omnifunc"
 
   local opts = { buffer = buffn }
 
-  map("n", "K", buf.hover, opts)
   map("n", "gD", buf.declaration, opts)
   map("n", "gd", buf.definition, opts)
+  map("n", "K", buf.hover, opts)
   map("n", "gi", buf.implementation, opts)
-  map("n", "gr", buf.references, opts)
-  map("n", "<C-s>", buf.signature_help, opts)
-  map("n", "<leader>wa", buf.add_workspace_folder, opts)
-  map("n", "<leader>wr", buf.remove_workspace_folder, opts)
-  map("n", "<leader>wl", function()
+  map("n", "<C-k>", buf.signature_help, opts)
+  map("n", "<space>wa", buf.add_workspace_folder, opts)
+  map("n", "<space>wr", buf.remove_workspace_folder, opts)
+  map("n", "<space>wl", function()
     print(vim.inspect(buf.list_workspace_folders()))
   end, opts)
-  map("n", "<leader>D", buf.type_definition, opts)
-  map("n", "<leader>rn", buf.rename, opts)
-  map("n", "<leader>ca", buf.code_action, opts)
+  map("n", "<space>D", buf.type_definition, opts)
+  map("n", "<space>rn", buf.rename, opts)
+  map("n", "<space>ca", buf.code_action, opts)
+  map("n", "gr", buf.references, opts)
+  map("n", "<space>f", buf.formatting, opts)
 end
 
 M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-function M.makeConfig(config)
+function M.make_config(config)
   return vim.tbl_deep_extend("force", {
     capabilities = M.capabilities,
     on_init = M.on_init,
