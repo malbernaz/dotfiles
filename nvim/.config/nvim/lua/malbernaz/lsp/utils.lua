@@ -3,12 +3,11 @@ local cmp = require("cmp_nvim_lsp")
 
 local map = utils.map
 local buf = vim.lsp.buf
-local dgnt = vim.diagnostic
 
-map("n", "<leader>e", dgnt.open_float)
-map("n", "[d", dgnt.goto_prev)
-map("n", "]d", dgnt.goto_next)
-map("n", "<leader>q", dgnt.setloclist)
+map("n", "<leader>e", vim.diagnostic.open_float)
+map("n", "[d", vim.diagnostic.goto_prev)
+map("n", "]d", vim.diagnostic.goto_next)
+map("n", "<leader>q", vim.diagnostic.setloclist)
 
 local M = {}
 
@@ -20,22 +19,22 @@ end
 function M.on_attach(_, buffn)
   vim.o.omnifunc = "v:lua:vim.lsp.omnifunc"
 
-  local bufopts = { buffer = buffn }
+  local opts = { buffer = buffn }
 
-  map("n", "K", buf.hover, bufopts)
-  map("n", "gD", buf.declaration, bufopts)
-  map("n", "gd", buf.definition, bufopts)
-  map("n", "gi", buf.implementation, bufopts)
-  map("n", "gr", buf.references, bufopts)
-  map("n", "<C-s>", buf.signature_help, bufopts)
-  map("n", "<leader>wa", buf.add_workspace_folder, bufopts)
-  map("n", "<leader>wr", buf.remove_workspace_folder, bufopts)
+  map("n", "K", buf.hover, opts)
+  map("n", "gD", buf.declaration, opts)
+  map("n", "gd", buf.definition, opts)
+  map("n", "gi", buf.implementation, opts)
+  map("n", "gr", buf.references, opts)
+  map("n", "<C-s>", buf.signature_help, opts)
+  map("n", "<leader>wa", buf.add_workspace_folder, opts)
+  map("n", "<leader>wr", buf.remove_workspace_folder, opts)
   map("n", "<leader>wl", function()
     print(vim.inspect(buf.list_workspace_folders()))
-  end, bufopts)
-  map("n", "<leader>D", buf.type_definition, bufopts)
-  map("n", "<leader>rn", buf.rename, bufopts)
-  map("n", "<leader>ca", buf.code_action, bufopts)
+  end, opts)
+  map("n", "<leader>D", buf.type_definition, opts)
+  map("n", "<leader>rn", buf.rename, opts)
+  map("n", "<leader>ca", buf.code_action, opts)
 end
 
 M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())

@@ -69,13 +69,10 @@ return function()
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }))
 
-  local root = fn.stdpath("config") .. "/lua-language-server"
-  local os = vim.fn.has("mac") == 1 and "/bin/macOS" or "/bin/Linux"
-  local bin = root .. os .. "/lua-language-server"
   require("nlua.lsp.nvim").setup(
     lspconfig,
     makeConfig({
-      cmd = { bin, "-E", root .. "/main.lua" },
+      cmd = { "lua-language-server" },
       library = {
         [vim.fn.stdpath("config") .. "/lua"] = true,
       },

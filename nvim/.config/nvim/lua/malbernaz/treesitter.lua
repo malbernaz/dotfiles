@@ -8,6 +8,33 @@ return function()
   ftp.javascriptreact = "tsx"
 
   ts.setup({
+    ensure_installed = {
+      "fish",
+      "bash",
+      "lua",
+      "vim",
+      "typescript",
+      "tsx",
+      "jsdoc",
+      "json",
+      "yaml",
+      "toml",
+      "css",
+      "scss",
+      "html",
+      "graphql",
+      "prisma",
+      "markdown",
+      "svelte",
+      "vue",
+      "rust",
+      "go",
+      "php",
+      "python",
+      "ruby",
+      "scheme",
+      "dockerfile",
+    },
     highlight = { enable = true },
     incremental_selection = {
       enable = true,

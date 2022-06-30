@@ -15,4 +15,5 @@ return function()
   })
 
   map("n", "<leader>n", ":NvimTreeToggle<cr>")
+  map("n", "<leader>nf", ":NvimTreeFindFile<cr>")
 end
