@@ -1,9 +1,9 @@
 local utils = require("malbernaz.utils")
 local cmp = require("cmp_nvim_lsp")
 
-local lsp = vim.lsp
 local map = utils.map
-local set = utils.set
+local buf = vim.lsp.buf
+local dgnt = vim.diagnostic
 
 local M = {}
 
@@ -12,30 +12,32 @@ function M.on_init(client)
 	client.config.flags.allow_incremental_sync = true
 end
 
-function M.on_attach()
-	set("omnifunc", "v:lua:vim.lsp.omnifunc")
+function M.on_attach(_, buffn)
+	vim.o.omnifunc = "v:lua:vim.lsp.omnifunc"
 
-	map("n", "K", vim.lsp.buf.hover)
-	map("n", "gD", vim.lsp.buf.declaration)
-	map("n", "gd", vim.lsp.buf.definition)
-	map("n", "gi", vim.lsp.buf.implementation)
-	map("n", "gr", vim.lsp.buf.references)
-	map("n", "<C-s>", vim.lsp.buf.signature_help)
-	map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-	map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+	local bufopts = { buffer = buffn }
+
+	map("n", "K", buf.hover, bufopts)
+	map("n", "gD", buf.declaration, bufopts)
+	map("n", "gd", buf.definition, bufopts)
+	map("n", "gi", buf.implementation, bufopts)
+	map("n", "gr", buf.references, bufopts)
+	map("n", "<C-s>", buf.signature_help, bufopts)
+	map("n", "<leader>wa", buf.add_workspace_folder, bufopts)
+	map("n", "<leader>wr", buf.remove_workspace_folder, bufopts)
 	map("n", "<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end)
-	map("n", "<leader>D", vim.lsp.buf.type_definition)
-	map("n", "<leader>rn", vim.lsp.buf.rename)
-	map("n", "<leader>ca", vim.lsp.buf.code_action)
-	map("n", "<leader>e", vim.diagnostic.open_float)
-	map("n", "[d", vim.diagnostic.goto_prev)
-	map("n", "]d", vim.diagnostic.goto_next)
-	map("n", "<leader>q", vim.diagnostic.setloclist)
+		print(vim.inspect(buf.list_workspace_folders()))
+	end, bufopts)
+	map("n", "<leader>D", buf.type_definition, bufopts)
+	map("n", "<leader>rn", buf.rename, bufopts)
+	map("n", "<leader>ca", buf.code_action, bufopts)
+	map("n", "<leader>e", dgnt.open_float)
+	map("n", "[d", dgnt.goto_prev)
+	map("n", "]d", dgnt.goto_next)
+	map("n", "<leader>q", dgnt.setloclist)
 end
 
-M.capabilities = cmp.update_capabilities(lsp.protocol.make_client_capabilities())
+M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 function M.makeConfig(config)
 	return vim.tbl_deep_extend("force", {

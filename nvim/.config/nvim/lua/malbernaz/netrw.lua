@@ -8,12 +8,12 @@ utils.map("n", "-", ":e %:p:h<cr>")
 
 -- remap c-r in netrw
 utils.create_cmdgroup({
-  name = "NetrwGroup",
-  event = "FileType",
-  pattern = "netrw",
-  callback = function()
-    local buf = vim.fn.expand("<abuf>")
-    utils.map_buf(buf, "n", "<c-r>", "<c-l>")
-    utils.map_buf(buf, "n", "<c-l>", "<c-w>l")
-  end,
+	name = "NetrwGroup",
+	event = "FileType",
+	pattern = "netrw",
+	callback = function()
+		local buf = vim.fn.expand("<abuf>")
+		utils.map("n", "<c-r>", "<c-l>", { buffer = buf })
+		utils.map("n", "<c-l>", "<c-w>l", { buffer = buf })
+	end,
 })
