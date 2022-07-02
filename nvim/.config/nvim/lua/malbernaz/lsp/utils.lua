@@ -2,7 +2,21 @@ local utils = require("malbernaz.utils")
 local cmp = require("cmp_nvim_lsp")
 
 local map = utils.map
-local buf = vim.lsp.buf
+local lsp = vim.lsp
+local buf = lsp.buf
+local fn = vim.fn
+
+-- customize diagnostics signs
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
+  lsp.diagnostic.on_publish_diagnostics,
+  { signs = true, underline = true, virtual_text = false, update_in_insert = false }
+)
 
 map("n", "<leader>e", vim.diagnostic.open_float)
 map("n", "[d", vim.diagnostic.goto_prev)
@@ -16,10 +30,10 @@ function M.on_init(client)
   client.config.flags.allow_incremental_sync = true
 end
 
-function M.on_attach(_, buffn)
-  vim.bo[buffn].omnifunc = "v:lua:vim.lsp.omnifunc"
+function M.on_attach(_, buffer)
+  vim.bo[buffer].omnifunc = "v:lua:vim.lsp.omnifunc"
 
-  local opts = { buffer = buffn }
+  local opts = { buffer = buffer }
 
   map("n", "gD", buf.declaration, opts)
   map("n", "gd", buf.definition, opts)
