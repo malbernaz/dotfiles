@@ -1,20 +1,15 @@
-local utils = require("malbernaz.utils")
 local cmp = require("cmp_nvim_lsp")
-
-local map = utils.map
-local lsp = vim.lsp
-local buf = lsp.buf
-local fn = vim.fn
+local map = require("malbernaz.utils").map
 
 -- customize diagnostics signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
-  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
-  lsp.diagnostic.on_publish_diagnostics,
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
   { signs = true, underline = true, virtual_text = false, update_in_insert = false }
 )
 
@@ -35,21 +30,21 @@ function M.on_attach(_, buffer)
 
   local opts = { buffer = buffer }
 
-  map("n", "gD", buf.declaration, opts)
-  map("n", "gd", buf.definition, opts)
-  map("n", "K", buf.hover, opts)
-  map("n", "gi", buf.implementation, opts)
-  map("n", "<C-k>", buf.signature_help, opts)
-  map("n", "<space>wa", buf.add_workspace_folder, opts)
-  map("n", "<space>wr", buf.remove_workspace_folder, opts)
+  map("n", "gD", vim.lsp.buf.declaration, opts)
+  map("n", "gd", vim.lsp.buf.definition, opts)
+  map("n", "K", vim.lsp.buf.hover, opts)
+  map("n", "gi", vim.lsp.buf.implementation, opts)
+  map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+  map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
   map("n", "<space>wl", function()
-    print(vim.inspect(buf.list_workspace_folders()))
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
-  map("n", "<space>D", buf.type_definition, opts)
-  map("n", "<space>rn", buf.rename, opts)
-  map("n", "<space>ca", buf.code_action, opts)
-  map("n", "gr", buf.references, opts)
-  map("n", "<space>f", buf.formatting, opts)
+  map("n", "<space>D", vim.lsp.buf.type_definition, opts)
+  map("n", "<space>rn", vim.lsp.buf.rename, opts)
+  map("n", "<space>ca", vim.lsp.buf.code_action, opts)
+  map("n", "gr", vim.lsp.buf.references, opts)
+  map("n", "<space>f", vim.lsp.buf.formatting, opts)
 end
 
 M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
