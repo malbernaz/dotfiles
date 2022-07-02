@@ -18,14 +18,12 @@ map("n", "[d", vim.diagnostic.goto_prev)
 map("n", "]d", vim.diagnostic.goto_next)
 map("n", "<leader>q", vim.diagnostic.setloclist)
 
-local M = {}
-
-function M.on_init(client)
+local function on_init(client)
   client.config.flags = client.config.flags or {}
   client.config.flags.allow_incremental_sync = true
 end
 
-function M.on_attach(_, buffer)
+local function on_attach(_, buffer)
   vim.bo[buffer].omnifunc = "v:lua:vim.lsp.omnifunc"
 
   local opts = { buffer = buffer }
@@ -47,13 +45,15 @@ function M.on_attach(_, buffer)
   map("n", "<space>f", vim.lsp.buf.formatting, opts)
 end
 
-M.capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local M = {}
 
 function M.make_config(config)
   return vim.tbl_deep_extend("force", {
-    capabilities = M.capabilities,
-    on_init = M.on_init,
-    on_attach = M.on_attach,
+    capabilities = capabilities,
+    on_init = on_init,
+    on_attach = on_attach,
   }, config or {})
 end
 
