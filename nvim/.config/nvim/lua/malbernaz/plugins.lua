@@ -66,7 +66,10 @@ packer.startup({
       config = require("malbernaz.comment"),
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
-    use("tpope/vim-fugitive")
+    use({
+      "TimUntersberger/neogit",
+      config = require("malbernaz.neogit"),
+    })
     use({ "ur4ltz/surround.nvim", config = require("malbernaz.surround") })
     use({ "lewis6991/gitsigns.nvim", config = require("malbernaz.gitsigns") })
     use({ "mhartington/formatter.nvim", config = require("malbernaz.formatter") })
