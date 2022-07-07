@@ -6,6 +6,7 @@ return function()
 
   ftp.javascript = "tsx"
   ftp.javascriptreact = "tsx"
+  ftp.svg = "html"
 
   ts.setup({
     ensure_installed = {
