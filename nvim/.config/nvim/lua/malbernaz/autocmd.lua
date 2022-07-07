@@ -39,7 +39,7 @@ create_cmdgroup({
 create_cmdgroup({
   name = "ClearStylesGroup",
   event = "FileType",
-  pattern = { "help", "fugitive", "netrw" },
+  pattern = { "help", "netrw" },
   callback = function()
     vim.wo.number = false
     vim.wo.relativenumber = false
