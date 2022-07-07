@@ -1,16 +1,26 @@
 function fish_prompt --description 'Write out the prompt'
-  set_color $fish_color_autosuggestion 2> /dev/null; or set_color 555
   if [ $fish_key_bindings = fish_vi_key_bindings ]
+    set_color $fish_color_autosuggestion
+    echo -n "("
     switch $fish_bind_mode
       case default
-        echo -n "(n) "
+        set_color green
+        echo -n "n"
       case insert
-        echo -n "(i) "
+        set_color cyan
+        echo -n "i"
       case visual
-        echo -n "(v) "
+        set_color magenta
+        echo -n "v"
+      case replace
+        set_color red
+        echo -n "r"
       case replace-one
-        echo -n "(r) "
+        set_color red
+        echo -n "r"
     end
+    set_color $fish_color_autosuggestion
+    echo -n ") "
   end
 
   set_color white
