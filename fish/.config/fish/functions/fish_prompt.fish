@@ -15,7 +15,7 @@ function fish_prompt --description 'Write out the prompt'
       case replace
         set_color red
         echo -n "r"
-      case replace-one
+      case replace_one
         set_color red
         echo -n "r"
     end
