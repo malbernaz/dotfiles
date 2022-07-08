@@ -20,3 +20,4 @@
   "|}"
 ] @punctuation.bracket
 
+(undefined) @constant.builtin
