@@ -14,6 +14,7 @@
       (assignment_pattern
         left: (identifier) @parameter))))
 
+;; type SomeType = {|name: string|}
 [
   "{|"
   "|}"
