@@ -1,7 +1,7 @@
 return function()
   local map = require("malbernaz.utils").map
   local telescope = require("telescope")
-  local builtin = telescope.builtin
+  local builtin = require("telescope.builtin")
 
   telescope.setup({
     defaults = {
