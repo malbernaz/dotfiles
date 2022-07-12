@@ -49,7 +49,10 @@ map("v", "<s-j>", ":m '>+1<cr>gv=gv")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Termianl mode
+-- search for selected text
+map("v", "//", [[y/\v<c-r>=escape(@",'/\')<cr><cr>]])
+
+-- Terminal mode
 
 -- terminal escape
 map("t", "<c-p>", "<C-\\><C-n>")

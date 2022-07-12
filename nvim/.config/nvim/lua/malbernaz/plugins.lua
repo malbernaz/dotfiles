@@ -17,16 +17,6 @@ end
 
 local packer = require("packer")
 
--- have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-    prompt_border = "rounded",
-  },
-})
-
 packer.startup({
   function(use)
     use("wbthomason/packer.nvim")
