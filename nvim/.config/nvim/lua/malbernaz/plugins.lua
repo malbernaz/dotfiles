@@ -74,6 +74,10 @@ packer.startup({
       config = require("malbernaz.zen-mode"),
       requires = { "folke/twilight.nvim" },
     })
+    use({
+      "folke/trouble.nvim",
+      config = require("malbernaz.trouble"),
+    })
     use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
     use({ "kyazdani42/nvim-tree.lua", config = require("malbernaz.nvimtree") })
 
