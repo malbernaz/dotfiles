@@ -11,8 +11,15 @@ return function()
     },
   })
 
+  map("n", "<leader>c", function()
+    builtin.find_files({
+      prompt_title = "dotfiles",
+      cwd = vim.api.nvim_list_runtime_paths()[1],
+      hidden = true,
+    })
+  end)
   map("n", "<c-p>", function()
-    builtin.git_files({ hidden = true })
+    builtin.find_files({ hidden = true })
   end)
   map("n", "<c-f>", function()
     builtin.live_grep({ hidden = true })

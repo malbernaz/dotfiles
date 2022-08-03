@@ -11,7 +11,7 @@ return function()
 
   local function stylua()
     return {
-      exe = "stylua",
+      exe = "stylua --search-parent-directories",
       stdin = false,
     }
   end

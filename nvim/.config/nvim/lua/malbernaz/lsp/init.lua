@@ -84,14 +84,6 @@ return function()
               fileMatch = { "now.json", "vercel.json" },
               url = "https://json.schemastore.org/now.json",
             },
-            {
-              fileMatch = {
-                ".stylelintrc",
-                ".stylelintrc.json",
-                "stylelint.config.json",
-              },
-              url = "http://json.schemastore.org/stylelintrc.json",
-            },
           },
         },
       },
