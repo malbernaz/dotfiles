@@ -17,11 +17,6 @@ return function()
       filetypes = {
         "html",
         "css",
-        "typescriptreact",
-        "typescript.tsx",
-        "javascriptreact",
-        "javascript",
-        "javascript.jsx",
       },
     },
     tsserver = {

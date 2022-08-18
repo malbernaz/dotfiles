@@ -20,8 +20,4 @@
   "|}"
 ] @punctuation.bracket
 
-[
- "undefined"
- "process"
- "this"
-] @constant.builtin
+(undefined) @constant.builtin
