@@ -24,7 +24,6 @@ create_cmdgroup({
   pattern = { "gitcommit", "markdown", "markdown.mdx" },
   callback = function()
     vim.wo.wrap = true
-    vim.wo.spell = true
   end,
 })
 

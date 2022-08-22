@@ -3,7 +3,8 @@ return function()
 
   local function prettier()
     local local_prettier = vim.fn.getcwd() .. "/node_modules/.bin/prettier"
-    local cmd = vim.fn.filereadable(local_prettier) and local_prettier or "prettier"
+    local cmd = vim.fn.filereadable(local_prettier) > 0 and local_prettier or "prettier"
+
     return {
       exe = cmd,
       args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },

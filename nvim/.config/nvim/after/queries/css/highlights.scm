@@ -6,5 +6,5 @@
 (attribute_selector ["="] @punctuation.delimiter)
 (attribute_selector (attribute_name) @tag.attribute)
 (plain_value) @constant
-(pseudo_class_selector (class_name) @property)
+(pseudo_class_selector (class_name) @constant)
 
