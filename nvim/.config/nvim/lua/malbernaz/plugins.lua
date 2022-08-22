@@ -67,7 +67,6 @@ packer.startup({
     use({ "windwp/nvim-ts-autotag", config = require("malbernaz.autotag") })
     use({ "akinsho/toggleterm.nvim", config = require("malbernaz.toggleterm") })
     use({ "norcalli/nvim-colorizer.lua", config = require("malbernaz.colorizer") })
-    use({ "goolord/alpha-nvim", config = require("malbernaz.startscreen") })
     use("jxnblk/vim-mdx-js")
     use({
       "folke/zen-mode.nvim",
@@ -79,7 +78,12 @@ packer.startup({
       config = require("malbernaz.trouble"),
     })
     use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
-    use({ "kyazdani42/nvim-tree.lua", config = require("malbernaz.nvimtree") })
+    use({
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = { "MunifTanjim/nui.nvim" },
+      config = require("malbernaz.neotree"),
+    })
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()
