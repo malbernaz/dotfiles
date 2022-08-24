@@ -1,6 +1,7 @@
 local term = require("toggleterm")
 
 term.setup({
+  direction = "float",
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   shade_filetypes = {},
@@ -11,10 +12,10 @@ term.setup({
   size = 20,
   close_on_exit = true,
   shell = vim.o.shell,
-  float_opts = {
-    border = "curved",
-    highlights = {
-      border = "NormalFloat",
+  float_opts = { border = "curved" },
+  highlights = {
+    FloatBorder = {
+      guifg = "#6c7689",
     },
   },
 })

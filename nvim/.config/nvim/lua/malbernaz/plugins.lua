@@ -66,7 +66,7 @@ packer.startup({
     use({
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
-      requires = { "MunifTanjim/nui.nvim" },
+      requires = { "MunifTanjim/nui.nvim", "s1n7ax/nvim-window-picker" },
     })
     use("goolord/alpha-nvim")
 
