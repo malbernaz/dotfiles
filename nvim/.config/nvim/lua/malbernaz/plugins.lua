@@ -23,13 +23,13 @@ packer.startup({
     use("lewis6991/impatient.nvim")
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
-    use({ "malbernaz/monokai.nvim", config = require("malbernaz.monokai") })
-    use({ "nvim-lualine/lualine.nvim", config = require("malbernaz.lualine") })
-    use({ "nvim-telescope/telescope.nvim", config = require("malbernaz.telescope") })
+    use("malbernaz/monokai.nvim")
+    use("folke/tokyonight.nvim")
+    use("nvim-lualine/lualine.nvim")
+    use("nvim-telescope/telescope.nvim")
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      config = require("malbernaz.treesitter"),
       requires = { "nvim-treesitter/playground" },
     })
     use({
@@ -45,45 +45,30 @@ packer.startup({
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
       },
-      config = require("malbernaz/cmp"),
     })
-    use({
-      "neovim/nvim-lspconfig",
-      config = require("malbernaz.lsp"),
-    })
+    use("neovim/nvim-lspconfig")
     use({
       "numToStr/Comment.nvim",
-      config = require("malbernaz.comment"),
       requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
-    use({
-      "TimUntersberger/neogit",
-      config = require("malbernaz.neogit"),
-    })
-    use({ "ur4ltz/surround.nvim", config = require("malbernaz.surround") })
-    use({ "lewis6991/gitsigns.nvim", config = require("malbernaz.gitsigns") })
-    use({ "mhartington/formatter.nvim", config = require("malbernaz.formatter") })
-    use({ "windwp/nvim-autopairs", config = require("malbernaz.autopairs") })
-    use({ "windwp/nvim-ts-autotag", config = require("malbernaz.autotag") })
-    use({ "akinsho/toggleterm.nvim", config = require("malbernaz.toggleterm") })
-    use({ "norcalli/nvim-colorizer.lua", config = require("malbernaz.colorizer") })
+    use("TimUntersberger/neogit")
+    use("ur4ltz/surround.nvim")
+    use("lewis6991/gitsigns.nvim")
+    use("mhartington/formatter.nvim")
+    use("windwp/nvim-autopairs")
+    use("windwp/nvim-ts-autotag")
+    use("akinsho/toggleterm.nvim")
+    use("norcalli/nvim-colorizer.lua")
     use("jxnblk/vim-mdx-js")
-    use({
-      "folke/zen-mode.nvim",
-      config = require("malbernaz.zen-mode"),
-      requires = { "folke/twilight.nvim" },
-    })
-    use({
-      "folke/trouble.nvim",
-      config = require("malbernaz.trouble"),
-    })
-    use({ "lukas-reineke/indent-blankline.nvim", config = require("malbernaz.blankline") })
+    use({ "folke/zen-mode.nvim", requires = { "folke/twilight.nvim" } })
+    use("folke/trouble.nvim")
+    use("lukas-reineke/indent-blankline.nvim")
     use({
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
       requires = { "MunifTanjim/nui.nvim" },
-      config = require("malbernaz.neotree"),
     })
+    use("goolord/alpha-nvim")
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

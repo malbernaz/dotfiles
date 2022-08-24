@@ -14,7 +14,7 @@ create_cmdgroup({
     vim.wo.number = false
     vim.wo.relativenumber = false
     vim.wo.signcolumn = "no"
-    -- vim.cmd("startinsert")
+    vim.cmd("startinsert")
   end,
 })
 
