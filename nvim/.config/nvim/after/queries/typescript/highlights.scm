@@ -21,3 +21,5 @@
 ] @punctuation.bracket
 
 (undefined) @constant.builtin
+
+(non_null_expression) @punctuation.delimiter
