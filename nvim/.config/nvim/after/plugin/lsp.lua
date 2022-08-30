@@ -1,8 +1,17 @@
 local lspconfig = require("lspconfig")
 local make_config = require("malbernaz.lsp.utils").make_config
 
+local function flow_cmd()
+  local local_flow = vim.fn.getcwd() .. "/node_modules/.bin/flow"
+  local cmd = vim.fn.filereadable(local_flow) > 0 and local_flow or "npx --no-install flow"
+
+  return { cmd, "lsp" }
+end
+
 local servers = {
-  flow = {},
+  flow = {
+    cmd = flow_cmd(),
+  },
   eslint = {},
   cssls = {},
   cssmodules_ls = {},
@@ -13,17 +22,10 @@ local servers = {
   svelte = {},
   prismals = {},
   emmet_ls = {
-    filetypes = {
-      "html",
-      "css",
-    },
+    filetypes = { "html", "css" },
   },
   tsserver = {
-    filetypes = {
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   },
   sumneko_lua = {
     settings = {
@@ -36,13 +38,6 @@ local servers = {
     },
   },
   jsonls = {
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-        end,
-      },
-    },
     settings = {
       json = {
         schemas = {

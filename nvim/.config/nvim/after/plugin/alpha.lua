@@ -1,6 +1,5 @@
 local alpha = require("alpha")
 local db = require("alpha.themes.dashboard")
-local fortune = require("alpha.fortune")
 
 db.section.header.opts.hl = "String"
 
@@ -11,8 +10,5 @@ db.section.buttons.val = {
   db.button("s", "  > Settings", ":e $HOME/.config/nvim | :cd %:p:h<CR>"),
   db.button("q", "  > Quit NVIM", ":qa<CR>"),
 }
-
-db.section.footer.val = fortune()
-db.section.footer.opts.hl = "Type"
 
 alpha.setup(db.opts)

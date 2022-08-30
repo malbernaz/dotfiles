@@ -16,6 +16,7 @@ local options = {
   shortmess = vim.o.shortmess .. "c",
   pumheight = 10,
   showmode = false,
+  autoread = true,
   updatetime = 300,
   timeoutlen = 300,
   wrap = false,
