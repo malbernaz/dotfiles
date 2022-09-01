@@ -11,9 +11,10 @@ create_cmdgroup({
   name = "TerminalGroup",
   event = "TermOpen",
   callback = function()
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-    vim.wo.signcolumn = "no"
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.colorcolumn = ""
     vim.cmd("startinsert")
   end,
 })
@@ -23,7 +24,7 @@ create_cmdgroup({
   event = "FileType",
   pattern = { "gitcommit", "markdown", "markdown.mdx" },
   callback = function()
-    vim.wo.wrap = true
+    vim.opt_local.wrap = true
   end,
 })
 
@@ -40,9 +41,9 @@ create_cmdgroup({
   event = "FileType",
   pattern = { "help", "netrw" },
   callback = function()
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-    vim.wo.signcolumn = "no"
-    vim.wo.colorcolumn = ""
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.colorcolumn = ""
   end,
 })
