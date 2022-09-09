@@ -15,10 +15,18 @@ require("window-picker").setup({
 })
 
 require("neo-tree").setup({
+  close_if_last_window = true,
+  popup_border_style = "rounded",
   filesystem = {
     filtered_items = {
       hide_dotfiles = false,
       hide_gitignored = false,
+    },
+  },
+  window = {
+    mappings = {
+      ["<2-LeftMouse>"] = "open_with_window_picker",
+      ["<cr>"] = "open_with_window_picker",
     },
   },
 })

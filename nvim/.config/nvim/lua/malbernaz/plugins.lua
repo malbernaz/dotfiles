@@ -69,6 +69,8 @@ packer.startup({
       requires = { "MunifTanjim/nui.nvim", "s1n7ax/nvim-window-picker" },
     })
     use("goolord/alpha-nvim")
+    use("fgheng/winbar.nvim")
+    use("ThePrimeagen/harpoon")
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

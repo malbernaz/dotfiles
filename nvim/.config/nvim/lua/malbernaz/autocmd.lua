@@ -39,11 +39,18 @@ create_cmdgroup({
 create_cmdgroup({
   name = "ClearStylesGroup",
   event = "FileType",
-  pattern = { "help", "netrw" },
+  pattern = {
+    "help",
+    "netrw",
+    "neo-tree",
+    "NeogitStatus",
+    "NeogitPopup",
+    "NeogitCommitMessage",
+  },
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn = "no"
-    vim.opt_local.colorcolumn = ""
+    vim.opt_local.colorcolumn = nil
   end,
 })
