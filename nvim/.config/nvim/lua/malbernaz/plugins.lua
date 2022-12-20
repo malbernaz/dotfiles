@@ -23,7 +23,7 @@ packer.startup({
     use("lewis6991/impatient.nvim")
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
-    use("malbernaz/monokai.nvim")
+    -- use("malbernaz/monokai.nvim")
     use("folke/tokyonight.nvim")
     use("nvim-lualine/lualine.nvim")
     use("nvim-telescope/telescope.nvim")

@@ -3,7 +3,7 @@ local make_config = require("malbernaz.lsp.utils").make_config
 
 local function flow_cmd()
   local local_flow = vim.fn.getcwd() .. "/node_modules/.bin/flow"
-  local cmd = vim.fn.filereadable(local_flow) > 0 and local_flow or "npx --no-install flow"
+  local cmd = vim.fn.filereadable(local_flow) > 0 and local_flow or "flow"
 
   return { cmd, "lsp" }
 end

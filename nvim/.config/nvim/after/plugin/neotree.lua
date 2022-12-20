@@ -1,5 +1,5 @@
 local map = require("malbernaz.utils").map
-local palette = require("monokai.palette")
+-- local palette = require("monokai.palette")
 
 require("window-picker").setup({
   autoselect_one = true,
@@ -10,8 +10,8 @@ require("window-picker").setup({
       buftype = { "terminal" },
     },
   },
-  fg_color = palette.base1,
-  other_win_hl_color = palette.orange,
+  -- fg_color = palette.base1,
+  -- other_win_hl_color = palette.orange,
 })
 
 require("neo-tree").setup({

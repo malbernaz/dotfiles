@@ -1,5 +1,5 @@
 local winbar = require("winbar")
-local palette = require("monokai.palette")
+local colors = require("tokyonight.colors").default
 
 winbar.setup({
   enabled = true,
@@ -8,9 +8,9 @@ winbar.setup({
   show_symbols = true,
 
   colors = {
-    path = palette.base7,
-    file_name = palette.white,
-    symbols = palette.purple,
+    path = colors.comment,
+    file_name = colors.fg,
+    symbols = colors.purple,
   },
 
   icons = {

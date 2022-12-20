@@ -1,5 +1,5 @@
 local cmp = require("cmp_nvim_lsp")
-local map = require("malbernaz.utils").map
+local nmap = require("malbernaz.utils").nmap
 
 -- customize diagnostics signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -13,10 +13,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   { signs = true, underline = true, virtual_text = false, update_in_insert = false }
 )
 
-map("n", "<leader>e", vim.diagnostic.open_float)
-map("n", "[d", vim.diagnostic.goto_prev)
-map("n", "]d", vim.diagnostic.goto_next)
-map("n", "<leader>q", vim.diagnostic.setloclist)
+nmap("<leader>e", vim.diagnostic.open_float)
+nmap("[d", vim.diagnostic.goto_prev)
+nmap("]d", vim.diagnostic.goto_next)
+nmap("<leader>q", vim.diagnostic.setloclist)
 
 local function on_init(client)
   client.config.flags = client.config.flags or {}
@@ -28,24 +28,26 @@ local function on_attach(_, buffer)
 
   local opts = { buffer = buffer }
 
-  map("n", "gD", vim.lsp.buf.declaration, opts)
-  map("n", "gd", vim.lsp.buf.definition, opts)
-  map("n", "K", vim.lsp.buf.hover, opts)
-  map("n", "gi", vim.lsp.buf.implementation, opts)
-  map("n", "<c-s>", vim.lsp.buf.signature_help, opts)
-  map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-  map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  map("n", "<space>wl", function()
+  nmap("gD", vim.lsp.buf.declaration, opts)
+  nmap("gd", vim.lsp.buf.definition, opts)
+  nmap("K", vim.lsp.buf.hover, opts)
+  nmap("gi", vim.lsp.buf.implementation, opts)
+  nmap("<c-s>", vim.lsp.buf.signature_help, opts)
+  nmap("<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+  nmap("<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+  nmap("<space>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
-  map("n", "<space>D", vim.lsp.buf.type_definition, opts)
-  map("n", "<space>rn", vim.lsp.buf.rename, opts)
-  map("n", "<space>ca", vim.lsp.buf.code_action, opts)
-  map("n", "gr", vim.lsp.buf.references, opts)
-  map("n", "<space>f", vim.lsp.buf.formatting, opts)
+  nmap("<space>D", vim.lsp.buf.type_definition, opts)
+  nmap("<space>rn", vim.lsp.buf.rename, opts)
+  nmap("<space>ca", vim.lsp.buf.code_action, opts)
+  nmap("gr", vim.lsp.buf.references, opts)
+  -- nmap("<space>f", function()
+  --   vim.lsp.buf.format({ async = true })
+  -- end, opts)
 end
 
-local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp.default_capabilities()
 
 local M = {}
 
