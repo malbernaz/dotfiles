@@ -14,15 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   "folke/lazy.nvim",
-  "kyazdani42/nvim-web-devicons",
-  "nvim-lua/plenary.nvim",
-  "folke/tokyonight.nvim",
-  "nvim-lualine/lualine.nvim",
-  "nvim-telescope/telescope.nvim",
 
+  -- tree
   "nvim-treesitter/nvim-treesitter",
   "nvim-treesitter/playground",
 
+  -- lsp
   { "VonHeikemen/lsp-zero.nvim", branch = "v1.x" },
   "neovim/nvim-lspconfig",
   "williamboman/mason.nvim",
@@ -36,13 +33,32 @@ require("lazy").setup({
   "L3MON4D3/LuaSnip",
   "rafamadriz/friendly-snippets",
 
+  -- formatting
+  "mhartington/formatter.nvim",
+
+  -- comments
   "numToStr/Comment.nvim",
   "JoosepAlviste/nvim-ts-context-commentstring",
 
+  -- git
   "TimUntersberger/neogit",
-  "ur4ltz/surround.nvim",
   "lewis6991/gitsigns.nvim",
-  "mhartington/formatter.nvim",
+
+  -- styles
+  "kyazdani42/nvim-web-devicons",
+  "folke/tokyonight.nvim",
+  "nvim-lualine/lualine.nvim",
+  "lukas-reineke/indent-blankline.nvim",
+  "MunifTanjim/nui.nvim",
+  "s1n7ax/nvim-window-picker",
+  "goolord/alpha-nvim",
+  "fgheng/winbar.nvim",
+
+  -- misc
+  { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" },
+  "nvim-lua/plenary.nvim",
+  "nvim-telescope/telescope.nvim",
+  "ur4ltz/surround.nvim",
   "windwp/nvim-autopairs",
   "windwp/nvim-ts-autotag",
   "akinsho/toggleterm.nvim",
@@ -50,10 +66,4 @@ require("lazy").setup({
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   "folke/trouble.nvim",
-  "lukas-reineke/indent-blankline.nvim",
-  { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" },
-  "MunifTanjim/nui.nvim",
-  "s1n7ax/nvim-window-picker",
-  "goolord/alpha-nvim",
-  "fgheng/winbar.nvim",
 })
