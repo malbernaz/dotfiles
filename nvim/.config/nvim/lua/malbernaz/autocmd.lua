@@ -1,13 +1,6 @@
 local create_cmdgroup = require("malbernaz.utils").create_cmdgroup
 
 create_cmdgroup({
-  name = "PackerGroup",
-  event = "BufWritePost",
-  pattern = "plugins.lua",
-  command = "source <afile> | PackerCompile",
-})
-
-create_cmdgroup({
   name = "TerminalGroup",
   event = "TermOpen",
   callback = function()
@@ -15,7 +8,6 @@ create_cmdgroup({
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn = "no"
     vim.opt_local.colorcolumn = ""
-    vim.cmd("startinsert")
   end,
 })
 

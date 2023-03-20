@@ -30,6 +30,12 @@ nmap("<leader>=", "<c-w>=")
 -- spell
 nmap("<leader>sp", ":set spell!<cr>")
 
+-- diagnostics
+nmap("<leader>e", vim.diagnostic.open_float)
+nmap("[d", vim.diagnostic.goto_prev)
+nmap("]d", vim.diagnostic.goto_next)
+nmap("<leader>q", vim.diagnostic.setloclist)
+
 -- Insert mode
 
 -- universal hjkl

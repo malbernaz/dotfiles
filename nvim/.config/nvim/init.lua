@@ -1,5 +1,3 @@
-pcall(require, "impatient")
-
 require("malbernaz.autocmd")
 require("malbernaz.mappings")
 require("malbernaz.plugins")

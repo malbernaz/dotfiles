@@ -56,6 +56,7 @@
     "/Users/malbernaz/.local/share/nvim/site/pack/packer/start/playground/after",
     "/Users/malbernaz/.local/share/nvim/site/pack/packer/start/vim-mdx-js/after",
     "/Users/malbernaz/.config/nvim/after",
-    "${3rd}/luassert/library"
+    "${3rd}/luassert/library",
+        "${3rd}/luv/library"
   ]
 }
