@@ -1,10 +1,15 @@
 local utils = require("malbernaz.utils")
 local ts = require("nvim-treesitter.configs")
 
-local ftp = require("nvim-treesitter.parsers").filetype_to_parsername
-ftp.javascript = "tsx"
-ftp.javascriptreact = "tsx"
-ftp.svg = "html"
+local langs = {
+  javascript = "tsx",
+  javascriptreact = "tsx",
+  svg = "html",
+}
+
+for k, v in pairs(langs) do
+  vim.treesitter.language.register(k, v)
+end
 
 ts.setup({
   ensure_installed = {

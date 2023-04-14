@@ -1,5 +1,7 @@
 local lsp = require("lsp-zero")
 local lspkind = require("lspkind")
+local utils = require("malbernaz.utils")
+local nmap = utils.nmap
 
 lsp.preset({
   name = "recommended",
@@ -21,6 +23,12 @@ lsp.set_preferences({
     info = " ",
   },
 })
+
+lsp.on_attach(function(_, bufnr)
+  local opts = { buffer = bufnr }
+  nmap("<leader>rn", vim.lsp.buf.rename, opts)
+  nmap("<leader>ca", vim.lsp.buf.code_action, opts)
+end)
 
 lsp.configure("tsserver", {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },

@@ -15,9 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "folke/lazy.nvim",
 
-  -- tree
+  -- treesitter
   "nvim-treesitter/nvim-treesitter",
-  "nvim-treesitter/playground",
 
   -- lsp
   { "VonHeikemen/lsp-zero.nvim", branch = "v1.x" },
@@ -66,4 +65,5 @@ require("lazy").setup({
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   "folke/trouble.nvim",
+  "github/copilot.vim",
 })
