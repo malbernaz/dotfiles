@@ -1,16 +1,6 @@
 local utils = require("malbernaz.utils")
 local ts = require("nvim-treesitter.configs")
 
-local langs = {
-  javascript = "tsx",
-  javascriptreact = "tsx",
-  svg = "html",
-}
-
-for k, v in pairs(langs) do
-  vim.treesitter.language.register(k, v)
-end
-
 ts.setup({
   ensure_installed = {
     "fish",
@@ -18,6 +8,7 @@ ts.setup({
     "bash",
     "lua",
     "vim",
+    "javascript",
     "typescript",
     "tsx",
     "jsdoc",

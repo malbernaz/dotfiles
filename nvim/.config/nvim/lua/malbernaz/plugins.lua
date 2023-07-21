@@ -40,11 +40,11 @@ require("lazy").setup({
   "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- git
-  "TimUntersberger/neogit",
+  "NeogitOrg/neogit",
   "lewis6991/gitsigns.nvim",
 
   -- styles
-  "kyazdani42/nvim-web-devicons",
+  "nvim-tree/nvim-web-devicons",
   "folke/tokyonight.nvim",
   "nvim-lualine/lualine.nvim",
   "lukas-reineke/indent-blankline.nvim",
@@ -65,5 +65,4 @@ require("lazy").setup({
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   "folke/trouble.nvim",
-  "github/copilot.vim",
 })
