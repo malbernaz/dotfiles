@@ -1,3 +1,8 @@
+local utils = require("malbernaz.utils")
+local map = utils.map
+local nmap = utils.nmap
+local vmap = utils.vmap
+
 require("gitsigns").setup({
   signs = {
     add = {
@@ -32,24 +37,38 @@ require("gitsigns").setup({
     },
   },
   preview_config = { border = "rounded" },
-  keymaps = {
-    noremap = true,
-    ["n ]c"] = { expr = true, "&diff ? ']c' : ':Gitsigns next_hunk<cr>'" },
-    ["n [c"] = { expr = true, "&diff ? '[c' : ':Gitsigns prev_hunk<cr>'" },
-    ["n <leader>hs"] = ":Gitsigns stage_hunk<cr>",
-    ["v <leader>hs"] = ":Gitsigns stage_hunk<cr>",
-    ["n <leader>hS"] = ":Gitsigns stage_buffer<cr>",
-    ["n <leader>hu"] = ":Gitsigns undo_stage_hunk<cr>",
-    ["n <leader>hr"] = ":Gitsigns reset_hunk<cr>",
-    ["v <leader>hr"] = ":Gitsigns reset_hunk<cr>",
-    ["n <leader>hR"] = ":Gitsigns reset_buffer<cr>",
-    ["n <leader>hp"] = ":Gitsigns preview_hunk<cr>",
-    ["n <leader>hb"] = ':lua require"gitsigns".blame_line{full=true}<cr>',
-    ["n <leader>tb"] = ":Gitsigns toggle_current_line_blame<cr>",
-    ["n <leader>hd"] = ":Gitsigns diffthis<cr>",
-    ["n <leader>hD"] = ":Gitsigns diffthis ~<cr>",
-    ["n <leader>td"] = ":Gitsigns toggle_deleted<cr>",
-    ["o ih"] = ":<c-U>>Gitsigns select_hunk<cr>",
-    ["x ih"] = ":<c-U>>Gitsigns select_hunk<cr>",
-  },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    -- Navigation
+    nmap(']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true, buffer = bufnr})
+
+    nmap('[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true, buffer = bufnr})
+
+    -- Actions
+    nmap('<leader>hs', gs.stage_hunk, {buffer = bufnr})
+    nmap('<leader>hr', gs.reset_hunk, {buffer = bufnr})
+    vmap('<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {buffer = bufnr})
+    vmap('<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {buffer = bufnr})
+    nmap('<leader>hS', gs.stage_buffer, {buffer = bufnr})
+    nmap('<leader>hu', gs.undo_stage_hunk, {buffer = bufnr})
+    nmap('<leader>hR', gs.reset_buffer, {buffer = bufnr})
+    nmap('<leader>hp', gs.preview_hunk, {buffer = bufnr})
+    nmap('<leader>hb', function() gs.blame_line{full=true} end, {buffer = bufnr})
+    nmap('<leader>tb', gs.toggle_current_line_blame, {buffer = bufnr})
+    nmap('<leader>hd', gs.diffthis, {buffer = bufnr})
+    nmap('<leader>hD', function() gs.diffthis('~') end, {buffer = bufnr})
+    nmap('<leader>td', gs.toggle_deleted, {buffer = bufnr})
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', {buffer = bufnr})
+  end,
 })
