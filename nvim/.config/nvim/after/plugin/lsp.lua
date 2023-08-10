@@ -17,10 +17,10 @@ lsp.ensure_installed({
 
 lsp.set_preferences({
   sign_icons = {
-    error = " ",
-    warn = " ",
-    hint = " ",
-    info = " ",
+    error = "󰅝",
+    warn = "󰳦",
+    hint = "",
+    info = "",
   },
 })
 
