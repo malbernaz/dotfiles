@@ -12,7 +12,7 @@ set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/kitty/.config/kitty
 
 # Aliases
 alias v=nvim
-alias rnw="tmux rename-window"
+alias p=pnpm
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
