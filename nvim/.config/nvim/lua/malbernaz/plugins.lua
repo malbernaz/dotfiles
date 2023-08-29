@@ -61,8 +61,5 @@ require("lazy").setup({
   "windwp/nvim-autopairs",
   "windwp/nvim-ts-autotag",
   "akinsho/toggleterm.nvim",
-  "jxnblk/vim-mdx-js",
-  "folke/zen-mode.nvim",
-  "folke/twilight.nvim",
   "folke/trouble.nvim",
 })
