@@ -1,0 +1,13 @@
+{
+  "extras": [
+    "formatting.prettier",
+    "lang.json",
+    "lang.tailwind",
+    "lang.typescript",
+    "linting.eslint",
+    "vscode"
+  ],
+  "news": {
+    "NEWS.md": "2035"
+  }
+}
