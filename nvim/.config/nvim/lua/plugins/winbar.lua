@@ -31,6 +31,7 @@ return {
       "term",
       "neo-tree",
       "terminal",
+      "lazyterm",
       "NeogitStatus",
       "NeogitPopup",
       "NeogitCommitMessage",
