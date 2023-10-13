@@ -3,6 +3,8 @@ local colors = require("tokyonight.colors").default
 return {
   "fgheng/winbar.nvim",
 
+  event = "LazyFile",
+
   opts = {
     enabled = true,
 
