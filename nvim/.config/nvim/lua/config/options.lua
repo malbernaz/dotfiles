@@ -8,3 +8,4 @@ vim.opt.sidescrolloff = 8
 vim.opt.mouse = ""
 vim.opt.swapfile = false
 vim.opt.relativenumber = false
+vim.g.root_spec = { "cwd" }
