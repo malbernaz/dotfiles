@@ -1,2 +1,7 @@
 packer_compiled.lua
 .DS_Store
+
+# zed
+.tmp*
+zed/.config/zed/conversations
+zed/.config/zed/embeddings

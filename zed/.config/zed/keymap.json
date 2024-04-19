@@ -5,8 +5,7 @@
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-/": "terminal_panel::ToggleFocus",
-      "space e": "workspace::ToggleLeftDock"
+      "ctrl-/": "terminal_panel::ToggleFocus"
     }
   },
   {
@@ -19,12 +18,30 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
+      // lsp
       "shift-k": "editor::Hover",
       "space c a": "editor::ToggleCodeActions",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+      // diagnostics
       "] d": "editor::GoToDiagnostic",
       "[ d": "editor::GoToPrevDiagnostic",
+      // git
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk"
+      "[ h": "editor::GoToPrevHunk",
+      // comments
+      "g c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      // better line moving
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown",
+      // comments
+      "g c c": "editor::ToggleComments"
     }
   }
 ]
