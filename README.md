@@ -1,3 +1,3 @@
-```
-$ stow */
+```sh
+stow --ignore=\.git/ */
 ```
