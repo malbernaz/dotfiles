@@ -9,3 +9,4 @@ vim.opt.mouse = ""
 vim.opt.swapfile = false
 vim.opt.relativenumber = false
 vim.g.root_spec = { "cwd" }
+vim.treesitter.language.register("bash", "zsh")
