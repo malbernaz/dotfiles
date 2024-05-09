@@ -29,5 +29,11 @@ plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 
+bindkey '^ ' autosuggest-accept
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+eval "$(zoxide init zsh)"
+
 autoload -Uz compinit
 compinit

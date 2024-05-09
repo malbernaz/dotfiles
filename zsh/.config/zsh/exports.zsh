@@ -13,3 +13,4 @@ export PATH="$HOME/.yarn/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export NVIMRC="$HOME/.dotfiles/nvim/.config/nvim/init.lua"
 export KITTY_CONFIG_DIRECTORY="$HOME/.dotfiles/kitty/.config/kitty"
+export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

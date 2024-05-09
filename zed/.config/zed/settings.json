@@ -20,5 +20,10 @@
     "use_system_clipboard": "always",
     "use_multiline_find": true,
     "use_smartcase_find": true
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
   }
 }
