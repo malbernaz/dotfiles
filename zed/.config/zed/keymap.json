@@ -8,6 +8,13 @@
     }
   },
   {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      // fix hjkl in file explorer
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"]
+    }
+  },
+  {
     "context": "Editor && (vim_mode == normal || vim_mode == visual)",
     "bindings": {
       "ctrl-space": "editor::SelectLargerSyntaxNode",
@@ -29,8 +36,8 @@
       // git
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPrevHunk",
-      // comments
-      "g c c": "editor::ToggleComments"
+      "space h p": "editor::ToggleHunkDiff",
+      "space h r": "editor::RevertSelectedHunks"
     }
   },
   {
@@ -39,8 +46,11 @@
       // better line moving
       "shift-k": "editor::MoveLineUp",
       "shift-j": "editor::MoveLineDown",
-      // comments
-      "g c": "editor::ToggleComments"
+      // prevent text deselection
+      ">": "editor::Indent",
+      "<": "editor::Outdent",
+      // preserve clipboard on paste
+      "p": ["vim::Paste", { "preserveClipboard": true }]
     }
   }
 ]

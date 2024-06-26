@@ -7,6 +7,7 @@ return {
         "html",
         "javascript",
         "json",
+        "json5",
         "lua",
         "markdown",
         "markdown_inline",

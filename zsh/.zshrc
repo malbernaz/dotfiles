@@ -28,6 +28,7 @@ plug "zap-zsh/fzf"
 plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
+plug "olets/zsh-window-title"
 
 bindkey '^ ' autosuggest-accept
 bindkey '^P' history-substring-search-up
