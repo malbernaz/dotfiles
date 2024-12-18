@@ -5,3 +5,5 @@ packer_compiled.lua
 .tmp*
 zed/.config/zed/conversations
 zed/.config/zed/embeddings
+
+lazy-lock.json
