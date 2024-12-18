@@ -56,6 +56,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls="ls --color"
 alias la="ls -la"
 alias v="nvim"
+alias p="pnpm"
 alias :q="exit"
 function git_branch() {
   echo $(command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
