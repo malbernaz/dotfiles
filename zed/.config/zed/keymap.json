@@ -10,15 +10,17 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      // fix hjkl in file explorer
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"]
+      "space space": "file_finder::Toggle",
+      "space e": "workspace::ToggleLeftDock"
     }
   },
   {
     "context": "Editor && (vim_mode == normal || vim_mode == visual)",
     "bindings": {
       "ctrl-space": "editor::SelectLargerSyntaxNode",
-      "backspace": "editor::SelectSmallerSyntaxNode"
+      "backspace": "editor::SelectSmallerSyntaxNode",
+      "space space": "file_finder::Toggle",
+      "space e": "workspace::ToggleLeftDock"
     }
   },
   {

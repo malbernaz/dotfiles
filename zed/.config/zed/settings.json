@@ -7,12 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "One Dark",
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "show_inline_completions": false,
   "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 12,
   "buffer_font_family": "FiraCode Nerd Font",
-  "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
   "vertical_scroll_margin": 8,
   "wrap_guides": [80, 100],
