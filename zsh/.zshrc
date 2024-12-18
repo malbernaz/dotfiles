@@ -1,40 +1,74 @@
-#!/bin/sh
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# install zap if not installed
-if [ ! -d "${XDG_DATA_HOME:-$HOME/.local/share}/zap" ]; then
-  zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# use starship propmpt if available
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in starship
 if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
-# source zap
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
-# source
-plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
-plug "$HOME/.config/zsh/functions.zsh"
+# Load completions
+autoload -Uz compinit && compinit
 
-# plugins
-plug "zsh-users/zsh-autosuggestions"
-plug "hlissner/zsh-autopair"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/vim"
-plug "zap-zsh/completions"
-plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "zsh-users/zsh-history-substring-search"
-plug "olets/zsh-window-title"
+zinit cdreplay -q
 
-bindkey '^ ' autosuggest-accept
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^y' autosuggest-accept
 
-eval "$(zoxide init zsh)"
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-autoload -Uz compinit
-compinit
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Aliases
+alias ls="ls --color"
+alias la="ls -la"
+alias v="nvim"
+alias :q="exit"
+function git_branch() {
+  echo $(command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
+}
+function gpo() {
+  command git push -u origin $(git_branch)
+}
+
+# Exports
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
+export TERMINAL="kitty"
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
