@@ -26,7 +26,7 @@ SETUVAR --export __FISH_EZA_EXPANDED:a\x1ed\x1ei\x1eid\x1eaa\x1ead\x1eai\x1eaid\
 SETUVAR --export __FISH_EZA_EXPANDED_OPT_NAME:LA\x1eLD\x1eLI\x1eLID\x1eLAA\x1eLAD\x1eLAI\x1eLAID\x1eLAAD\x1eLAAI\x1eLAAID
 SETUVAR --export __FISH_EZA_OPT_NAMES:EZA_L_OPTIONS\x1eEZA_LA_OPTIONS\x1eEZA_LD_OPTIONS\x1eEZA_LI_OPTIONS\x1eEZA_LID_OPTIONS\x1eEZA_LAA_OPTIONS\x1eEZA_LAD_OPTIONS\x1eEZA_LAI_OPTIONS\x1eEZA_LAID_OPTIONS\x1eEZA_LAAD_OPTIONS\x1eEZA_LAAI_OPTIONS\x1eEZA_LAAID_OPTIONS\x1eEZA_LL_OPTIONS\x1eEZA_LG_OPTIONS\x1eEZA_LE_OPTIONS\x1eEZA_LT_OPTIONS\x1eEZA_LC_OPTIONS\x1eEZA_LO_OPTIONS
 SETUVAR --export __FISH_EZA_SORT_OPTIONS:name\x1e\x2ename\x1esize\x1eext\x1emod\x1eold\x1eacc\x1ecr\x1einode
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR __tf_func:function\x20__tf_alias\x20\x2dd\x20\x22Correct\x20your\x20previous\x20console\x20command\x22\x3b\x20\x20set\x20\x2dl\x20fucked_up_command\x20\x24history\x5b1\x5d\x3b\x20\x20env\x20TF_SHELL\x3dfish\x20TF_ALIAS\x3d__tf_alias\x20PYTHONIOENCODING\x3dutf\x2d8\x20thefuck\x20\x24fucked_up_command\x20THEFUCK_ARGUMENT_PLACEHOLDER\x20\x24argv\x20\x7c\x20read\x20\x2dl\x20unfucked_command\x3b\x20\x20if\x20\x5b\x20\x22\x24unfucked_command\x22\x20\x21\x3d\x20\x22\x22\x20\x5d\x3b\x20\x20\x20\x20eval\x20\x24unfucked_command\x3b\x20\x20\x20\x20builtin\x20history\x20delete\x20\x2d\x2dexact\x20\x2d\x2dcase\x2dsensitive\x20\x2d\x2d\x20\x24fucked_up_command\x3b\x20\x20\x20\x20builtin\x20history\x20merge\x20\x5e\x20/dev/null\x3b\x20\x20end\x3bend\x3b
 SETUVAR __tf_vers:The\x20Fuck\x203\x2e31\x20using\x20Python\x203\x2e9\x2e7\x20and\x20Fish\x20Shell\x203\x2e3\x2e1
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
@@ -54,7 +54,7 @@ SETUVAR fish_color_operator:00a6b2
 SETUVAR fish_color_param:d7d7d7
 SETUVAR fish_color_quote:a8a8a8
 SETUVAR fish_color_redirection:808080
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
@@ -66,4 +66,4 @@ SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_prompt_pwd_dir_length:0
-SETUVAR fish_user_paths:/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/postgresql\x4015/bin\x1e/opt/homebrew/bin\x1e/Users/miguelalbernaz/\x2ecargo/bin\x1e/Users/miguelalbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2elocal/bin\x1e/Users/malbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2eyarn/bin
+SETUVAR fish_user_paths:/Users/admin\x2emiguel\x2ealbernaz/\x2ecargo/bin\x1e/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/postgresql\x4015/bin\x1e/opt/homebrew/bin\x1e/Users/miguelalbernaz/\x2ecargo/bin\x1e/Users/miguelalbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2elocal/bin\x1e/Users/malbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2eyarn/bin

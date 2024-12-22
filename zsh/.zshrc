@@ -64,12 +64,21 @@ function git_branch() {
 function gpo() {
   command git push -u origin $(git_branch)
 }
+alias lg="lazygit"
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Exports
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export TERMINAL="kitty"
 
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+# pnpm
+export PNPM_HOME="${HOME}/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
