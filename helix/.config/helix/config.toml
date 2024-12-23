@@ -4,7 +4,6 @@ theme = "tokyonight_moon"
 line-number = "relative"
 mouse = false
 rulers = [100]
-shell = ["fish"]
 true-color = true
 color-modes = true
 
