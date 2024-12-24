@@ -1,8 +1,7 @@
 # Path
-fish_add_path ~/.yarn/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
-fish_add_path /opt/homebrew/opt/rustup/bin
+fish_add_path ~/Library/pnpm
 
 # Variables
 set EDITOR nvim
@@ -17,19 +16,11 @@ alias lg="lazygit"
 alias v=nvim
 alias p=pnpm
 alias :q=exit
-function gpo
-    git push -u origin (git_branch)
-end
+alias gpo="git push -u origin $(git_branch)"
 
+# Sources
 if [ -f /opt/homebrew/bin/brew ]
     eval (/opt/homebrew/bin/brew shellenv)
 end
 
 zoxide init --cmd cd fish | source
-
-# pnpm
-set -gx PNPM_HOME "/Users/malbernaz/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end

@@ -49,4 +49,4 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_prompt_pwd_dir_length:0
-SETUVAR fish_user_paths:/Users/admin\x2emiguel\x2ealbernaz/\x2ecargo/bin\x1e/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/postgresql\x4015/bin\x1e/opt/homebrew/bin\x1e/Users/miguelalbernaz/\x2ecargo/bin\x1e/Users/miguelalbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2elocal/bin\x1e/Users/malbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2eyarn/bin
+SETUVAR fish_user_paths:/Users/admin\x2emiguel\x2ealbernaz/Library/pnpm\x1e/Users/admin\x2emiguel\x2ealbernaz/\x2ecargo/bin\x1e/opt/homebrew/opt/rustup/bin\x1e/opt/homebrew/opt/postgresql\x4015/bin\x1e/opt/homebrew/bin\x1e/Users/miguelalbernaz/\x2ecargo/bin\x1e/Users/miguelalbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2elocal/bin\x1e/Users/malbernaz/\x2eyarn/bin\x1e/Users/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2ecargo/bin\x1e/home/malbernaz/\x2eyarn/bin
