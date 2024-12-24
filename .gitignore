@@ -3,8 +3,8 @@ packer_compiled.lua
 
 # zed
 .tmp*
-zed/.config/zed/conversations
-zed/.config/zed/embeddings
-zed/.config/zed/prompts
+.config/zed/conversations
+.config/zed/embeddings
+.config/zed/prompts
 
 lazy-lock.json
