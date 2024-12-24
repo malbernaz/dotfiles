@@ -24,7 +24,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     set_color white
-    echo -n λ (prompt_pwd)/
+    echo -n λ (prompt_pwd)
 
     set -l git_branch (command git symbolic-ref --quiet --short HEAD 2> /dev/null)
     set -l git_commit (command git rev-parse --short HEAD 2> /dev/null)

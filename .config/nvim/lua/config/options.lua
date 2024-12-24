@@ -71,3 +71,6 @@ vim.opt.scrolloff = 10
 
 -- Global status line
 vim.opt.laststatus = 3
+
+-- Disable swapfile
+vim.opt.swapfile = false
