@@ -18,9 +18,11 @@ alias p=pnpm
 alias :q=exit
 alias gpo="git push -u origin $(git_branch)"
 
-# Sources
+# Homebrew
 if [ -f /opt/homebrew/bin/brew ]
     eval (/opt/homebrew/bin/brew shellenv)
 end
+set -gx HOMEBREW_AUTO_UPDATE_SECS 604800 # one week
 
+# Zoxide
 zoxide init --cmd cd fish | source
