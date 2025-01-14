@@ -66,14 +66,14 @@ return {
           map(
             "gs",
             require("telescope.builtin").lsp_document_symbols,
-            "[G]ocument [S]ymbols"
+            "[G]oto [S]ymbols"
           )
           map(
             "<leader>ws",
             require("telescope.builtin").lsp_dynamic_workspace_symbols,
             "[W]orkspace [S]ymbols"
           )
-          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+          map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
           map(
             "<leader>ca",
             vim.lsp.buf.code_action,

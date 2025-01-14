@@ -15,6 +15,18 @@ return {
   },
   config = function()
     require("telescope").setup({
+      defaults = {
+        file_ignore_patterns = {
+          "%.git/",
+          "%-lock%.json",
+          "%.lock",
+          "%.jpg",
+          "%.jpeg",
+          "%.png",
+          "%.aseprite",
+          "%.ase",
+        },
+      },
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
@@ -77,12 +89,6 @@ return {
       "<leader>sb",
       builtin.buffers,
       { desc = "[S]earch existing [B]uffers" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>d",
-      require("telescope.builtin").diagnostics,
-      { desc = "Open [D]iagnostics list" }
     )
 
     vim.keymap.set("n", "<leader>/", function()
