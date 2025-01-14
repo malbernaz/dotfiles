@@ -1,4 +1,16 @@
 theme = tokyonight
 
-font-family = "JetBrainsMono Nerd Font"
+# already default
+font-family = "JetBrainsMono Nerd Font Mono"
 
+window-padding-balance = true
+
+# better hjkl
+keybind = global:super+shift+h=goto_split:left
+keybind = global:super+shift+j=goto_split:bottom
+keybind = global:super+shift+k=goto_split:top
+keybind = global:super+shift+l=goto_split:right
+
+# quick terminal
+quick-terminal-position = "bottom"
+keybind = global:super+/=toggle_quick_terminal
