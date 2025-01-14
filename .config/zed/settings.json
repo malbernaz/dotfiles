@@ -7,11 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Zedokai Darker (Filter Octagon)",
+  "theme": "Tokyo Night",
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "provider": "google",
+      "model": "gemini-1.5-flash"
     },
     "version": "2"
   },
@@ -22,7 +22,7 @@
   "buffer_font_family": "FiraCode Nerd Font",
   "scrollbar": { "show": "never" },
   "vertical_scroll_margin": 8,
-  "wrap_guides": [80, 100],
+  "wrap_guides": [100],
   "vim": {
     "use_system_clipboard": "always",
     "use_multiline_find": true,

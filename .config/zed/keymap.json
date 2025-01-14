@@ -8,6 +8,20 @@
     }
   },
   {
+    "context": "Editor && showing_completions",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion"
+    }
+  },
+  {
+    "context": "Editor && showing_code_actions",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCodeAction"
+    }
+  },
+  {
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "space space": "file_finder::Toggle",
