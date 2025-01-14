@@ -6,6 +6,12 @@ mouse = false
 rulers = [100]
 true-color = true
 color-modes = true
+cursorline = true
+# end-of-line-diagnostics = "hint"
+
+[editor.statusline]
+left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["spinner", "diagnostics", "selections", "register", "position", "file-encoding"]
 
 [editor.indent-guides]
 render = true
@@ -20,9 +26,28 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
+# [editor.inline-diagnostics]
+# cursor-line = "error"
+
 [keys.normal]
+# better window mode move
 C-h = "jump_view_left"
 C-j = "jump_view_down"
 C-k = "jump_view_up"
 C-l = "jump_view_right"
+
+# config open and reload
 "C-," = ":config-open"
+"C-." = ":config-reload"
+
+# misc
+n.g = ":reset-diff-change"
+
+# move lines up and down
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+[keys.select]
+# move lines up and down
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
