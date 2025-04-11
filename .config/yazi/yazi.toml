@@ -1,5 +1,6 @@
 [manager]
 show_hidden = true
+ratio = [1, 2, 2]
 
 [opener]
 edit = [

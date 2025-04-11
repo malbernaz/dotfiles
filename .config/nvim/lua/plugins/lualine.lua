@@ -51,7 +51,19 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          "filename",
+          {
+            "filename",
+            file_status = true,
+            newfile_status = false,
+            path = 1,
+            shorting_target = 40,
+            symbols = {
+              modified = "[+]",
+              readonly = "[-]",
+              unnamed = "[No Name]",
+              newfile = "[New]",
+            },
+          },
         },
         lualine_x = {
           {

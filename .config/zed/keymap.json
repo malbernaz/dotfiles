@@ -1,10 +1,12 @@
 [
   {
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // originally "collab_panel::ToggleFocus"
+      "cmd-shift-c": null
     }
   },
   {
@@ -48,12 +50,12 @@
       "g r": "editor::FindAllReferences",
       // diagnostics
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
       // git
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk",
-      "space h p": "editor::ToggleHunkDiff",
-      "space h r": "editor::RevertSelectedHunks"
+      "[ h": "editor::GoToPreviousHunk",
+      "space h p": "editor::ToggleSelectedDiffHunks",
+      "space h r": "git::Restore"
     }
   },
   {
@@ -66,7 +68,7 @@
       ">": "editor::Indent",
       "<": "editor::Outdent",
       // preserve clipboard on paste
-      "p": ["vim::Paste", { "preserveClipboard": true }]
+      "p": ["vim::Paste", { "preserve_clipboard": true }]
     }
   }
 ]

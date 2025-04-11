@@ -12,5 +12,5 @@ keybind = global:super+shift+k=goto_split:top
 keybind = global:super+shift+l=goto_split:right
 
 # quick terminal
-quick-terminal-position = "bottom"
-keybind = global:super+/=toggle_quick_terminal
+# quick-terminal-position = "bottom"
+# keybind = global:super+/=toggle_quick_terminal

@@ -8,6 +8,7 @@ set EDITOR hx
 set GIT_EDITOR hx
 set NVIMRC $HOME/.dotfiles/.config/nvim/init.lua
 set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/.config/kitty
+set --universal nvm_default_version latest
 
 # Aliases
 alias ls="ls --color"
@@ -16,7 +17,9 @@ alias lg="lazygit"
 alias v=nvim
 alias p=pnpm
 alias :q=exit
-alias gpo="git push -u origin $(git_branch)"
+function gpo
+    git push -u origin (git_branch)
+end
 
 # yazi
 function y
@@ -33,7 +36,7 @@ if [ -f /opt/homebrew/bin/brew ]
     eval (/opt/homebrew/bin/brew shellenv)
 end
 set -gx HOMEBREW_AUTO_UPDATE_SECS 604800 # one week
-set -gx HOMEBREW_NO_ENV_HINTS false # disable hints
+set -gx HOMEBREW_NO_ENV_HINTS "" # disable hints
 
 # Zoxide
 zoxide init --cmd cd fish | source

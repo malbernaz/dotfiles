@@ -1,4 +1,4 @@
-theme = "tokyonight"
+theme = "tokyonight_custom"
 
 [editor]
 line-number = "relative"
@@ -7,11 +7,15 @@ rulers = [100]
 true-color = true
 color-modes = true
 cursorline = true
-# end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "hint"
 
 [editor.statusline]
 left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["spinner", "diagnostics", "selections", "register", "position", "file-encoding"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
 
 [editor.indent-guides]
 render = true
@@ -26,8 +30,8 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-# [editor.inline-diagnostics]
-# cursor-line = "error"
+[editor.inline-diagnostics]
+cursor-line = "error"
 
 [keys.normal]
 # better window mode move
@@ -39,9 +43,6 @@ C-l = "jump_view_right"
 # config open and reload
 "C-," = ":config-open"
 "C-." = ":config-reload"
-
-# misc
-n.g = ":reset-diff-change"
 
 # move lines up and down
 A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
