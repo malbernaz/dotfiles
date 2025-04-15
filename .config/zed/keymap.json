@@ -6,7 +6,8 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
       // originally "collab_panel::ToggleFocus"
-      "cmd-shift-c": null
+      "cmd-shift-c": null,
+      "ctrl-/": "workspace::ToggleBottomDock"
     }
   },
   {
@@ -55,7 +56,9 @@
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
       "space h p": "editor::ToggleSelectedDiffHunks",
-      "space h r": "git::Restore"
+      "space h b": "git::Blame",
+      "space h r": "git::Restore",
+      "space h s": "git::ToggleStaged"
     }
   },
   {
