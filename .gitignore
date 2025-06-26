@@ -6,5 +6,3 @@ packer_compiled.lua
 .config/zed/conversations
 .config/zed/embeddings
 .config/zed/prompts
-
-lazy-lock.json

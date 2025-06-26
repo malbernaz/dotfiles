@@ -14,10 +14,14 @@
     "button": false
   },
   "theme": "Tokyo Night",
-  "assistant": {
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet"
+    },
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
@@ -29,6 +33,7 @@
   "scrollbar": { "show": "never" },
   "vertical_scroll_margin": 8,
   "wrap_guides": [100],
+  "tab_size": 2,
   "vim": {
     "use_system_clipboard": "always",
     "use_multiline_find": true,
