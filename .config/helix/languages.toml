@@ -3,25 +3,86 @@ biome = { command = "biome", args = ["lsp-proxy"] }
 
 [[language]]
 name = "javascript"
-language-servers = [{ name = "typescript-language-server", except-features = [ "format" ] }, { name = "biome", only-features = [ "format" ] }]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = [{ name = "typescript-language-server", except-features = [ "format" ] }, { name = "biome", only-features = [ "format" ] }]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
 auto-format = true
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = [{ name = "typescript-language-server", except-features = [ "format" ] }, { name = "biome", only-features = [ "format" ] }]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "tailwindcss-ls",
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
 
 [[language]]
 name = "jsx"
-language-servers = [{ name = "typescript-language-server", except-features = [ "format" ] }, { name = "biome", only-features = [ "format" ] }]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "tailwindcss-ls",
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
 auto-format = true
 
 [[language]]
 name = "json"
-language-servers = ["biome"]
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
+auto-format = true
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "css"
+language-servers = ["tailwindcss-ls", "vscode-css-language-server"]
+
+[[language]]
+name = "svelte"
+language-servers = [
+  "svelteserver",
+  "tailwindcss-ls",
+  { name = "biome", only-features = [
+    "format",
+  ] },
+]
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["format", "-"] }
 auto-format = true

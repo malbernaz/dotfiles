@@ -8,7 +8,7 @@ set EDITOR hx
 set GIT_EDITOR hx
 set NVIMRC $HOME/.dotfiles/.config/nvim/init.lua
 set KITTY_CONFIG_DIRECTORY $HOME/.dotfiles/.config/kitty
-set --universal nvm_default_version latest
+set --global nvm_default_version latest
 
 # Aliases
 alias ls="ls --color"
