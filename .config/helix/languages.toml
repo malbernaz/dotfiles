@@ -67,10 +67,12 @@ auto-format = true
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+auto-format = true
 
 [[language]]
 name = "css"
 language-servers = ["tailwindcss-ls", "vscode-css-language-server"]
+auto-format = true
 
 [[language]]
 name = "svelte"
@@ -81,6 +83,7 @@ language-servers = [
     "format",
   ] },
 ]
+auto-format = true
 
 [[language]]
 name = "toml"
