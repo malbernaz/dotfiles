@@ -13,7 +13,7 @@ vim.g.have_nerd_font = true
 --  For more options, you can see `:help option-list`
 
 vim.o.expandtab = true
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2
 
 -- Make line numbers default
 vim.o.number = true
@@ -77,3 +77,6 @@ vim.o.swapfile = false
 
 -- Disable text wrapping
 vim.o.wrap = false
+
+-- Window borders
+vim.o.winborder = "rounded"

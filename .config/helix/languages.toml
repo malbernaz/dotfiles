@@ -1,42 +1,16 @@
-[language-server]
-biome = { command = "biome", args = ["lsp-proxy"] }
-
 [[language]]
 name = "javascript"
 language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  { name = "biome", only-features = [
-    "format",
-  ] },
 ]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.js",
+] }
 auto-format = true
-
-[[language]]
-name = "typescript"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  { name = "biome", only-features = [
-    "format",
-  ] },
-]
-auto-format = true
-
-[[language]]
-name = "tsx"
-auto-format = true
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "tailwindcss-ls",
-  { name = "biome", only-features = [
-    "format",
-  ] },
-]
 
 [[language]]
 name = "jsx"
@@ -45,10 +19,41 @@ language-servers = [
     "format",
   ] },
   "tailwindcss-ls",
-  { name = "biome", only-features = [
+]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.jsx",
+] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [
+  { name = "typescript-language-server", except-features = [
     "format",
   ] },
 ]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.ts",
+] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "tailwindcss-ls",
+]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.tsx",
+] }
 auto-format = true
 
 [[language]]
@@ -57,11 +62,12 @@ language-servers = [
   { name = "vscode-json-language-server", except-features = [
     "format",
   ] },
-  "biome",
-  { name = "biome", only-features = [
-    "format",
-  ] },
 ]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.json",
+] }
 auto-format = true
 
 [[language]]
@@ -72,17 +78,21 @@ auto-format = true
 [[language]]
 name = "css"
 language-servers = ["tailwindcss-ls", "vscode-css-language-server"]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.css",
+] }
 auto-format = true
 
 [[language]]
 name = "svelte"
-language-servers = [
-  "svelteserver",
-  "tailwindcss-ls",
-  { name = "biome", only-features = [
-    "format",
-  ] },
-]
+language-servers = ["svelteserver", "tailwindcss-ls"]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "x.svelte",
+] }
 auto-format = true
 
 [[language]]

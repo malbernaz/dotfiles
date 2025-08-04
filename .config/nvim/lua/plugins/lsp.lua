@@ -2,34 +2,28 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      {
-        "williamboman/mason.nvim",
-        opts = {
-          ui = {
-            border = "rounded",
-            width = 0.8,
-            height = 0.8,
-            backdrop = 100,
+      { "mason-org/mason.nvim", opts = { ui = { backdrop = 100 } } },
+      "mason-org/mason-lspconfig.nvim",
+      "saghen/blink.cmp",
+      "j-hui/fidget.nvim",
+    },
+    opts = {
+      servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+            },
           },
         },
-      }, -- NOTE: Must be loaded before dependants
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "j-hui/fidget.nvim", opts = {} },
-      "hrsh7th/cmp-nvim-lsp",
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-          library = {
-            -- Load luvit types when the `vim.uv` word is found
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
-          },
-        },
-        dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
       },
     },
-    config = function()
+    config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
         callback = function(event)
@@ -91,7 +85,8 @@ return {
           if
             client
             and client.supports_method(
-              vim.lsp.protocol.Methods.textDocument_documentHighlight
+              vim.lsp.protocol.Methods.textDocument_documentHighlight,
+              event.buf
             )
           then
             local highlight_augroup =
@@ -131,7 +126,8 @@ return {
           if
             client
             and client.supports_method(
-              vim.lsp.protocol.Methods.textDocument_inlayHint
+              vim.lsp.protocol.Methods.textDocument_inlayHint,
+              event.buf
             )
           then
             map("<leader>th", function()
@@ -143,6 +139,7 @@ return {
         end,
       })
 
+      -- diagnostics
       local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
       local diagnostic_signs = {}
       for type, icon in pairs(signs) do
@@ -153,56 +150,19 @@ return {
         virtual_text = false,
       })
 
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend(
-        "force",
-        capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      -- setup blink capabilities
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        -- passing config.capabilities to blink.cmp merges with the capabilities in your
+        -- `opts[server].capabilities, if you've defined it
+        config.capabilities =
+          require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-      }
-
-      require("mason").setup()
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        "stylua", -- Used to format Lua code
-      })
-      require("mason-tool-installer").setup({
-        ensure_installed = ensure_installed,
-      })
-
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend(
-              "force",
-              {},
-              capabilities,
-              server.capabilities or {}
-            )
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
-      })
+      --setup mason
+      require("mason").setup();
+      require("mason-lspconfig").setup();
     end,
   },
 }

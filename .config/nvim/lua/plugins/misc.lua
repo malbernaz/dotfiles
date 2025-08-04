@@ -1,5 +1,4 @@
 return {
-  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -22,11 +21,5 @@ return {
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi("Comment gui=none")
     end,
-  },
-  {
-    "folke/todo-comments.nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { signs = false },
   },
 }

@@ -11,7 +11,7 @@ return {
         return vim.fn.executable("make") == 1
       end,
     },
-    { "nvim-telescope/telescope-ui-select.nvim" },
+    "nvim-telescope/telescope-ui-select.nvim",
   },
   config = function()
     require("telescope").setup({
@@ -20,11 +20,9 @@ return {
           "%.git/",
           "%-lock%.json",
           "%.lock",
-          "%.jpg",
-          "%.jpeg",
-          "%.png",
           "%.aseprite",
           "%.ase",
+          "%.glb",
         },
       },
       extensions = {
@@ -37,6 +35,7 @@ return {
     -- Enable Telescope extensions if they are installed
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
+
 
     local builtin = require("telescope.builtin")
     vim.keymap.set(
@@ -63,9 +62,11 @@ return {
     vim.keymap.set("n", "<leader>sw", function()
       builtin.grep_string({ hidden = true, ignore = true })
     end, { desc = "[S]earch current [W]ord" })
+
     vim.keymap.set("n", "<leader>sg", function()
-      builtin.live_grep({ hidden = true, ignore = true })
+      builtin.live_grep({ additional_args = { "--hidden" } })
     end, { desc = "[S]earch by [G]rep" })
+
     vim.keymap.set(
       "n",
       "<leader>sd",

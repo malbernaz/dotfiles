@@ -7,11 +7,11 @@ return {
       local neogit = require("neogit")
 
       neogit.setup({
-        kind = "floating",
+        kind = "vsplit",
       })
 
       vim.keymap.set("n", "<leader>gg", function()
-        require("neogit").open({ kind = "floating" })
+        require("neogit").open({ kind = "vsplit" })
       end, { desc = "Neogit" })
     end,
   },

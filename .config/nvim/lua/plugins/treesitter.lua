@@ -3,11 +3,10 @@ return {
   build = ":TSUpdate",
   lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
   main = "nvim-treesitter.configs",
-  keys = {
-    { "<c-space>", desc = "Increment Selection" },
-    { "<bs>", desc = "Decrement Selection", mode = "x" },
-  },
   opts_extend = { "ensure_installed" },
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   opts = {
     auto_install = true,
     highlight = { enable = true },

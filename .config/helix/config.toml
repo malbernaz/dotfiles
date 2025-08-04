@@ -10,8 +10,20 @@ cursorline = true
 end-of-line-diagnostics = "hint"
 
 [editor.statusline]
-left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
-right = ["spinner", "diagnostics", "selections", "register", "position", "file-encoding"]
+left = [
+  "mode",
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
+right = [
+  "spinner",
+  "diagnostics",
+  "selections",
+  "register",
+  "position",
+  "file-encoding",
+]
 mode.normal = "N"
 mode.insert = "I"
 mode.select = "S"
@@ -45,10 +57,20 @@ C-l = "jump_view_right"
 "C-." = ":config-reload"
 
 # move lines up and down
-A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 
 [keys.select]
 # move lines up and down
-A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]

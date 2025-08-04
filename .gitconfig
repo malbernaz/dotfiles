@@ -1,18 +1,18 @@
 [user]
-	email = albernazmiguel@gmail.com
-	name = Miguel Albernaz
+  email = albernazmiguel@gmail.com
+  name = Miguel Albernaz
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
-	ff = only
+  ff = only
 [core]
-	edit = nvim
-	editor = nvim
-	ignorecase = false
+  edit = nvim
+  editor = nvim
+  ignorecase = false
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [diff]
-    external = difft
+  external = difft

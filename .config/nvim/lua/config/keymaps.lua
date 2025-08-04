@@ -7,12 +7,13 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  local count = next and 1 or -1
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go({ severity = severity })
+    vim.diagnostic.jump({ count = count, severity = severity })
   end
 end
+
 vim.keymap.set(
   "n",
   "<leader>cd",
@@ -109,3 +110,17 @@ vim.keymap.set("v", "`p", '"0p', { desc = "Paste last yanked" })
 
 -- Better redo
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- Terminal
+vim.keymap.set({ "n", "t" }, "<c-/>", function()
+  require("snacks.terminal").toggle(nil, { cwd = vim.uv.cwd() })
+end, { desc = "Toggle terminal" })
+
+-- Notifications
+vim.keymap.set("n", "<leader>n", function()
+  require("snacks.notifier").show_history()
+end, { desc = "[N]otification History" })
+
+vim.keymap.set("n", "<leader>tn", function()
+  require("snacks.notifier").hide()
+end, { desc = "[T]oggle All [N]otifications" })
