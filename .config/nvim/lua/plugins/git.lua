@@ -2,18 +2,40 @@ return {
   {
     "NeogitOrg/neogit",
     event = "VeryLazy",
-    config = true,
-    init = function()
-      local neogit = require("neogit")
-
-      neogit.setup({
+    keys = {
+      {
+        "<leader>gg",
+        function()
+          require("neogit").open({ kind = "vsplit" })
+        end,
+        mode = "n",
+        desc = "Neo[G]it",
+      },
+    },
+    config = {
+      kind = "vsplit",
+      commit_editor = {
         kind = "vsplit",
-      })
-
-      vim.keymap.set("n", "<leader>gg", function()
-        require("neogit").open({ kind = "vsplit" })
-      end, { desc = "Neogit" })
-    end,
+      },
+      commit_select_view = {
+        kind = "vsplit",
+      },
+      log_view = {
+        kind = "vsplit",
+      },
+      reflog_view = {
+        kind = "vsplit",
+      },
+      popup = {
+        kind = "vsplit",
+      },
+      stash = {
+        kind = "vsplit",
+      },
+      refs_view = {
+        kind = "vsplit",
+      },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",

@@ -39,7 +39,6 @@ return {
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
 
-
     local builtin = require("telescope.builtin")
     vim.keymap.set(
       "n",
@@ -78,12 +77,6 @@ return {
     )
     vim.keymap.set(
       "n",
-      "<leader>sr",
-      builtin.resume,
-      { desc = "[S]earch [R]esume" }
-    )
-    vim.keymap.set(
-      "n",
       "<leader>s.",
       builtin.oldfiles,
       { desc = '[S]earch Recent Files ("." for repeat)' }
@@ -98,7 +91,6 @@ return {
     vim.keymap.set("n", "<leader>/", function()
       builtin.current_buffer_fuzzy_find(
         require("telescope.themes").get_dropdown({
-          winblend = 10,
           previewer = false,
         })
       )

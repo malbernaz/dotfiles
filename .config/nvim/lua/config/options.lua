@@ -12,71 +12,71 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
 
 -- Make line numbers default
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Don't show the mode, since it's already in the status line
-vim.o.showmode = false
+vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.o.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = "yes:2"
+vim.opt.signcolumn = "yes:2"
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.o.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.o.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.o.inccommand = "split"
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.opt.scrolloff = 10
 
 -- Global status line
-vim.o.laststatus = 3
+vim.opt.laststatus = 3
 
 -- Disable swapfile
-vim.o.swapfile = false
+vim.opt.swapfile = false
 
 -- Disable text wrapping
-vim.o.wrap = false
+vim.opt.wrap = false
 
 -- Window borders
-vim.o.winborder = "rounded"
+vim.opt.winborder = "rounded"

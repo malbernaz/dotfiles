@@ -5,7 +5,6 @@ return {
       { "mason-org/mason.nvim", opts = { ui = { backdrop = 100 } } },
       "mason-org/mason-lspconfig.nvim",
       "saghen/blink.cmp",
-      "j-hui/fidget.nvim",
     },
     opts = {
       servers = {
@@ -17,6 +16,21 @@ return {
               },
               completion = {
                 callSnippet = "Replace",
+              },
+            },
+          },
+        },
+        vtsls = {
+          settings = {
+            tsserver = {
+              globalPlugins = {
+                {
+                  name = "typescript-svelte-plugin",
+                  location = vim.fn.stdpath("data")
+                    .. "/mason/packages/svelte-language-server"
+                    .. "/node_modules/typescript-svelte-plugin",
+                  enableForWorkspaceTypeScriptVersions = true,
+                },
               },
             },
           },
@@ -76,6 +90,15 @@ return {
           )
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+          -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+          ---@param client vim.lsp.Client
+          ---@param method vim.lsp.protocol.Method
+          ---@param bufnr? integer some lsp support methods only in specific files
+          ---@return boolean
+          local function client_supports_method(client, method, bufnr)
+            return client:supports_method(method, bufnr)
+          end
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -84,7 +107,8 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if
             client
-            and client.supports_method(
+            and client_supports_method(
+              client,
               vim.lsp.protocol.Methods.textDocument_documentHighlight,
               event.buf
             )
@@ -125,7 +149,8 @@ return {
           -- This may be unwanted, since they displace some of your code
           if
             client
-            and client.supports_method(
+            and client_supports_method(
+              client,
               vim.lsp.protocol.Methods.textDocument_inlayHint,
               event.buf
             )
@@ -140,14 +165,31 @@ return {
       })
 
       -- diagnostics
-      local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-      local diagnostic_signs = {}
-      for type, icon in pairs(signs) do
-        diagnostic_signs[vim.diagnostic.severity[type]] = icon
-      end
       vim.diagnostic.config({
-        signs = { text = diagnostic_signs },
-        virtual_text = false,
+        severity_sort = true,
+        float = { border = "rounded", source = "if_many" },
+        underline = { severity = vim.diagnostic.severity.ERROR },
+        signs = vim.g.have_nerd_font and {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            [vim.diagnostic.severity.WARN] = "󰀪 ",
+            [vim.diagnostic.severity.INFO] = "󰋽 ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+          },
+        } or {},
+        virtual_text = {
+          source = "if_many",
+          spacing = 2,
+          format = function(diagnostic)
+            local diagnostic_message = {
+              [vim.diagnostic.severity.ERROR] = diagnostic.message,
+              [vim.diagnostic.severity.WARN] = diagnostic.message,
+              [vim.diagnostic.severity.INFO] = diagnostic.message,
+              [vim.diagnostic.severity.HINT] = diagnostic.message,
+            }
+            return diagnostic_message[diagnostic.severity]
+          end,
+        },
       })
 
       -- setup blink capabilities
@@ -161,8 +203,12 @@ return {
       end
 
       --setup mason
-      require("mason").setup();
-      require("mason-lspconfig").setup();
+      require("mason").setup()
+      require("mason-lspconfig").setup()
     end,
+  },
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
   },
 }

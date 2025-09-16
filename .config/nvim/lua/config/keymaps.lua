@@ -61,9 +61,8 @@ vim.keymap.set(
 )
 
 -- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
+-- Use CTRL+<hjkl> to switch between windows
+
 vim.keymap.set(
   "n",
   "<C-h>",
