@@ -60,33 +60,51 @@ vim.keymap.set(
   { desc = "Exit terminal mode" }
 )
 
--- Keybinds to make split navigation easier.
--- Use CTRL+<hjkl> to switch between windows
-
-vim.keymap.set(
-  "n",
-  "<C-h>",
-  "<C-w><C-h>",
-  { desc = "Move focus to the left window" }
-)
-vim.keymap.set(
-  "n",
-  "<C-l>",
-  "<C-w><C-l>",
-  { desc = "Move focus to the right window" }
-)
-vim.keymap.set(
-  "n",
-  "<C-j>",
-  "<C-w><C-j>",
-  { desc = "Move focus to the lower window" }
-)
-vim.keymap.set(
-  "n",
-  "<C-k>",
-  "<C-w><C-k>",
-  { desc = "Move focus to the upper window" }
-)
+-- recommended mappings
+-- resizing splits
+-- these keymaps will also accept a range,
+-- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+vim.keymap.set("n", "<A-h>", function()
+  require("smart-splits").resize_left()
+end)
+vim.keymap.set("n", "<A-j>", function()
+  require("smart-splits").resize_down()
+end)
+vim.keymap.set("n", "<A-k>", function()
+  require("smart-splits").resize_up()
+end)
+vim.keymap.set("n", "<A-l>", function()
+  require("smart-splits").resize_right()
+end)
+-- moving between splits
+vim.keymap.set("n", "<C-h>", function()
+  require("smart-splits").move_cursor_left()
+end)
+vim.keymap.set("n", "<C-j>", function()
+  require("smart-splits").move_cursor_down()
+end)
+vim.keymap.set("n", "<C-k>", function()
+  require("smart-splits").move_cursor_up()
+end)
+vim.keymap.set("n", "<C-l>", function()
+  require("smart-splits").move_cursor_right()
+end)
+vim.keymap.set("n", "<C-\\>", function()
+  require("smart-splits").move_cursor_previous()
+end)
+-- swapping buffers between windows
+vim.keymap.set("n", "<leader><leader>h", function()
+  require("smart-splits").swap_buf_left()
+end)
+vim.keymap.set("n", "<leader><leader>j", function()
+  require("smart-splits").swap_buf_down()
+end)
+vim.keymap.set("n", "<leader><leader>k", function()
+  require("smart-splits").swap_buf_up()
+end)
+vim.keymap.set("n", "<leader><leader>l", function()
+  require("smart-splits").swap_buf_right()
+end)
 
 -- Move lines on visual mode
 vim.keymap.set("v", "<s-j>", ":m '>+1<cr>gv=gv", { silent = true })
