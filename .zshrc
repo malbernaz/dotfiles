@@ -73,7 +73,7 @@ eval "$(zoxide init --cmd cd zsh)"
 # Exports
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="wezterm"
 
 # pnpm
 export PNPM_HOME="${HOME}/Library/pnpm"
