@@ -27,7 +27,7 @@ config.colors = {
 }
 
 wezterm.on("update-right-status", function(window)
-  local date = wezterm.strftime("%H:%M %Y/%d/%m")
+  local date = wezterm.strftime("%H:%M %d/%m/%Y")
 
   window:set_right_status(wezterm.format({ { Text = date .. " " } }))
 end)
