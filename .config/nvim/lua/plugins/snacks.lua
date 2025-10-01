@@ -9,8 +9,8 @@ return {
     notifier = {},
     image = {},
     picker = {
-      layout = function()
-        return {
+      layouts = {
+        default = {
           layout = {
             backdrop = false,
             box = "horizontal",
@@ -31,18 +31,45 @@ return {
               width = 0.5,
             },
           },
-        }
-      end,
+        },
+        vscode = {
+          preview = false,
+          layout = {
+            backdrop = false,
+            row = 1,
+            width = 0.4,
+            min_width = 80,
+            height = 0.4,
+            border = "none",
+            box = "vertical",
+            {
+              win = "input",
+              height = 1,
+              border = "rounded",
+              title = "{title} {live} {flags}",
+              title_pos = "center",
+            },
+            { win = "list", border = "rounded" },
+            { win = "preview", title = "{preview}", border = "rounded" },
+          },
+        },
+      },
     },
   },
   keys = {
-    -- Top Pickers & Explorer
     {
-      "<leader><space>",
+      "<leader> ",
       function()
         require("snacks.picker").smart()
       end,
       desc = "[ ] Smart Find Files",
+    },
+    {
+      "<leader>f",
+      function()
+        require("snacks.picker").files({ hidden = true })
+      end,
+      desc = "Search [F]iles",
     },
     {
       "<leader>sb",
@@ -54,7 +81,7 @@ return {
     {
       "<leader>/",
       function()
-        require("snacks.picker").grep()
+        require("snacks.picker").grep({ hidden = true })
       end,
       desc = "[/] Grep",
     },
@@ -72,50 +99,20 @@ return {
       end,
       desc = "[N]otification History",
     },
-    -- find
     {
-      "<leader>fb",
-      function()
-        require("snacks.picker").buffers()
-      end,
-      desc = "[F]ind [B]uffers",
-    },
-    {
-      "<leader>fc",
-      function()
-        require("snacks.picker").files({ cwd = vim.fn.stdpath("config") })
-      end,
-      desc = "[F]ind [C]onfig File",
-    },
-    {
-      "<leader>ff",
-      function()
-        require("snacks.picker").files()
-      end,
-      desc = "[F]ind [F]iles",
-    },
-    {
-      "<leader>fg",
-      function()
-        require("snacks.picker").git_files()
-      end,
-      desc = "[F]ind [G]it Files",
-    },
-    {
-      "<leader>fp",
+      "<leader>sp",
       function()
         require("snacks.picker").projects()
       end,
-      desc = "[F]ind [P]rojects",
+      desc = "[S]earch [P]rojects",
     },
     {
-      "<leader>fr",
+      "<leader>sR",
       function()
         require("snacks.picker").recent()
       end,
-      desc = "[F]ind [R]ecent",
+      desc = "[S]earch [R]ecent",
     },
-    -- git
     {
       "<leader>gb",
       function()
@@ -165,7 +162,6 @@ return {
       end,
       desc = "[G]it Log [F]ile",
     },
-    -- Grep
     {
       "<leader>sB",
       function()
@@ -174,22 +170,6 @@ return {
       desc = "[S]earch Grep Open [B]uffers",
     },
     {
-      "<leader>sg",
-      function()
-        require("snacks.picker").grep()
-      end,
-      desc = "[S]earch [G]rep",
-    },
-    {
-      "<leader>sw",
-      function()
-        require("snacks.picker").grep_word()
-      end,
-      desc = "[S]earch Visual selection or [W]ord",
-      mode = { "n", "x" },
-    },
-    -- search
-    {
       '<leader>s"',
       function()
         require("snacks.picker").registers()
@@ -197,32 +177,11 @@ return {
       desc = "[S]earch Registers",
     },
     {
-      "<leader>s/",
-      function()
-        require("snacks.picker").search_history()
-      end,
-      desc = "[S]earch History",
-    },
-    {
       "<leader>sa",
       function()
         require("snacks.picker").autocmds()
       end,
       desc = "[S]earch [A]utocmds",
-    },
-    {
-      "<leader>sc",
-      function()
-        require("snacks.picker").command_history()
-      end,
-      desc = "Command History",
-    },
-    {
-      "<leader>sC",
-      function()
-        require("snacks.picker").commands()
-      end,
-      desc = "[S] [C]ommands",
     },
     {
       "<leader>sd",
@@ -255,31 +214,7 @@ return {
     {
       "<leader>si",
       function()
-        require("snacks.picker").icons({
-          layout = function()
-            return {
-              preview = false,
-              layout = {
-                backdrop = false,
-                row = 1,
-                width = 0.4,
-                min_width = 80,
-                height = 0.4,
-                border = "none",
-                box = "vertical",
-                {
-                  win = "input",
-                  height = 1,
-                  border = "rounded",
-                  title = "{title} {live} {flags}",
-                  title_pos = "center",
-                },
-                { win = "list", border = "rounded" },
-                { win = "preview", title = "{preview}", border = "rounded" },
-              },
-            }
-          end,
-        })
+        require("snacks.picker").icons()
       end,
       desc = "[S]earch [I]cons",
     },
@@ -319,25 +254,11 @@ return {
       desc = "[S]earch [M]an Pages",
     },
     {
-      "<leader>sp",
-      function()
-        require("snacks.picker").lazy()
-      end,
-      desc = "[S]earch for [P]lugin Spec",
-    },
-    {
       "<leader>sq",
       function()
         require("snacks.picker").qflist()
       end,
       desc = "[S]earch [Q]uickfix List",
-    },
-    {
-      "<leader>sR",
-      function()
-        require("snacks.picker").resume()
-      end,
-      desc = "[S]earch [R]esume",
     },
     {
       "<leader>su",
@@ -347,13 +268,12 @@ return {
       desc = "[S]earch [U]ndo History",
     },
     {
-      "<leader>uc",
+      "<leader>sc",
       function()
         require("snacks.picker").colorschemes()
       end,
-      desc = "[U]i [C]olorschemes",
+      desc = "[S]earch [C]olorschemes",
     },
-    -- LSP
     {
       "gd",
       function()
@@ -404,7 +324,6 @@ return {
       end,
       desc = "[S]earch LSP Workspace [S]ymbols",
     },
-    -- notifications
     {
       "<leader>tn",
       function()
@@ -412,7 +331,6 @@ return {
       end,
       desc = "[T]oggle All [N]otifications",
     },
-    -- terminal
     {
       "<c-/>",
       function()
