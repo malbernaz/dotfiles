@@ -10,7 +10,8 @@ if ! command -v brew &> /dev/null; then
     neovim \
     helix \
     zoxide \
-    fzf
+    fzf \
+    imagemagick
 fi
 
 command stow .

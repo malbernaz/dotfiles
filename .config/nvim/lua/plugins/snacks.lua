@@ -255,7 +255,31 @@ return {
     {
       "<leader>si",
       function()
-        require("snacks.picker").icons()
+        require("snacks.picker").icons({
+          layout = function()
+            return {
+              preview = false,
+              layout = {
+                backdrop = false,
+                row = 1,
+                width = 0.4,
+                min_width = 80,
+                height = 0.4,
+                border = "none",
+                box = "vertical",
+                {
+                  win = "input",
+                  height = 1,
+                  border = "rounded",
+                  title = "{title} {live} {flags}",
+                  title_pos = "center",
+                },
+                { win = "list", border = "rounded" },
+                { win = "preview", title = "{preview}", border = "rounded" },
+              },
+            }
+          end,
+        })
       end,
       desc = "[S]earch [I]cons",
     },
