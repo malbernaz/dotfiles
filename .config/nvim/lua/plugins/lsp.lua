@@ -175,8 +175,4 @@ return {
       require("mason-lspconfig").setup()
     end,
   },
-  {
-    "j-hui/fidget.nvim",
-    opts = {},
-  },
 }
