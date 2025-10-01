@@ -1,7 +1,5 @@
 return {
   "stevearc/oil.nvim",
-  ---@module 'oil'
-  ---@type oil.SetupOpts
   lazy = false,
   opts = {
     skip_confirm_for_simple_edits = true,

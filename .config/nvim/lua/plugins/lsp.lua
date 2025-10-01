@@ -51,36 +51,6 @@ return {
             )
           end
 
-          map(
-            "gd",
-            require("telescope.builtin").lsp_definitions,
-            "[G]oto [D]efinition"
-          )
-          map(
-            "gr",
-            require("telescope.builtin").lsp_references,
-            "[G]oto [R]eferences"
-          )
-          map(
-            "gI",
-            require("telescope.builtin").lsp_implementations,
-            "[G]oto [I]mplementation"
-          )
-          map(
-            "<leader>D",
-            require("telescope.builtin").lsp_type_definitions,
-            "Type [D]efinition"
-          )
-          map(
-            "gs",
-            require("telescope.builtin").lsp_document_symbols,
-            "[G]oto [S]ymbols"
-          )
-          map(
-            "<leader>ws",
-            require("telescope.builtin").lsp_dynamic_workspace_symbols,
-            "[W]orkspace [S]ymbols"
-          )
           map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
           map(
             "<leader>ca",
@@ -88,7 +58,6 @@ return {
             "[C]ode [A]ction",
             { "n", "x" }
           )
-          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -193,13 +162,12 @@ return {
       })
 
       -- setup blink capabilities
-      local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
         -- `opts[server].capabilities, if you've defined it
         config.capabilities =
           require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
       end
 
       --setup mason
