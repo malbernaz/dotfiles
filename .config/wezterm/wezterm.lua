@@ -2,16 +2,19 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.font_size = 13
 config.color_scheme = "tokyonight"
+
+-- font
+
+config.font_size = 13
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
-config.window_decorations = "RESIZE"
+
+-- tabs
 
 config.use_fancy_tab_bar = false
 config.tab_max_width = 24
 config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
-
 config.colors = {
   tab_bar = {
     active_tab = {
@@ -31,6 +34,16 @@ wezterm.on("update-right-status", function(window)
 
   window:set_right_status(wezterm.format({ { Text = date .. " " } }))
 end)
+
+-- window
+
+config.window_decorations = "RESIZE"
+config.window_frame = {
+  border_bottom_height = "0.5cell",
+  border_top_height = "0.5cell",
+} -- this is a hack to add padding between the window and the tabs
+
+-- keymaps
 
 config.keys = {
   {
