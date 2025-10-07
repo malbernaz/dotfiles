@@ -19,15 +19,15 @@ return {
     vim.o.laststatus = vim.g.lualine_laststatus
     local icons = {
       diagnostics = {
-        Error = " ",
-        Warn = " ",
+        Error = "󰅚 ",
+        Warn = "󰀪 ",
         Hint = " ",
-        Info = " ",
+        Info = "󰋽 ",
       },
       git = {
-        added = " ",
-        modified = " ",
-        removed = " ",
+        added = " ",
+        modified = " ",
+        removed = " ",
       },
     }
 

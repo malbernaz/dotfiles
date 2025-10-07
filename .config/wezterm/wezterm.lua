@@ -56,6 +56,11 @@ config.keys = {
     mods = "CMD|SHIFT",
     action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
   },
+  {
+    key = "p",
+    mods = "CMD",
+    action = wezterm.action.ActivateCommandPalette,
+  },
 }
 
 local smart_splits =
