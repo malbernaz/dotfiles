@@ -6,8 +6,8 @@ config.color_scheme = "tokyonight"
 
 -- font
 
+config.font = wezterm.font("JetBrains Mono") -- jetbrains is default already
 config.font_size = 13
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 
 -- tabs
 
