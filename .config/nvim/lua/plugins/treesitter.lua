@@ -18,6 +18,11 @@ return {
 
     vim.treesitter.language.register("wgsl_bevy", "wgsl")
 
+    vim.treesitter.language.register("markdown", "mdx")
+    vim.filetype.add({
+      extension = { mdx = "mdx" },
+    })
+
     require("nvim-treesitter.configs").setup({
       auto_install = true,
       highlight = { enable = true },
