@@ -7,14 +7,25 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
   "collaboration_panel": {
+    "dock": "left",
     "button": false
   },
   "theme": "Tokyo Night",
   "agent": {
+    "dock": "right",
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-3-5-sonnet"

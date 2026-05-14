@@ -1,95 +1,98 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
+  branch = "main",
   config = function()
-    local parser_config =
-      require("nvim-treesitter.parsers").get_parser_configs()
-
-    parser_config.wesl = {
-      install_info = {
-        url = "https://github.com/wgsl-tooling-wg/tree-sitter-wesl.git",
-        files = { "src/parser.c", "src/scanner.c" },
-        branch = "main",
-      },
+    local parsers = {
+      "bash",
+      "fish",
+      "c",
+      "diff",
+      "html",
+      "javascript",
+      "jsdoc",
+      "json",
+      "jsonc",
+      "lua",
+      "luadoc",
+      "luap",
+      "markdown",
+      "markdown_inline",
+      "printf",
+      "python",
+      "query",
+      "regex",
+      "toml",
+      "tsx",
+      "typescript",
+      "rust",
+      "vim",
+      "vimdoc",
+      "xml",
+      "yaml",
+      "wgsl_bevy",
+      "svelte",
     }
 
-    vim.treesitter.language.register("wgsl_bevy", "wgsl")
+    require("nvim-treesitter").install(parsers)
 
     vim.treesitter.language.register("markdown", "mdx")
     vim.filetype.add({
       extension = { mdx = "mdx" },
     })
 
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-      ensure_installed = {
-        "bash",
-        "fish",
-        "c",
-        "diff",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "jsonc",
-        "lua",
-        "luadoc",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "printf",
-        "python",
-        "query",
-        "regex",
-        "toml",
-        "tsx",
-        "typescript",
-        "rust",
-        "vim",
-        "vimdoc",
-        "xml",
-        "yaml",
-        "wgsl_bevy",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-      textobjects = {
-        move = {
-          enable = true,
-          goto_next_start = {
-            ["]f"] = "@function.outer",
-            ["]c"] = "@class.outer",
-            ["]a"] = "@parameter.inner",
-          },
-          goto_next_end = {
-            ["]F"] = "@function.outer",
-            ["]C"] = "@class.outer",
-            ["]A"] = "@parameter.inner",
-          },
-          goto_previous_start = {
-            ["[f"] = "@function.outer",
-            ["[c"] = "@class.outer",
-            ["[a"] = "@parameter.inner",
-          },
-          goto_previous_end = {
-            ["[F"] = "@function.outer",
-            ["[C"] = "@class.outer",
-            ["[A"] = "@parameter.inner",
-          },
-        },
-      },
+    ---@param buf integer
+    ---@param language string
+    local function treesitter_try_attach(buf, language)
+      -- Check if a parser exists and load it
+      if not vim.treesitter.language.add(language) then
+        return
+      end
+      -- Enable syntax highlighting and other treesitter features
+      vim.treesitter.start(buf, language)
+
+      -- Enable treesitter based folds
+      -- For more info on folds see `:help folds`
+      -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      -- vim.wo.foldmethod = 'expr'
+
+      -- Check if treesitter indentation is available for this language, and if so enable it
+      -- in case there is no indent query, the indentexpr will fallback to the vim's built in one
+      local has_indent_query = vim.treesitter.query.get(language, "indents")
+        ~= nil
+
+      -- Enable treesitter based indentation
+      if has_indent_query then
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end
+
+    local available_parsers = require("nvim-treesitter").get_available()
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        local buf, filetype = args.buf, args.match
+
+        local language = vim.treesitter.language.get_lang(filetype)
+        if not language then
+          return
+        end
+
+        local installed_parsers =
+          require("nvim-treesitter").get_installed("parsers")
+
+        if vim.tbl_contains(installed_parsers, language) then
+          -- Enable the parser if it is already installed
+          treesitter_try_attach(buf, language)
+        elseif vim.tbl_contains(available_parsers, language) then
+          -- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
+          require("nvim-treesitter").install(language):await(function()
+            treesitter_try_attach(buf, language)
+          end)
+        else
+          -- Try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+          treesitter_try_attach(buf, language)
+        end
+      end,
     })
   end,
 }

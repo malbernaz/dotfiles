@@ -29,3 +29,8 @@ set -gx HOMEBREW_NO_ENV_HINTS "" # disable hints
 
 # Zoxide
 zoxide init --cmd cd fish | source
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/malbernaz/.lmstudio/bin
+# End of LM Studio CLI section
+
