@@ -86,3 +86,10 @@ vim.keymap.set("v", "`p", '"0p', { desc = "Paste last yanked" })
 
 -- Better redo
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- Copy current file name to system clipboard
+vim.keymap.set("n", "<leader>y", function()
+  local filepath = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+  vim.fn.setreg("+", filepath)
+  print("Copied: " .. filepath)
+end, { desc = "[Y]ank current file name" })

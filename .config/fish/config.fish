@@ -4,8 +4,8 @@ fish_add_path ~/.local/bin
 fish_add_path ~/Library/pnpm
 
 # Variables
-set EDITOR hx
-set GIT_EDITOR hx
+set EDITOR nvim
+set GIT_EDITOR nvim
 set NVIMRC $HOME/.dotfiles/.config/nvim/init.lua
 set --global nvm_default_version latest
 
