@@ -63,6 +63,15 @@ config.keys = {
   },
 }
 
+config.mouse_bindings = {
+  -- Pressionar Ctrl + Clique com o botão esquerdo para abrir o link
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CMD",
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
 local smart_splits =
   wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 

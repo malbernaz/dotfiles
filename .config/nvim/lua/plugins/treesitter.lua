@@ -5,14 +5,14 @@ return {
   config = function()
     local parsers = {
       "bash",
-      "fish",
       "c",
+      "css",
       "diff",
+      "fish",
       "html",
       "javascript",
       "jsdoc",
       "json",
-      "jsonc",
       "lua",
       "luadoc",
       "luap",
@@ -22,16 +22,17 @@ return {
       "python",
       "query",
       "regex",
+      "rust",
+      "scss",
+      "svelte",
       "toml",
       "tsx",
       "typescript",
-      "rust",
       "vim",
       "vimdoc",
+      "wgsl_bevy",
       "xml",
       "yaml",
-      "wgsl_bevy",
-      "svelte",
     }
 
     require("nvim-treesitter").install(parsers)
